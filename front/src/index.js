@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Main from "./Main"
 
 ReactDOM.render(
   <React.StrictMode>
@@ -7,6 +8,7 @@ ReactDOM.render(
     <img
       src={'http://navent.com/es/wp-content/uploads/Navent-isologo.svg'}
     ></img>
+    <Main />
   </React.StrictMode>,
   document.getElementById('root'),
 );
