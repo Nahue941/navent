@@ -1,3 +1,7 @@
-//Este es un cambio!
-//Este es otro cmabiio!
-//Tercer pull request (?
+const express = require('express');
+const router = express.Router();
+
+router.get('/', (req, res, next) => {
+  res.send('Rutas andando');
+});
+module.exports = router;
