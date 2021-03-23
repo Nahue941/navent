@@ -1,5 +1,5 @@
 const S = require('sequelize');
-const db = new S('postgres://localhost:5432/navent', {
+const db = new S(process.env.DB, {
   logging: false,
   dialect: 'postgres',
 });
