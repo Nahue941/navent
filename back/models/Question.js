@@ -5,7 +5,7 @@ class Question extends S.Model {}
 Question.init(
   {
     question: {
-      type: S.STRING,
+      type: S.TEXT,
       allowNull: false,
       unique: true,
     },

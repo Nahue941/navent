@@ -59,10 +59,6 @@ module.exports = [
     testId: 1,
     question: 'Decimo quinta pregunta',
   },
-  {
-    testId: 1,
-    question: 'Decimo quinta pregunta',
-  },
   /*----------test 2--------------*/
   {//id:16
     testId: 2,
