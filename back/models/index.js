@@ -4,8 +4,8 @@ const Test = require('./Test');
 const Question = require('./Question');
 const Answer = require('./Answer');
 
-User.hasMany(TestMade);
-Test.hasMany(TestMade);
+User.belongsToMany(Test, { through: TestMade });
+Test.belongsToMany(User, { through: TestMade });
 Test.hasMany(Question);
 Question.hasMany(Answer);
 
