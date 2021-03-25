@@ -1,14 +1,17 @@
 import React from 'react';
-import styles from '../';
-import { Route, Switch} from 'react-router-dom';
+// import styles from '../'; arreglar import de css modules
+import { Route, Switch } from 'react-router-dom';
+import App from './App';
 
 const Main = () => {
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Test css module</h1>
-      <Switch>
-        <Route path="/" render={() => <App/>}/>
-      </Switch>
+    <div>
+      <h1>Hola ( ͡° ͜ʖ ͡°)</h1>
+      <img
+        src={'http://navent.com/es/wp-content/uploads/Navent-isologo.svg'}
+      ></img>
+
+      <App/>
     </div>
   );
 };
