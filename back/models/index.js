@@ -6,7 +6,9 @@ const Answer = require('./Answer');
 
 User.belongsToMany(Test, { through: TestMade });
 Test.belongsToMany(User, { through: TestMade });
+
 Test.hasMany(Question);
+
 Question.hasMany(Answer);
 
 module.exports = { User, TestMade, Test, Question, Answer };

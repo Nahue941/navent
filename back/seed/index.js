@@ -1,6 +1,6 @@
 const { Test, Question, Answer } = require('../models');
 const testArray = require('./testSeed');
-const questionArray = require('./answerSeed');
+const questionArray = require('./questionSeed');
 const answerArray = require('./answerSeed');
 
 /** Al crear una tabla que contiene un FK. El método bulkCreate revisa que 
@@ -19,25 +19,29 @@ const answerArray = require('./answerSeed');
 
 
 
- let testPromise = () => Test.bulkCreate(testArray)
- .then(res => {
-   console.log(`-->Test creados`);
-   return res;
- });
+let testPromise = () => Test.bulkCreate(testArray)
+.then(res => {
+  console.log(`\n-->Test creados`);
+  return res;
+});
 
- let questionPromise = () => Question.bulkCreate(questionArray)
- .then(res => {
-   console.log(`-->Questions creadas`);
-   return res;
- });
+let questionPromise = () => Question.bulkCreate(questionArray)
+.then(res => {
+  console.log(`-->Questions creadas`);
+  return res;
+});
 
- let answerPromise = () => Answer.bulkCreate(answerArray)
- .then(res => {
-   console.log(`-->Answers creadas`);
-   return res;
- });
+let answerPromise = () => Answer.bulkCreate(answerArray)
+.then(res => {
+  console.log(`-->Answers creadas`);
+  return res;
+});
 
- return testPromise()
+
+
+console.log('inciando seed...');
+testPromise()
   .then(() => questionPromise() )
   .then(() => answerPromise() )
-  .then(() => console.log('----Seed terminado----'));
+  .then(() => console.log('\n----Seed terminado----'))
+  .catch(e => console.error(e))
