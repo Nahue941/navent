@@ -1,22 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from "./Main"
-import {Provider} from "react-redux"
-import { BrowserRouter } from "react-router-dom";
-import store from "./state/store"
+import { Provider } from "react-redux";
+import store from "./state/store";
+import Main from './containers/Main';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 ReactDOM.render(
-    <Provider store={store}>
-  <React.StrictMode>
-    <BrowserRouter >
-    {/* <Main /> */}
-    <h1>Hola</h1>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Main />
     </BrowserRouter>
-  </React.StrictMode>
-    </Provider>,
-  document.getElementById('root'),
-  );
-
-  {/* <img
-    src={'http://navent.com/es/wp-content/uploads/Navent-isologo.svg'}
-  ></img> */}
+  </Provider>,
+  document.getElementById('root')
+);
