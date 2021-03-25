@@ -82,46 +82,46 @@ module.exports = [
   },
   {//id:20
     testId: 2,
-    question: '¿Cúal es la capital de Argentina?',
+    question: '¿Cúal es la capital de Bolivia?',
   },
   {//id:21
     testId: 2,
-    question: '¿Cúal es la capital de Argentina?',
+    question: '¿Cúal es la capital de Ecuador?',
   },
   {//id:22
     testId: 2,
-    question: '¿Cúal es la capital de Argentina?',
+    question: '¿Cúal es la capital de Botsuana?',
   },
   {//id:23
     testId: 2,
-    question: '¿Cúal es la capital de Argentina?',
+    question: '¿Cúal es la capital de Zimbabue?',
   },
   {//id:24
     testId: 2,
-    question: '¿Cúal es la capital de Argentina?',
+    question: '¿Cúal es la capital de Zambia?',
   },
   {//id:25
     testId: 2,
-    question: '¿Cúal es la capital de Argentina?',
+    question: '¿Cúal es la capital de Malí?',
   },
   {//id:26
     testId: 2,
-    question: '¿Cúal es la capital de Argentina?',
+    question: '¿Cúal es la capital de Francia?',
   },
   {//id:27
     testId: 2,
-    question: '¿Cúal es la capital de Argentina?',
+    question: '¿Cúal es la capital de Suiza?',
   },
   {//id:28
     testId: 2,
-    question: '¿Cúal es la capital de Argentina?',
+    question: '¿Cúal es la capital de Sudan del Sur?',
   },
   {//id:29
     testId: 2,
-    question: '¿Cúal es la capital de Argentina?',
+    question: '¿Cúal es la capital de Yemen?',
   },
   {//id:30
     testId: 2,
-    question: '¿Cúal es la capital de Argentina?',
+    question: '¿Cúal es la capital de India?',
   },
 ]
