@@ -16,7 +16,3 @@ ReactDOM.render(
     </Provider>,
   document.getElementById('root'),
   );
-
-  {/* <img
-    src={'http://navent.com/es/wp-content/uploads/Navent-isologo.svg'}
-  ></img> */}
