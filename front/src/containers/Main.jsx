@@ -2,11 +2,15 @@ import React from 'react';
 // import styles from '../'; arreglar import de css modules
 import { Route, Switch } from 'react-router-dom';
 import App from './App';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Main = () => {
   return (
     <div>
-      <App/>
+      <Navbar />
+      <App />
+      <Footer />
     </div>
   );
 };

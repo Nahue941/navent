@@ -1,5 +1,6 @@
-import React from "react"
-import styles from "../styles/oneTestContainer.module.css"
+import React from 'react';
+import styles from '../styles/oneTestContainer.module.css';
+
 
 const Question = (question) => {
     console.log(question.answers[0].answer);
@@ -22,3 +23,4 @@ const Question = (question) => {
     )
 }
 export default Question
+
