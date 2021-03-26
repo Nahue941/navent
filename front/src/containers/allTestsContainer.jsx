@@ -1,13 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { allTests } from '../state/questions/actions';
 
-const SubjectsContainer = () => {
-  const tests = [
-    { name: 'Js1', question: 'question1', answer: 'answer1' },
-    { name: 'Js2', question: 'question2', answer: 'answer2' },
-    { name: 'Js3', question: 'question3', answer: 'answer3' },
-  ];
+
+const allTestsContainer = () => {
+  const dispatch = useDispatch();
+
+  const tests = useSelector((state) => state.question.tests);
+
+  useEffect(() => {
+    dispatch(allTests());
+  }, [dispatch]);
 
   return (
     <div>
@@ -23,4 +26,4 @@ const SubjectsContainer = () => {
   );
 };
 
-export default SubjectsContainer;
+export default allTestsContainer;

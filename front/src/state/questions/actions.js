@@ -8,3 +8,10 @@ export const allQuestions = createAsyncThunk('GET_QUESTIONS', (id) => {
     .then((test) => test.data)
     .catch((err) => console.log(err));
 });
+
+export const allTests = createAsyncThunk('GET_TESTS', (id) => {
+  return axios
+    .get(`http://localhost:3001/api/test/`)
+    .then((test) => test.data)
+    .catch((err) => console.log(err));
+});

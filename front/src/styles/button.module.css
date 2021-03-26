@@ -35,6 +35,6 @@
 }
 
 .radiobtn  .input:checked + .checkmark {
-    opacity: 1;
+  opacity: 1;
   background-color: #ff3c00;
 }

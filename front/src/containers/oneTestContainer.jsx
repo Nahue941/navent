@@ -11,7 +11,7 @@ const TestContainer = (id) => {
 
   useEffect(() => {
     dispatch(allQuestions(id.id));
-  }, []);
+  }, [dispatch]);
 
   console.log(questions);
 
