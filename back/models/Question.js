@@ -1,7 +1,8 @@
 const S = require('sequelize');
 const db = require('../config/db');
+const Answers = require('./Answer');
 
-class Question extends S.Model {}
+class Question extends S.Model { }
 Question.init(
   {
     question: {
@@ -17,5 +18,15 @@ Question.init(
   },
   { sequelize: db, modelName: 'question' },
 );
+
+Question.prototype.getCorrect = async function () {
+  const res = await Answers.findOne({
+    where: {
+      correct: true,
+      questionId: this.id
+    }
+  })
+  return res;
+};
 
 module.exports = Question;

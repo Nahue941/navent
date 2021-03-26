@@ -1,31 +1,42 @@
-const { Question, Test, Answer } = require('../models'); //revisar si están bien requeridos
+const { Question, Answer } = require('../models'); //revisar si están bien requeridos
 
 const questionController = {
-    getOne(req, res) {
-        Question.findByPk(req.params.id, {
-            include: [Test, Answer]
-        })
-        .then(question => res.send(question)) 
+    async getOne(req, res, next) {
+        try {
+            const question = await Question.findByPk(req.params.id, { include: [Answer] });
+            res.send(question);
+        } catch (error) {
+            next(error);
+        }
     },
-    createQuestion(req, res) {
-        let foundTest;
-        Test.findByPk(req.params.id)
-        .then(test => foundTest = test)
-        .then(() => Question.create(req.body))
-        .then(question => foundTest.addQuestion(question))
-        .then(() => res.sendStatus(200))
+    async createQuestion(req, res, next) {
+        try {
+            const question = await Question.create({
+                ...req.body,
+                testId: req.params.id
+            });
+            res.sendStatus(200);
+        } catch (error) {
+            next(error);
+        }
     },
-    editQuestion(req, res) {
-        Question.findByPk(req.params.id)
-        .then(question => question.update(req.body))
-        .then(() => res.sendStatus(200))
+    async editQuestion(req, res, next) {
+        try {
+            const question = await Question.findByPk(req.params.id);
+            const editedQuestion = await question.update(req.body);
+            res.sendStatus(200);
+        } catch (error) {
+            next(error);
+        }
     },
-    deleteQuestion(req, res) {
-        Question.findByPk(req.params.id)
-        .then(question => question.update({
-            active: false
-        }))
-        .then(() => res.sendStatus(200))
+    async deleteQuestion(req, res, next) {
+        try {
+            const question = await Question.findByPk(req.params.id);
+            const updatedQuestion = await question.update({ active: false })
+            res.sendStatus(200);
+        } catch (error) {
+            next(error);
+        }
     }
 
 }

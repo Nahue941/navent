@@ -2,40 +2,67 @@ const { Test, Question, Answer } = require('../models');
 const S = require('sequelize');
 
 const testController = {
-    getAll(req, res) {
-        Test.findAll({})
-            .then(test => res.send(test))
+    async getAll(req, res, next) {
+        try {
+            const data = await Test.findAll({});
+            res.send(data);
+        } catch (error) {
+            next(error);
+        }
     },
-    getOne(req, res) {
-        Test.findByPk(req.params.id, {
-            include: {
-                model: Question,
-                limit: 7,
-                order: S.literal('random()'),
-                where: { active: true },
+    async getOne(req, res, next) {
+        try {
+            const test = await Test.findByPk(req.params.id, {
                 include: {
-                    model: Answer,
-                    limit: 4,
+                    model: Question,
+                    limit: 7,
+                    order: S.literal('random()'),
+                    where: { active: true },
+                    include: [
+                        {
+                            model: Answer,
+                            where: { correct: false },
+                            order: S.literal('random()'),
+                            limit: 2
+                        }
+                    ],
                 },
-            },
-        })
-        .then(test => res.send(test))
+            });
+            const testWithAllAnswers = await Promise.all(
+                test.insertCorrectAnswersToQuestion()
+            );
+
+            res.send(testWithAllAnswers);
+        } catch (error) {
+            next(error);
+        }
     },
-    createTest(req, res) {
-        Test.create(req.body)
-            .then(test => res.status(201).send(test))
+    async createTest(req, res, next) {
+        try {
+            const test = await Test.create(req.body);
+            res.status(201).send(test)
+        } catch (error) {
+            next(error);
+        }
     },
-    editTest(req, res) {
-        Test.findByPk(req.params.id)
-            .then(test => test.update(req.body))
-            .then(updatedTest => res.send(updatedTest))
+    async editTest(req, res, next) {
+        try {
+            const test = await Test.findByPk(req.params.id);
+            const updatedTest = await test.update(req.body);
+            res.send(updatedTest);
+        } catch (error) {
+            next(error);
+        }
     },
-    deleteTest(req, res) {
-        Test.findByPk(req.params.id)
-            .then(test => test.update({
-                active: false
-            }))
-            .then(() => res.sendStatus(200))
+    //revisar la forma en que se borraran los test
+    async deleteTest(req, res, next) {
+        try {
+            const test = await Test.findByPk(req.params.id);
+            const updatedTest = await test.update({ active: false })
+            res.sendStatus(200);
+        } catch (error) {
+            next(error);
+        }
     }
 }
 
