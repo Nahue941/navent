@@ -7,7 +7,7 @@ const authAPI = require('./routes');
 const sequelize = require('./config/db');
 const volleyball = require('volleyball');
 
-// Middlewares 
+// Middlewares
 
 app.use(volleyball);
 
@@ -21,16 +21,14 @@ app.use(
 // Express Route File Requires
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + '/public'));
 
 app.use('/api', authAPI);
 
-
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
-
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(port, () => {
