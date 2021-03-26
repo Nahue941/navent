@@ -19,7 +19,7 @@ console.log(id.id);
   return (
     <div className={styles.container}>
       <form>
-      {questions.map((question)=> <Question key={question.id} question={question.question} answers={question.answers}/>)}
+      {questions && questions.map((question)=> <Question key={question.id} question={question.question} answers={question.answers}/>)}
       <input type="submit" value="Enviar"/>
       </form>
     </div>
