@@ -1,6 +1,6 @@
-import 
+/* import 
 export function question(){
     return(
 
     )
-}
+} */
