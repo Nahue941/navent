@@ -1,30 +1,26 @@
 import React from 'react';
 import styles from '../styles/oneTestContainer.module.css';
 
-const Question = () => {
-  return (
-    <div>
-      <h2>Pregunta 1</h2>
-      <div className={styles.answers}>
-        <label>
-          Resp 1
-          <input type="radio" name="Pregunta 1" id="1" />
-        </label>
-        <label>
-          {' '}
-          Resp 2
-          <input type="radio" name="Pregunta 1" id="2" />
-        </label>
-        <label>
-          Resp 3
-          <input type="radio" name="Pregunta 1" id="3" />
-        </label>
-        <label>
-          Resp 4
-          <input type="radio" name="Pregunta 1" id="4" />
-        </label>
-      </div>
-    </div>
-  );
-};
-export default Question;
+
+const Question = (question) => {
+    console.log(question.answers[0].answer);
+    return(
+        
+            <div>
+                <h2>{question.question} </h2>
+                <div className={styles.answers}>
+                    {question.answers.map((answer)=> (
+                    <>
+                        <label key={answer.id}> {answer.answer}
+                        <input type="radio" name="Pregunta 1"  />
+                        </label>
+                    </>
+                    )) 
+                    }
+                </div>
+            </div>
+        
+    )
+}
+export default Question
+
