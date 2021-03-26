@@ -10,6 +10,6 @@ ReactDOM.render(
     <BrowserRouter>
       <Main />
     </BrowserRouter>
-  </Provider>,
-  document.getElementById('root')
-);
+    </Provider>,
+  document.getElementById('root'),
+  );
