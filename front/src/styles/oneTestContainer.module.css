@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&family=Raleway:wght@200&display=swap');
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    
+    
+}
+.answers {
+    display: flex;
+    flex-direction: column
+}
