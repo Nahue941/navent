@@ -4,6 +4,7 @@ import styles from '../styles/oneTestContainer.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { allQuestions } from '../state/questions/actions';
 
+
 const TestContainer = (id) => {
   const dispatch = useDispatch();
   console.log(id.id);
@@ -12,8 +13,6 @@ const TestContainer = (id) => {
   useEffect(() => {
     dispatch(allQuestions(id.id));
   }, [dispatch]);
-
-  console.log(questions);
 
   return (
     <div className={styles.container}>
