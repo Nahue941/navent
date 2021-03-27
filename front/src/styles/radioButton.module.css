@@ -1,14 +1,22 @@
 .body{
-  display: flex;
-  justify-content: center;
+  display: inline-block;;
+  justify-content: left;
   align-items: center;
 }
 
 p {
   display: inline;
+  position: relative;
+  margin-left: 20px;
 }
 
-.radioBtn:hover .checkmark{
+.radioBtn {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.radioBtn:hover .checkmark {
   border: 3px solid #3D47F5;
 }
 

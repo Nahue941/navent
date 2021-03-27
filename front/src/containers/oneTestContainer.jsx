@@ -5,13 +5,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { allQuestions } from '../state/questions/actions';
 
 
-const TestContainer = (id) => {
+const TestContainer = (props) => {
+  //Me esta dando problemas las props que se pasan a los componentes. No estan funcionando como deberian 
+  const auxProps = props;
+  const {id} = auxProps;
   const dispatch = useDispatch();
-  console.log(id.id);
   const questions = useSelector((state) => state.question.all);
 
   useEffect(() => {
-    dispatch(allQuestions(id.id));
+    dispatch(allQuestions(id));
   }, [dispatch]);
 
   return (
@@ -21,7 +23,7 @@ const TestContainer = (id) => {
           questions.map((question) => (
             <Question
               key={question.id}
-              question={question.question}
+              question={question}
               answers={question.answers}
             />
           ))}
