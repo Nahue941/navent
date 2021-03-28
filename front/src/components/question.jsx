@@ -8,7 +8,7 @@ const Question = (props) => {
   const {question , answers} = auxProps;
   return (
     <div>
-      <h2>{question.question} </h2>
+      <h2 >{question.question} </h2>
       <div className={styles.answers}>
         {question.answers.map((answer) => (
           
