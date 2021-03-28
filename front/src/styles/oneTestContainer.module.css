@@ -4,11 +4,40 @@
 .container {
     display: flex;
     justify-content: center;
-    width: 500px;
-    
-    
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;  
+    font-family: 'Raleway';
+
 }
+
+
 .answers {
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    font-family: 'Montserrat';
+    background-color: rgba(0, 0, 0, 0.076);
+    border-radius: 15px;
+    box-shadow: -2px 7px 9px 1px rgba(0, 0, 0, 0.296);
 }
+
+
+
+h2 {
+    border-radius: 2px;
+    box-shadow: -2px 7px 11px 1px rgba(0, 0, 0, 0.296);
+}
+
+/* input {
+    background-color: blue;
+    border-radius: 8px;
+    border: blue;
+    width: 160px;
+    height: 50px;
+    font-family: "Hind Vadodara", sans-serif;
+    font-size: 16px;
+    font-weight:bold;
+    color: white;
+    margin-left: 28%;
+} */
+

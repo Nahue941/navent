@@ -3,6 +3,7 @@ import Question from '../components/question';
 import styles from '../styles/oneTestContainer.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { allQuestions } from '../state/questions/actions';
+import SendButton from '../components/UI/SendButton'
 
 
 const TestContainer = (props) => {
@@ -27,7 +28,8 @@ const TestContainer = (props) => {
               answers={question.answers}
             />
           ))}
-        <input type="submit" value="Enviar" />
+          <br /><br />
+        <SendButton />
       </form>
     </div>
   );
