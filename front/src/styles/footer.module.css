@@ -11,7 +11,8 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  padding-bottom: 7.6em;
+  padding-bottom: 2em;
+  /* padding-top: -50px; */
 }
 
 .text {
