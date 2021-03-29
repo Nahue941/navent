@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../styles/oneTestContainer.module.css';
-import Button from "../components/UI/Button"
+import RaddioButton from "./UI/RadioButton"
 
 const Question = ({question}) => {
   
@@ -10,7 +10,7 @@ const Question = ({question}) => {
       <div className={styles.answers}>
         {question.answers.map((answer) => (
           
-          <Button answer={answer} questionId={question.id} key={answer.id}/>
+          <RaddioButton answer={answer} questionId={question.id} key={answer.id}/>
           
         ))}
       </div>

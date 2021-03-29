@@ -3,7 +3,7 @@ import Question from '../components/question';
 import styles from '../styles/oneTestContainer.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { allQuestions } from '../state/questions/actions';
-import SendButton from '../components/UI/SendButton'
+import Button from '../components/UI/Button'
 
 
 const TestContainer = ({id}) => {
@@ -26,7 +26,7 @@ const TestContainer = ({id}) => {
             />
           ))}
           <br /><br />
-        <SendButton />
+        <Button value="Enviar" type="submit"/>
       </form>
     </div>
   );
