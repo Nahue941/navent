@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Question from '../components/question';
+import Question from '../components/Question';
 import styles from '../styles/oneTestContainer.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
