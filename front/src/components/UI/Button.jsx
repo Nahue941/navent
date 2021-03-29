@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/SendButton.module.css';
+import styles from '../../styles/button.module.css';
 
 const Button = ({type='button', value='Value', onClick=((e)=> console.log(e)), disabled=false}) => {
     return (
