@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&family=Raleway:wght@200&display=swap');
+
+.container {
+  background-color: rgb(87 37 103);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  line-height: 28px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding-bottom: 7.6em;
+}
+
+.text {
+  color: white;
+  text-shadow: rgb(255, 255, 255);
+  font-weight: 400;
+  font-size: 14px;
+  font-family: Raleway;
+  line-height: 1.4;
+}
+
+.textSmall {
+  color: white;
+  text-shadow: rgb(255, 255, 255);
+  font-weight: 400;
+  font-size: 10px;
+  font-family: Raleway;
+}
+
+.logo {
+  padding-top: 1em;
+  font-size: 1em;
+  width: 5.5em;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .logo {
+    display: flexbox;
+    padding-top: 1em;
+    font-size: 1em;
+    width: 5.5em;
+    height: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .textSmall {
+    color: white;
+    text-shadow: rgb(255, 255, 255);
+    font-weight: 400;
+    font-size: 10px;
+    font-family: Raleway;
+    padding-right: 3em;    
+  }
+}
