@@ -2,48 +2,59 @@ import React, { useEffect, useState } from 'react';
 import Question from '../components/question';
 import styles from '../styles/oneTestContainer.module.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import { allQuestions } from '../state/questions/actions';
 import Button from '../components/UI/Button'
 
 
 const TestContainer = ({ id }) => {
+  const histroy = useHistory();
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.question.all);
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
 
   useEffect(() => {
     dispatch(allQuestions(id));
   }, [dispatch]);
 
-  const handleAnswerButtonClick = (e) => {
+
+  const handleRadioButtonValue = (e, answer) => {
+    const auxArray = selectedAnswers;
+    auxArray[answer.questionId] = answer;
+    setSelectedAnswers(auxArray);
+  }
+
+  const countCorrectAnswers = () => {
+    return selectedAnswers.reduce((trueAnswers = 0, answer) => trueAnswers += answer.correct ? 1 : 0, 0)
+  }
+
+  const handleSubmit = (e) => {
     e.preventDefault()
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
-      setCurrentQuestion(nextQuestion)
+      setCurrentQuestion(nextQuestion);
     }
     else {
-      alert("¡Terminaste el test!")
+      alert(`Respuestas correctas: ${countCorrectAnswers()}/${questions.length}`);
+      histroy.push('/');
     }
   }
 
   return (
     <div className={styles.container}>
 
-      <form>
-        {questions && (
-          <form onSubmit={handleAnswerButtonClick}>
-            <Question
-              question={questions[currentQuestion]}
-            />
-            <br />
-            <br />
-            <Button value="Siguiente" type="submit" />
-          </form>
-        )}
-        <br />
-        <br />
-        <Button value="Enviar" type="submit" />
-      </form>
+      {questions && (
+        <form onSubmit={handleSubmit}>
+          <Question
+            question={questions[currentQuestion]}
+            onClick={handleRadioButtonValue}
+          />
+          <br />
+          <br />
+          <Button value="Siguiente/Enviar" type="submit" />
+        </form>
+      )}
     </div>
   )
 };
