@@ -1,10 +1,7 @@
 import React from 'react';
 import styles from '../../styles/radioButton.module.css'
 
-const Button = (props) => {
-    //Me esta dando problemas las props que se pasan a los componentes. No estan funcionando como deberian 
-    const propsAux = props;
-    const {answer, questionId} = propsAux;
+const Button = ({answer, questionId}) => {
 
     return (
         <>

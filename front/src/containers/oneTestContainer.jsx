@@ -6,10 +6,7 @@ import { allQuestions } from '../state/questions/actions';
 import SendButton from '../components/UI/SendButton'
 
 
-const TestContainer = (props) => {
-  //Me esta dando problemas las props que se pasan a los componentes. No estan funcionando como deberian 
-  const auxProps = props;
-  const {id} = auxProps;
+const TestContainer = ({id}) => {
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.question.all);
 
