@@ -23,6 +23,7 @@ const TestContainer = ({ id }) => {
     const auxArray = selectedAnswers;
     auxArray[answer.questionId] = answer;
     setSelectedAnswers(auxArray);
+    console.log(selectedAnswers)
   }
 
   const countCorrectAnswers = () => {

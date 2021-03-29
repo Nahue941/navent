@@ -2,9 +2,10 @@
 
 .container {
   background-color: rgb(87 37 103);
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
+  height: 50vh;
   width: 100%;
   line-height: 28px;
   text-align: center;
@@ -12,6 +13,7 @@
   flex-wrap: wrap;
   flex-direction: column;
   padding-bottom: 2em;
+  border-radius: 15px;
 }
 
 .text {

@@ -15,7 +15,6 @@
     flex-direction: column;
     justify-content: center;
     align-content: center;
-
 }
 
 .answers {
@@ -28,11 +27,9 @@
     box-shadow: -2px 7px 9px 1px rgba(34, 35, 75, 0.254);
 }
 
-h2 {
+.h2 {
     display: flex;
     justify-content: center;
-    border-radius: 2px;
-    box-shadow: -2px 7px 11px 1px rgba(34, 35, 75, 0.254);
 }
 
 

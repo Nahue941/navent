@@ -8,7 +8,7 @@ const Question = ({ question, onClick }) => {
     <div className={styles.questionContainer}>
       {question &&
         (<>
-          <h2 >{question.question} </h2>
+          <h2 className={styles.h2}>{question.question} </h2>
           <div className={styles.answers}>
             {question.answers.map((answer) => (
 

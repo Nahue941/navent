@@ -3,9 +3,14 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import TestContainer from './oneTestContainer';
 import AllTestContainer from './allTestsContainer';
 import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
+import styles from '../styles/app.module.css';
+
 const App = () => {
   return (
-    <div>     
+    <>
+    <div className={styles.body}>     
+      <Navbar />
       <Switch>
         <Route path="/test/:id" render={({match}) => <TestContainer id={match.params.id}/>} />
         <Route path="/test" render={() => <AllTestContainer />} />
@@ -15,6 +20,7 @@ const App = () => {
       </Switch>
       <Footer />
       </div> 
+    </>
   );
 };
 
