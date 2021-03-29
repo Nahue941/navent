@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&family=Raleway:wght@200&display=swap');
+
+.container {
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.skills {
+    background-color: #3D47F5;
+    margin:20px;
+    opacity: 0.85;
+    height: 100px;
+    width: 600px;
+    border-radius: 16px;
+    &:hover{
+        opacity: 0;
+        transition:1s;
+    }
+}
+
+
+
+
+.link {
+    text-decoration: none;
+    color:black;
+}
+
+
+
+.tipograhy {
+    font-family: "Raleway";
+}
