@@ -1,4 +1,4 @@
-.input {
+.inputbtn {
     background-color: blue;
     border-radius: 8px;
     border: blue;
@@ -8,5 +8,5 @@
     font-size: 16px;
     font-weight:bold;
     color: white;
-    margin-left: 28%;
+    margin-left: 35%;
 }

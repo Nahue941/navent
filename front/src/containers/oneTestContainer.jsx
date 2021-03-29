@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect , useState} from 'react';
 import Question from '../components/question';
 import styles from '../styles/oneTestContainer.module.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,27 +12,36 @@ const TestContainer = (props) => {
   const {id} = auxProps;
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.question.all);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
 
   useEffect(() => {
     dispatch(allQuestions(id));
   }, [dispatch]);
 
-  return (
+  const handleAnswerButtonClick = (e) => {
+    e.preventDefault()
+    const nextQuestion = currentQuestion + 1;
+    if (nextQuestion < questions.length) {
+      setCurrentQuestion(nextQuestion)
+    }
+    else {
+      alert("¡Terminaste el test!")
+    }
+  }
+
+  return(
     <div className={styles.container}>
-      <form>
-        {questions &&
-          questions.map((question) => (
-            <Question
-              key={question.id}
-              question={question}
-              answers={question.answers}
-            />
-          ))}
-          <br /><br />
-        <SendButton />
+      {questions && (
+        <form onSubmit={handleAnswerButtonClick}>
+        <Question 
+        question={questions[currentQuestion]} 
+        />
+      <br /><br />      
+      <SendButton />
       </form>
+      )}
     </div>
-  );
+  )
 };
 
 export default TestContainer;
