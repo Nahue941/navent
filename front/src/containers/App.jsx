@@ -2,10 +2,16 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import TestContainer from './OneTestContainer';
 import AllTestContainer from './AllTestsContainer';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
+import styles from '../styles/app.module.css';
+
 
 const App = () => {
   return (
-    <div>     
+    <>
+    <div className={styles.body}>     
+      <Navbar />
       <Switch>
         <Redirect exact from="/" to="/test" />
         <Route path="/test/:id" render={({match}) => <TestContainer id={match.params.id}/>} />
@@ -14,7 +20,9 @@ const App = () => {
         <Route path="/404" render={() => <div>Página no encontrada</div>} />
         <Redirect to="/404" />
       </Switch>
+      <Footer />
       </div> 
+    </>
   );
 };
 

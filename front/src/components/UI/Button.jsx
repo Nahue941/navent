@@ -1,22 +1,16 @@
 import React from 'react';
-import styles from '../../styles/radioButton.module.css'
+import styles from '../../styles/button.module.css';
 
-const Button = (props) => {
-    //Me esta dando problemas las props que se pasan a los componentes. No estan funcionando como deberian 
-    const propsAux = props;
-    const {answer, questionId} = propsAux;
-
+const Button = ({type='button', value='Value', onClick=((e)=> console.log(e)), disabled=false}) => {
     return (
-        <>
-        <div className={styles.body} key={answer.id}>
-            <label className={styles.radioBtn}>
-                <input type="radio" name={questionId} />
-                <span className={styles.checkmark}>
-                </span>
-                <p>{answer.answer}</p>
-            </label>
+        <div>
+            <input 
+            className={styles.input}
+            type={`${type}`}
+            value={`${value}`}
+            onClick={onClick}
+            disabled={disabled}/>
         </div>
-        </>
     );
 };
 

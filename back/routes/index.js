@@ -8,7 +8,7 @@ router.get('/', (req, res, next) => {
   res.send('Rutas andando');
 });
 
-router.use('/question', questionRoutes)
-router.use('/test', testRoutes)
+router.use('/question', questionRoutes);
+router.use('/test', testRoutes);
 
 module.exports = router;

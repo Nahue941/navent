@@ -1,21 +1,27 @@
 import React from 'react';
 import styles from '../styles/oneTestContainer.module.css';
-import Button from "./UI/Button"
+import RaddioButton from "./UI/RadioButton"
 
-const Question = (props) => {
-  //Me esta dando problemas las props que se pasan a los componentes. No estan funcionando como deberian 
-  const auxProps = props;
-  const {question , answer} = auxProps;
+const Question = ({ question, onClick }) => {
+
   return (
-    <div>
-      <h2 className={styles.h2}>{question.question} </h2>
-      <div className={styles.answers}>
-        {question.answers.map((answer) => (
-          
-          <Button answer={answer} questionId={question.id} key={answer.id}/>
-          
-        ))}
-      </div>
+    <div className={styles.questionContainer}>
+      {question &&
+        (<>
+          <h2 className={styles.h2}>{question.question} </h2>
+          <div className={styles.answers}>
+            {question.answers.map((answer) => (
+
+              <RaddioButton
+                answer={answer}
+                questionId={question.id}
+                onClick={onClick}
+                key={answer.id} />
+
+            ))}
+          </div>
+        </>
+        )}
     </div>
   );
 };

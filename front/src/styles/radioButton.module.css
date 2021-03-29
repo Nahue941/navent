@@ -2,6 +2,7 @@
   display: inline-block;;
   justify-content: left;
   align-items: center;
+  width: 500px;
 }
 
 p {
