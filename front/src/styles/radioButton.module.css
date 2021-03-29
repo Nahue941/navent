@@ -32,7 +32,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: border 75ms ease;
+  transition: border 150ms ease;
 }
 
 .radioBtn input {

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Question from '../components/question';
+import Question from '../components/Question';
 import styles from '../styles/oneTestContainer.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { allQuestions } from '../state/questions/actions';
