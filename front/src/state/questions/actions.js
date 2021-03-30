@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // me trae todas las preguntas para el user de un test
@@ -15,3 +15,8 @@ export const allTests = createAsyncThunk('GET_TESTS', (id) => {
     .then((test) => test.data)
     .catch((err) => console.log(err));
 });
+
+export const setDisabled = createAction('SET_DISABLED');
+
+export const setIndexQuestion = createAction('SET_INDEX_QUESTION')
+

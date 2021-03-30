@@ -10,3 +10,7 @@
     color: white;
     margin-left: 35%;
 }
+
+.input:disabled {
+    background-color: grey;
+}
