@@ -53,7 +53,12 @@ const TestContainer = ({ id }) => {
           />
           <br />
           <br />
-          <Button value="Siguiente/Enviar" type="submit" />
+          {currentQuestion<questions.length-1 ? (
+            <Button value="Siguiente" type="submit" />
+          ):(
+            <Button value="Finalizar" type="submit" />
+
+          )}
         </form>
       )}
     </div>
