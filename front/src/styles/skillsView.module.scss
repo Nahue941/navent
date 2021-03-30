@@ -10,8 +10,12 @@
     justify-content:center;
     align-items: center;
     flex-wrap: wrap;
-    // flex-direction: column;
+    
+}
 
+.fullSkillContainer {
+    min-height: 75vh;
+    
 }
 
 .skills {
@@ -44,3 +48,4 @@
 .tipograhy {
     font-family: "Raleway";
 }
+
