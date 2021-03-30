@@ -1,26 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&family=Raleway:wght@200&display=swap');
 
+.title {
+    text-align: center;
+    font-size: 2.5em;
+}
+
 .container {
     display:flex;
     justify-content:center;
-    align-items: center;
-    flex-direction: column;
+    align-content: center;
+
 }
 
 .skills {
-    background-color: #3D47F5;
+    // background-color: rgba(116, 112, 112, 0.089);
+    background-color: #fff;
     margin:20px;
     opacity: 0.85;
     height: 100px;
-    width: 600px;
-    border-radius: 16px;
-    &:hover{
-        opacity: 0;
-        transition:1s;
-    }
+    width: 200px;
+    font-size: small;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;            &:hover{
+        transition: 0.5s ease-in-out;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 10px;
+        }
 }
-
-
 
 
 .link {
