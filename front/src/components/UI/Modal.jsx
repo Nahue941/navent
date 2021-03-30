@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from '../../styles/modal.module.scss';
-import Button from '../UI/Button';
 import { Link } from 'react-router-dom';
 import PlayIcon from '../UI/PlayIcon';
 import CloseIcon from '../UI/CloseIcon';

@@ -13,3 +13,6 @@ h2 {
     font-family: "Raleway";
 }
 
+input:active {
+     outline:none
+}
