@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { allTests } from '../state/questions/actions';
 import {Link} from "react-router-dom"
 import styles from "../styles/skillsView.module.scss"
+// import styles from "../styles/oneTestContainer.module.css"
 
 const allTestsContainer = () => {
 
@@ -14,24 +15,27 @@ const allTestsContainer = () => {
   }, [dispatch]);
 
   return (
+   <div>
+    <h1 className={styles.title}>Skills</h1>
     <div className={styles.container}>
-      <h1>Skills</h1>
-      
+     
       {tests.map((test) => {
         return (
-         <>
+          <>
+            <div >
           <Link to={`/test/${test.id}`} className={`${styles.link}`} key={test.id}>
           <div className={styles.skills}>
-            <div>
             <h2>{test.name}</h2>
             </div>
-          </div>
           </Link>
+          </div>
           </>
           
         );
       })}
-    </div>
+      </div>
+    
+      </div>
   );
 };
 
