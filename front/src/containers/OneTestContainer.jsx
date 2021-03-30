@@ -13,6 +13,7 @@ const TestContainer = ({ id }) => {
   const questions = useSelector((state) => state.question.all);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
+  const [disabled, setDisabled] = useState(true)
 
   useEffect(() => {
     dispatch(allQuestions(id));
@@ -21,9 +22,11 @@ const TestContainer = ({ id }) => {
 
   const handleRadioButtonValue = (e, answer) => {
     const auxArray = selectedAnswers;
-    auxArray[answer.questionId] = answer;
+    auxArray[currentQuestion] = answer;
     setSelectedAnswers(auxArray);
     console.log(selectedAnswers)
+    setDisabled(false)
+    
   }
 
   const countCorrectAnswers = () => {
@@ -35,6 +38,7 @@ const TestContainer = ({ id }) => {
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
+      setDisabled(true)
     }
     else {
       alert(`Respuestas correctas: ${countCorrectAnswers()}/${questions.length}`);
@@ -53,12 +57,7 @@ const TestContainer = ({ id }) => {
           />
           <br />
           <br />
-          {currentQuestion<questions.length-1 ? (
-            <Button value="Siguiente" type="submit" />
-          ):(
-            <Button value="Finalizar" type="submit" />
-
-          )}
+            <Button disabled={disabled} value={currentQuestion<questions.length-1 ? `Siguiente` : 'Finalizar' } type="submit" />
         </form>
       )}
     </div>
