@@ -20,3 +20,5 @@ export const setDisabled = createAction('SET_DISABLED');
 
 export const setIndexQuestion = createAction('SET_INDEX_QUESTION')
 
+export const resetQuestions = createAction('RESET_QUESTIONS')
+

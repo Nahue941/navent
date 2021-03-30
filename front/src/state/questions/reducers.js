@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 
-import {allQuestions, allTests, setDisabled, setIndexQuestion} from "./actions"
+import {allQuestions, allTests, setDisabled, setIndexQuestion, resetQuestions} from "./actions"
 
 const initialState = {
     all:[],
@@ -22,6 +22,9 @@ const questionReducer = createReducer(initialState, {
     },
     [setIndexQuestion] : (state, action) => {
         state.indexQuestion = action.payload
+    },
+    [resetQuestions] : (state, action) => {
+        state.all = []
     }
 
 })

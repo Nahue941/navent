@@ -9,8 +9,10 @@
     font-weight:bold;
     color: white;
     margin-left: 35%;
+    cursor: pointer;
 }
 
 .input:disabled {
     background-color: grey;
+    cursor: not-allowed;
 }
