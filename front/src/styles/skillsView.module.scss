@@ -8,28 +8,31 @@
 .container {
     display:flex;
     justify-content:center;
-    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    // flex-direction: column;
 
 }
 
 .skills {
     // background-color: rgba(116, 112, 112, 0.089);
-    background-color: #fff;
     margin:20px;
     opacity: 0.85;
     height: 100px;
     width: 200px;
+    border-radius: 16px;
     font-size: small;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.5s;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;            &:hover{
-        transition: 0.5s ease-in-out;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 10px;
-        }
+    box-shadow: -4px 5px 5px -1px rgba(34,35,75,0.16);    background-color: rgba(73, 64, 64, 0.089);
+    &:hover{
+        box-shadow: -2px 7px 9px 1px rgba(34, 35, 75, 0.22);
+        transition: 0.3s ease-in-out;
+        // box-shadow: 0px 7px 9px 1px rgba(34, 35, 75, 0.254);
+    }
 }
-
 
 .link {
     text-decoration: none;
