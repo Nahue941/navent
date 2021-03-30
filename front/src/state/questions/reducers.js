@@ -1,11 +1,12 @@
-import {createReducer } from '@reduxjs/toolkit';
+import { createReducer } from '@reduxjs/toolkit';
 
-import {allQuestions, allTests} from "./actions"
+import {allQuestions, allTests, setDisabled, setIndexQuestion} from "./actions"
 
 const initialState = {
     all:[],
-    single:{}, 
-    tests:[]
+    indexQuestion: 0, 
+    tests:[],
+    disabled: true
 }
 const questionReducer = createReducer(initialState, {
     [allQuestions.fulfilled] : (state,action) => {
@@ -15,6 +16,12 @@ const questionReducer = createReducer(initialState, {
     [allTests.fulfilled] : (state, action) => {
         const payload = action.payload
         state.tests = payload 
+    },
+    [setDisabled] : (state, action) => {
+        state.disabled = action.payload
+    },
+    [setIndexQuestion] : (state, action) => {
+        state.indexQuestion = action.payload
     }
 
 })
