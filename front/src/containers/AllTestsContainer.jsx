@@ -27,7 +27,7 @@ const allTestsContainer = () => {
     <div >
       <h1 className={styles.title}>Skills</h1>
       <div className={styles.container}>
-        {tests.map((test) => {
+        {tests?.map((test) => {
           return (
             <>
               <div>
