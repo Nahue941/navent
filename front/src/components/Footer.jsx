@@ -15,10 +15,7 @@ const Footer = () => {
         </ul>
       </div>
       <div className={styles.text}>
-        <ul>Echeverría 874</ul>
-        <ul>Argentina</ul>
-        <ul>(+5411) 5032-1200</ul>
-        <ul>Contacto</ul>
+        <ul>Echeverría 874 | Argentina | (+5411) 5032-1200 | Contacto</ul>
       </div>
       <div className={styles.textSmall}>
         <ul>
