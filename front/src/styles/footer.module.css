@@ -2,12 +2,14 @@
 
 .container {
   background-color: rgb(87 37 103);
-  position: relative;
+  position:absolute;
+  left:0;
+  bottom:0;
+  right:0;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  
   padding-bottom: 0.5em;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
