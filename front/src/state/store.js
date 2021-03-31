@@ -1,15 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit'
-import logger from "redux-logger";
-import question from "./questions/reducers"
-
+import { configureStore } from '@reduxjs/toolkit';
+import logger from 'redux-logger';
+import question from './questions/reducers';
+import user from './user/reducers';
 const store = configureStore({
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
-    reducer: {
-        question
-        // Aca van los reducers 
-        
-    },
-  });
-  
-export default store;
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  reducer: {
+    question,
+    user,
+    // Aca van los reducers
+  },
+});
 
+export default store;

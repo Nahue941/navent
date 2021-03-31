@@ -30,4 +30,8 @@ User.init(
   { sequelize: db, modelName: 'user' },
 );
 
+User.prototype.log = function (mail, password) {
+  return this.password === password && this.mail === mail;
+};
+
 module.exports = User;
