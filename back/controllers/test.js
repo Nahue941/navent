@@ -15,7 +15,7 @@ const testController = {
             const test = await Test.findByPk(req.params.id, {
                 include: {
                     model: Question,
-                    limit: 10,
+                    limit: 8,
                     order: S.literal('random()'),
                     where: { active: true },
                     include: [
