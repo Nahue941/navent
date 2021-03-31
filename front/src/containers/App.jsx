@@ -10,8 +10,8 @@ import Login from '../components/Login';
 const App = () => {
   return (
     <>
+      <Navbar />
       <div className={styles.body}>
-        <Navbar />
         <Switch>
           <Redirect exact from="/" to="/test" />
           <Route
@@ -24,8 +24,8 @@ const App = () => {
           <Route path="/404" render={() => <div>Página no encontrada</div>} />
           <Redirect to="/404" />
         </Switch>
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 };
