@@ -21,7 +21,7 @@ const App = () => {
           <Route path="/test" render={() => <AllTestContainer />} />
           <Route exact path="/" render={() => <div>Inicio</div>} />
           <Route path="/login" component={Login} />
-          <Route path="/404" render={() => <div>Página no encontrada</div>} />
+          <Route path="/404" render={() => <div className={styles.error}>Página no encontrada</div>} />
           <Redirect to="/404" />
         </Switch>
       </div>
