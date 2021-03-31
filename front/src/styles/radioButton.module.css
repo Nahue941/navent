@@ -15,6 +15,7 @@ p {
   display: flex;
   justify-content: left;
   align-items: center;
+  cursor: pointer;
 }
 
 .radioBtn:hover .checkmark {

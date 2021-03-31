@@ -1,0 +1,66 @@
+.modalBg {
+    position:fixed;
+    z-index: 1;
+    top:0;
+    left: 0;
+    display:flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0,0.5);
+    visibility: hidden;
+    opacity: 0;
+    transition:  0.15s ;
+    backdrop-filter: blur(1.5px);
+}
+
+.modal {
+    background-color: rgb(221, 217, 217);
+    border-radius:16px ;
+    width: 40%;
+    height: 48%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+}
+
+
+
+.active {
+    visibility: visible;
+    opacity: 1;
+    
+}
+
+.icon {
+    width: 10%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor:default
+    
+}
+
+.closeIcon {
+    width: 6%;
+}
+
+.containerClose {
+    display: flex; 
+    justify-content: flex-end;
+    border-bottom:1px solid ;
+    margin:3px;
+}
+
+.cursor{
+    cursor: pointer;
+}
+
+.h2 {
+    margin-top:5px
+}

@@ -1,15 +1,18 @@
 import React from 'react';
 import styles from '../../styles/radioButton.module.css'
 
-const RaddioButton = ({ answer, questionId, onClick = ((e) => console.log(e)) }) => {
+const RaddioButton = ({ answer, questionId, onClick }) => {
 
     return (
         <div className={styles.body} key={answer.id}>
             <label className={styles.radioBtn}>
                 <input
+                    required
                     type="radio"
                     name={questionId}
-                    onClick={(e) => onClick(e, answer)} />
+                    onClick={(e) => {
+                        if(onClick) onClick(e, answer);
+                    }} />
                 <span className={styles.checkmark}>
                 </span>
                 <p>{answer.answer}</p>
