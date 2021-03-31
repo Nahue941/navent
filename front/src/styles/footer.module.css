@@ -2,27 +2,25 @@
 
 .container {
   background-color: rgb(87 37 103);
-  position: relative;
-  left: 0;
-  bottom: 0;
-  height: 50vh;
-  width: 100%;
-  line-height: 28px;
+  position:absolute;
+  left:0;
+  bottom:0;
+  right:0;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  padding-bottom: 2em;
-  border-radius: 15px;
+  padding-bottom: 0.5em;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .text {
   color: white;
   text-shadow: rgb(255, 255, 255);
-  font-weight: bolder;
   font-size: 14px;
   font-family: Raleway;
-  line-height: 1.4;
+  line-height: 0.5;
 }
 
 .textSmall {

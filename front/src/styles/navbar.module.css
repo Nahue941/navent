@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&family=Raleway:wght@200&display=swap');
 
 .navbar {
-  background-color: #44195d;
-  height: 60px;
-  border-radius: 15px;
+  position: relative;
+  top: 0;
+  background-color: rgb(87 37 103);
+  box-shadow: 0 3px 2px -2px rgba(0, 0, 0, 0.699);
+  padding: 0.7em;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .logo {
@@ -28,10 +32,12 @@
   font-weight: bold;
   color: white;
   cursor: pointer;
+  transition: all .2s ease
 }
 
 .button:hover {
   background-color: rgba(0, 0, 24, 0.84);
+  transition: all .2s ease
 }
 
 .button:focus {
