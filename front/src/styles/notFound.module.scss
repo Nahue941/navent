@@ -1,0 +1,21 @@
+/* // estilo global */
+.container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background-color: lawngreen;
+}
+
+.title {
+    font-size: 24px;
+    line-height: 32px;
+    color: rgb(10, 38, 238);
+    font-weight: 600;
+}
+
+.subtitle {
+    font-size: 16px;
+    line-height: 20px;
+    color: black;
+    margin: 24px 0px 0px;
+}
