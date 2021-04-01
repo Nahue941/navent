@@ -24,7 +24,7 @@ const allTestsContainer = () => {
   }, [dispatch]);
 
   return (
-    <div  className={styles.fullSkillContainer}>
+    <div >
       <h1 className={styles.title}>Skills</h1>
       <div className={styles.container}>
         {tests.map((test) => {
