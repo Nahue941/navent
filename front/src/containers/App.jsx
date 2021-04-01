@@ -5,8 +5,8 @@ import AllTestContainer from './AllTestsContainer';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import styles from '../styles/app.module.css';
+import Register from '../components/Register';
 import Login from '../components/Login';
-
 const App = () => {
   return (
     <>
@@ -21,6 +21,7 @@ const App = () => {
           <Route path="/test" render={() => <AllTestContainer />} />
           <Route exact path="/" render={() => <div>Inicio</div>} />
           <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
           <Route path="/404" render={() => <div>Página no encontrada</div>} />
           <Redirect to="/404" />
         </Switch>
