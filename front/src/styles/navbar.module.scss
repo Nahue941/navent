@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&family=Raleway:wght@200&display=swap');
+
+.background {
+  background: url('../assets/fondoPrincipal.jpg');
+}
+
+.navbar {
+  background: #ffffff;
+  color: #686c70;
+  padding: 0 0;
+  border-radius: 0;
+  box-shadow: 0 9px 20px rgba(0, 0, 0, 0.1), 0 2px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.container {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  margin: 0 5px;
+  height: 100px;
+  width: 100px;
+}
+
+.link {
+  color: #8f8f91;
+  font-size: 19px;
+  font-weight: bold;
+  color:#441b50da ;
+  border:2px solid #441b50da;
+  padding: 3px 7px ;
+  border-radius: 5px;
+  &:hover{
+
+  color:#34173dda ;
+   transition:  all 0.12s ease-in-out;}
+}
+
+/* .button {
+  margin-top: 4px;
+  margin-right: 5px;
+  float: right;
+  background-color: rgba(0, 0, 24, 0.72);
+  border-radius: 8px;
+  border: blue;
+  width: 160px;
+  height: 50px;
+  font-family: 'Hind Vadodara', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: all .2s ease
+} */
+
+.button:hover {
+  background-color: rgba(0, 0, 24, 0.84);
+  transition: all 0.2s ease;
+}
+
+.button:focus {
+  background-color: #000018;
+  outline-color: rgba(61, 229, 223, 1);
+  outline-width: 1px;
+}
