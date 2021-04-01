@@ -15,11 +15,11 @@ const NotFound = () => {
         <div className={styles.box2}>
         
             <div className={`${styles.title} ${styles.font}`}>
-                <div>No encontramos la página que buscás</div>
+                <h1>No encontramos la página que buscás</h1>
             </div>
 
             <div className={`${styles.subtitle} ${styles.font}`}>
-                Cambió de identidad, se movió de lugar o dejó de existir.
+                <p>Cambió de identidad, se movió de lugar o dejó de existir.</p>
             </div>
         
         </div> 
