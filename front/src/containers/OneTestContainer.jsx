@@ -55,7 +55,7 @@ const TestContainer = ({ id }) => {
     <div className={styles.container}>
       <div className={styles.header}>
               <h2>{indexQuestion+1} de {Object.keys(totalQuestions).length}</h2>
-      <ProgressBar questionNum={indexQuestion}/>
+      <ProgressBar questionNum={indexQuestion} totalQuestions={Object.keys(totalQuestions).length}/>
       </div>
       <div className={styles.header}>
       {questions && (

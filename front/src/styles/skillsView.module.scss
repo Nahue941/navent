@@ -1,46 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&family=Raleway:wght@200&display=swap');
 
 .title {
-    text-align: center;
-    font-size: 2.5em;
+  text-align: center;
+  font-size: 3em;
 }
 
 .container {
-    display:flex;
-    justify-content:center;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px;
 }
 
+.bcImage {
+  background: url('http://www.navent.com/es/wp-content/uploads/slideshow2.jpg');
+  height: 90vh;
+  z-index: -100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divSkills {
+  background-color: rgba(255, 255, 255, 0.822);
+  border-radius: 16px;
+  display: flex;
+  z-index: 1;
+  flex-direction: column;
+  min-height: 70vh;
+  width: 60vw
+}
 
 .skills {
-    // background-color: rgba(116, 112, 112, 0.089);
-    margin:20px;
-    opacity: 0.85;
-    height: 100px;
-    width: 200px;
-    border-radius: 16px;
-    font-size: small;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.5s;
-    box-shadow: -4px 5px 5px -1px rgba(34,35,75,0.16);    background-color: rgba(73, 64, 64, 0.089);
-    &:hover{
-        box-shadow: -2px 7px 9px 1px rgba(34, 35, 75, 0.22);
-        transition: 0.3s ease-in-out;
-        // box-shadow: 0px 7px 9px 1px rgba(34, 35, 75, 0.254);
-    }
+  z-index: 100;
+  margin: 30px;
+  height: 100px;
+  width: 200px;
+  border-radius: 16px;
+  font-size: small;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  opacity: 1;
+  box-shadow: -7px 7px 15px -1px rgba(25, 25, 54, 0.16);
+  background-color: rgba(196, 193, 193, 0.6);
+  &:hover {
+    box-shadow: -2px 7px 9px 1px rgba(34, 35, 75, 0.22);
+    transition: 0.3s ease-in-out;
+    // box-shadow: 0px 7px 9px 1px rgba(34, 35, 75, 0.254);
+  }
 }
 
 .link {
-    text-decoration: none;
-    color:black;
+  text-decoration: none;
+  color: black;
 }
-
-
 
 .tipograhy {
-    font-family: "Raleway";
+  font-family: 'Raleway';
 }
-

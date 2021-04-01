@@ -24,35 +24,37 @@ const allTestsContainer = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1 className={styles.title}>Skills</h1>
-      <div className={styles.container}>
-        {tests.map((test) => {
-          return (
-            <>
-              <div>
-                <Link
-                  // to={`/test/${test.id}`}
-                  onClick={() => getModal(test.id)}
-                  className={`${styles.link}`}
-                  key={test.id}
-                >
-                  <div className={styles.skills}>
-                    <h2>{test.name}</h2>
-                  </div>
-                </Link>
-                <Modal
-                show={modal === test.id}
-                onHide={hideModal}
-                  info={test.description}
-                  time={test.timeToComplete}
-                  name={test.name}
-                  id={test.id}
-                />
-              </div>
-            </>
-          );
-        })}
+    <div className={styles.bcImage}>
+      <div className={styles.divSkills}>
+        <h1 className={styles.title}>Skills</h1>
+        <div className={styles.container}>
+          {tests.map((test) => {
+            return (
+              <>
+                <div>
+                  <Link
+                    // to={`/test/${test.id}`}
+                    onClick={() => getModal(test.id)}
+                    className={`${styles.link}`}
+                    key={test.id}
+                  >
+                    <div className={styles.skills}>
+                      <h2>{test.name}</h2>
+                    </div>
+                  </Link>
+                  <Modal
+                    show={modal === test.id}
+                    onHide={hideModal}
+                    info={test.description}
+                    time={test.timeToComplete}
+                    name={test.name}
+                    id={test.id}
+                  />
+                </div>
+              </>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

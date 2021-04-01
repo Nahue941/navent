@@ -3,9 +3,9 @@
 .container {
   background-color: rgb(87 37 103);
   position: relative;
-  left:0;
+  z-index: -1;
   bottom:0;
-  right:0;
+  width: 100%;
   text-align: center;
   display: flex;
   flex-wrap: wrap;

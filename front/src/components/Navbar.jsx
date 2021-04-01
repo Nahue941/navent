@@ -18,9 +18,9 @@ const Navbar = () => {
         />
       </Link>
       {!logged ? (
-        <Link to="/login" className={styles.link}> Login
+        <Link to="/login" className={styles.link}> 
 
-          {/* <button className={styles.button}>Login</button> */}
+          <input type="button" value="Login"  className={styles.link} /> 
         </Link>
       ) : (
         <Link to="/test">
