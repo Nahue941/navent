@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import { allQuestions, setDisabled, setIndexQuestion, resetQuestions } from '../state/questions/actions';
 import { resetAnswers } from '../state/answers/actions';
 import Button from '../components/UI/Button'
-
+import ProgressBar from "../components/UI/ProgressBar"
 
 const TestContainer = ({ id }) => {
   const histroy = useHistory();
@@ -16,6 +16,8 @@ const TestContainer = ({ id }) => {
   const disabled = useSelector((state) => state.question.disabled);
   const indexQuestion = useSelector((state) => state.question.indexQuestion);
   const [loading, setLoading] = useState(true);
+  const totalQuestions = useSelector((state) => state.question.all)
+
 
   useEffect(() => {
     dispatch(setIndexQuestion(0));
@@ -51,7 +53,11 @@ const TestContainer = ({ id }) => {
 
   return (
     <div className={styles.container}>
-
+      <div className={styles.header}>
+              <h2>{indexQuestion+1} de {Object.keys(totalQuestions).length}</h2>
+      <ProgressBar questionNum={indexQuestion}/>
+      </div>
+      <div className={styles.header}>
       {questions && (
         <form onSubmit={handleSubmit}>
           <Question
@@ -64,6 +70,7 @@ const TestContainer = ({ id }) => {
             value={indexQuestion<questions.length-1 ? 'Siguiente' : 'Finalizar' } type="submit" />
         </form>
       )}
+      </div>
     </div>
   )
 };

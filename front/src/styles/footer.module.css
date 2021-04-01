@@ -11,8 +11,7 @@
   flex-wrap: wrap;
   flex-direction: column;
   padding-bottom: 0.5em;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+ 
 }
 
 .text {

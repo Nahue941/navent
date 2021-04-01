@@ -1,29 +1,34 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import styles from '../styles/navbar.module.css';
+import styles from '../styles/navbar.module.scss';
 
 const Navbar = () => {
   const logged = useSelector((state) => state.user.isAuth);
 
   return (
+    <div  className={styles.background}> 
     <div className={styles.navbar}>
+      <div className={styles.container}>
       <Link to="/">
         <img
           className={styles.logo}
-          src={process.env.PUBLIC_URL + '/Navent.png'}
+          src={"http://navent.com/es/wp-content/uploads/Navent-isologo.svg"}
           alt="logo"
         />
       </Link>
       {!logged ? (
-        <Link to="/login">
-          <button className={styles.button}>Login</button>
+        <Link to="/login" className={styles.link}> Login
+
+          {/* <button className={styles.button}>Login</button> */}
         </Link>
       ) : (
         <Link to="/test">
           <button className={styles.button}>Test</button>
         </Link>
       )}
+      </div>
+    </div>
     </div>
   );
 };
