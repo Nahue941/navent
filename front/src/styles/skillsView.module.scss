@@ -2,7 +2,8 @@
 
 .title {
   text-align: center;
-  font-size: 3em;
+  font-size: 5.5em;
+  color: #0a26ee;
 }
 
 .container {
@@ -10,16 +11,32 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin: 20px;
+  width: 70%;
+  border-radius: 16px;
+}
+
+.img {
+  width: 900px;
+  height: 900px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .bcImage {
-  background: url('http://www.navent.com/es/wp-content/uploads/slideshow2.jpg');
-  height: 90vh;
-  z-index: -100;
+  width: 100%;
+  opacity: 0.8;
+  z-index: -1;
+  top: 0px;
+  position: absolute;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  height: 100%;
 }
 
 .divSkills {
@@ -28,11 +45,11 @@
   display: flex;
   z-index: 1;
   flex-direction: column;
-  min-height: 70vh;
-  width: 60vw
+  width: 60vw;
 }
 
 .skills {
+  color: rgba(0, 0, 0, 0.808);
   z-index: 100;
   margin: 30px;
   height: 100px;
@@ -44,20 +61,17 @@
   align-items: center;
   transition: 0.5s;
   opacity: 1;
-  box-shadow: -7px 7px 15px -1px rgba(25, 25, 54, 0.16);
-  background-color: rgba(196, 193, 193, 0.6);
+  box-shadow: -2px 4px 9px 1px #ddd5d598;
+  background-color: #fff;
   &:hover {
-    box-shadow: -2px 7px 9px 1px rgba(34, 35, 75, 0.22);
-    transition: 0.3s ease-in-out;
-    // box-shadow: 0px 7px 9px 1px rgba(34, 35, 75, 0.254);
+    transform: translateY(-17px);
+    box-shadow: -2px 7px 11px -1px #d3c3c398; //
+    transition: 0.4s ease-in-out;
   }
 }
 
 .link {
   text-decoration: none;
-  color: black;
-}
-
-.tipograhy {
-  font-family: 'Raleway';
+  color: rgba(0, 0, 0, 0.64);
+  font-weight: 300;
 }

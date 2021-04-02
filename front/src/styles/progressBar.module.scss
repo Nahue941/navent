@@ -4,6 +4,7 @@
   border-radius: 16px;
   border: 2px solid  rgba(73, 64, 64, 0.089);
   margin-top: 0px;
+  color:#0A26EE
 }
 
 .bar {
@@ -11,7 +12,8 @@
   height: 10px;
   border-radius: 16px;
   transition: all 0.7s ease-in-out;
-  box-shadow: inset 0 0 2px #000;
+  box-shadow: inset 0 0 4px #000;
+  background-color: #0a25ee98;
 //   background-image: linear-gradient(to right, #4cd964, #5ac8fa, black);
 
 }
@@ -24,3 +26,4 @@
   // transition: 0.3s;
   font-size: 50%;
 }
+

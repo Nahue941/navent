@@ -1,16 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&family=Raleway:wght@200&display=swap');
 
-.background {
-  background: url('../assets/fondoPrincipal.jpg');
-}
+
 
 .navbar {
   background: #ffffff;
   color: #686c70;
   padding: 0 0;
   border-radius: 0;
-  box-shadow: 0 9px 20px rgba(0, 0, 0, 0.1), 0 2px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 9px 20px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
@@ -28,17 +30,19 @@
 }
 
 .link {
-  color: #8f8f91;
+  color: white;
   font-size: 19px;
   font-weight: bold;
-  color:#441b50da ;
-  border:2px solid #441b50da;
-  padding: 3px 7px ;
+  border: 1px solid rgb(233, 0, 102);
+  background-color: rgb(233, 0, 102);
+  padding: 3px 7px;
   border-radius: 5px;
-  &:hover{
+  transition: all 0.12s ease-in-out;
+  &:hover {
+    border-color:  rgb(224, 11, 103);
+    background-color: rgb(238, 20, 115);
 
-  color:#34173dda ;
-   transition:  all 0.12s ease-in-out;}
+  }
 }
 
 /* .button {
