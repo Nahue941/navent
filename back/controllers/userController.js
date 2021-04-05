@@ -28,6 +28,7 @@ const userController = {
       next(error);
     }
   },
+
 };
 
 module.exports = userController;

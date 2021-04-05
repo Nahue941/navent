@@ -9,6 +9,7 @@ import {
   setIndexQuestion,
   resetQuestions,
 } from '../state/questions/actions';
+import {results} from "../state/user/actions"
 import { resetAnswers } from '../state/answers/actions';
 import Button from '../components/UI/Button';
 import ProgressBar from '../components/UI/ProgressBar';
@@ -29,6 +30,7 @@ const TestContainer = ({ id }) => {
     dispatch(setDisabled(true));
     dispatch(allQuestions(id)).then(() => setLoading(false));
 
+
     return () => {
       dispatch(resetQuestions());
     };
@@ -40,6 +42,8 @@ const TestContainer = ({ id }) => {
       0,
     );
   };
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,7 +60,8 @@ const TestContainer = ({ id }) => {
   };
 
   //estado local que se renderiza hasta que se traiga toda la data del back
-  if (loading) return <div>loading</div>;
+
+  if(loading) return <div className={styles.loading}>loading</div>
 
   return (
     <div className={styles.container}>

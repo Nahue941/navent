@@ -12,7 +12,6 @@ export const login = createAsyncThunk('LOGIN', async (user) => {
 });
 
 export const registerUser = createAsyncThunk('REGISTER_USER', async (body) => {
-  console.log(body);
   try {
     const userCreated = await axios.post(
       'http://localhost:3001/api/register',
@@ -23,3 +22,21 @@ export const registerUser = createAsyncThunk('REGISTER_USER', async (body) => {
     return console.error(error);
   }
 });
+
+export const results = createAsyncThunk(
+  'RESULTS_TEST',
+  async ({ result, date, userId, testId }) => {
+    try {
+      const testResults = await axios.post('http://localhost:3001/api/result', {
+        result,
+        date,
+        userId,
+        testId,
+      });
+      console.log(testResults);
+      return testResults.data;
+    } catch (error) {
+      return console.error(error);
+    }
+  },
+);

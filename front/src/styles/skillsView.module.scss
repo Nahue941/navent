@@ -15,27 +15,28 @@
   border-radius: 16px;
 }
 
-.skills {
-  margin: 20px;
-  opacity: 0.85;
-  height: 80px;
-  width: 200px;
-  border-radius: 16px;
-  font-size: small;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.5s;
-  box-shadow: -4px 5px 5px -1px rgba(34, 35, 75, 0.16);
-  background-color: rgba(73, 64, 64, 0.089);
-  &:hover {
-    box-shadow: -2px 7px 9px 1px rgba(34, 35, 75, 0.22);
-    transition: 0.3s ease-in-out;
-  }
-}
 .img {
   width: 900px;
   object-fit: cover;
+}
+
+.skills {
+    margin:20px;
+    opacity: 0.85;
+    height: 80px;
+    width: 200px;
+    border-radius: 16px;
+    font-size: small;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    box-shadow: -4px 5px 5px -1px rgba(34,35,75,0.16);    background-color: rgba(73, 64, 64, 0.089);
+    &:hover{
+        box-shadow: -2px 7px 9px 1px rgba(34, 35, 75, 0.22);
+        transition: 0.3s ease-in-out;
+        cursor: pointer;
+    }
 }
 
 .main {
