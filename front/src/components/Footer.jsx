@@ -1,19 +1,15 @@
 import React from 'react';
 import styles from '../styles/footer.module.css';
-// import NaventLogo from '../../public/';
+
+import naventLogo from '../assets/NaventFooter.svg';
 
 const Footer = () => {
   return (
     <div className={styles.container}>
-      <div>
-        <ul>
-          <img
-            className={styles.logo}
-            src={process.env.PUBLIC_URL + '/NaventFooter.svg'}
-            alt="Footer logo"
-          />
-        </ul>
-      </div>
+      <ul>
+        <img className={styles.logo} src={naventLogo} alt="Footer logo" />
+      </ul>
+
       <div className={styles.text}>
         <ul>Echeverría 874 | Argentina | (+5411) 5032-1200 | Contacto</ul>
       </div>

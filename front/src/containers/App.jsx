@@ -7,6 +7,9 @@ import Navbar from '../components/Navbar';
 import styles from '../styles/app.module.css';
 import Register from '../components/Register';
 import Login from '../components/Login';
+import Results from "../components/Results"
+
+
 const App = () => {
   return (
     <>
@@ -21,7 +24,11 @@ const App = () => {
           <Route path="/test" render={() => <AllTestContainer />} />
           <Route exact path="/" render={() => <div>Inicio</div>} />
           <Route path="/login" component={Login} />
+
           <Route path="/register" component={Register} />
+
+          <Route path="/results/:id" render={() => <Results />} />
+
           <Route path="/404" render={() => <div>Página no encontrada</div>} />
           <Redirect to="/404" />
         </Switch>

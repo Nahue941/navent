@@ -1,44 +1,95 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&family=Raleway:wght@200&display=swap');
 
 .title {
-    text-align: center;
-    font-size: 2.5em;
+  text-align: center;
+  font-size: 5.5em;
+  color: #0a26ee;
 }
 
 .container {
-    display:flex;
-    justify-content:center;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 70%;
+  border-radius: 16px;
 }
 
+.skills {
+  margin: 20px;
+  opacity: 0.85;
+  height: 80px;
+  width: 200px;
+  border-radius: 16px;
+  font-size: small;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  box-shadow: -4px 5px 5px -1px rgba(34, 35, 75, 0.16);
+  background-color: rgba(73, 64, 64, 0.089);
+  &:hover {
+    box-shadow: -2px 7px 9px 1px rgba(34, 35, 75, 0.22);
+    transition: 0.3s ease-in-out;
+  }
+}
+.img {
+  width: 900px;
+  object-fit: cover;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bcImage {
+  width: 100%;
+  opacity: 0.8;
+  z-index: -1;
+  top: 0px;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  height: 100%;
+}
+
+.divSkills {
+  background-color: rgba(255, 255, 255, 0.822);
+  border-radius: 16px;
+  display: flex;
+  z-index: 1;
+  flex-direction: column;
+  width: 60vw;
+}
 
 .skills {
-    margin:20px;
-    opacity: 0.85;
-    height: 80px;
-    width: 200px;
-    border-radius: 16px;
-    font-size: small;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.5s;
-    box-shadow: -4px 5px 5px -1px rgba(34,35,75,0.16);    background-color: rgba(73, 64, 64, 0.089);
-    &:hover{
-        box-shadow: -2px 7px 9px 1px rgba(34, 35, 75, 0.22);
-        transition: 0.3s ease-in-out;
-    }
+  color: rgba(0, 0, 0, 0.808);
+  z-index: 100;
+  margin: 30px;
+  height: 100px;
+  width: 200px;
+  border-radius: 16px;
+  font-size: small;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  opacity: 1;
+  box-shadow: -2px 4px 9px 1px #ddd5d598;
+  background-color: #fff;
+  &:hover {
+    transform: translateY(-17px);
+    box-shadow: -2px 7px 11px -1px #d3c3c398; //
+    transition: 0.4s ease-in-out;
+  }
 }
 
 .link {
-    text-decoration: none;
-    color:black;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.64);
+  font-weight: 300;
 }
-
-
-
-.tipograhy {
-    font-family: "Raleway";
-}
-

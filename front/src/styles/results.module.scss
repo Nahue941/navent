@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 80vh;
+  border-right: 1px solid grey;
+}
+
+.main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+}
