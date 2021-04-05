@@ -4,7 +4,6 @@ import axios from 'axios';
 export const login = createAsyncThunk('LOGIN', async (user) => {
   try {
     const logged = await axios.post(`http://localhost:3001/api/login/`, user);
-    console.log(logged);
     return logged.data;
   } catch (err) {
     return console.log(err);
@@ -30,7 +29,6 @@ export const results = createAsyncThunk(
       const testResults = await axios.post('http://localhost:3001/api/result', 
        body
       );
-      console.log(testResults);
       return testResults.data;
     } catch (error) {
       return console.error(error);

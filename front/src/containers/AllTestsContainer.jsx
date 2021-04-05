@@ -43,11 +43,11 @@ const allTestsContainer = () => {
         <div className={styles.container}>
           {tests.map((test) => {
             return (
-              <>
+              <div  key={test.id}>
                 <div
                   onClick={() => getModal(test.id)}
                   className={`${styles.link}`}
-                  key={test.id}
+                
                 >
                   <div className={styles.skills}>
                     <h2>{test.name}</h2>
@@ -61,7 +61,7 @@ const allTestsContainer = () => {
                   name={test.name}
                   id={test.id}
                 />
-              </>
+              </div>
             );
           })}
         </div>

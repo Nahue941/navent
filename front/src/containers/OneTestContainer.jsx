@@ -13,6 +13,7 @@ import { results } from '../state/user/actions';
 import { resetAnswers } from '../state/answers/actions';
 import Button from '../components/UI/Button';
 import ProgressBar from '../components/UI/ProgressBar';
+import moment from 'moment' 
 
 const TestContainer = ({ testId }) => {
   const history = useHistory();
@@ -51,9 +52,10 @@ const TestContainer = ({ testId }) => {
     } else {
       const res = await dispatch(
         results({
-          result: countCorrectAnswers() / questions.length,
+          result: ( countCorrectAnswers() / questions.length ) * 100,
           userId: 1,
-          testId,
+          testId: Number(testId),
+          date:moment().format('YYYY-MM-DD')
         }),
       );
       history.push(`/results/`);
@@ -63,7 +65,6 @@ const TestContainer = ({ testId }) => {
   //estado local que se renderiza hasta que se traiga toda la data del back
 
   if (loading) return <div className={styles.loading}>loading</div>;
-
   return (
     <div className={styles.container}>
       <div className={styles.header}>

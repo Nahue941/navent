@@ -31,7 +31,8 @@ const userController = {
 
   saveResult: async (req, res, next) => {
     try {
-      const newResult = await TestMade.create(req.params.body)
+      console.log(req.body);
+      const newResult = await TestMade.create({...req.body})
       res.status(201).send(newResult);
     } catch (error) {
       next(error);

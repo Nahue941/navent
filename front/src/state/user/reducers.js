@@ -10,7 +10,7 @@ const userReducer = createReducer(initialState, {
   },
   [registerUser.fulfilled]: (state, action) => action.payload,
   [results.fulfilled]: (state, action) => {
-    state.results = action.payload;
+    state.results = action.payload.result;
   },
 });
 
