@@ -7,10 +7,10 @@
 //`idQuestion` indica a partir de que id empiezan a sumarse las preguntas
 const createQuestionsAndAnswers = (questions, answers, testId, idQuestion = 1, kAnswers = 4) => {
   if (!testId || typeof testId !== "number") {
-    console.log('Es necesario agregar el número de id del test al que se le quieren vincular las respuestas');
+    console.log('Es necesario agregar el código de id del test al que se le quieren vincular las respuestas');
     return;
   }
-  if (questions.length > 5 || questions.length !== answers.length) {
+  if (questions.length < 5 || questions.length !== answers.length) {
     console.log('Se necesitan más de 4 preguntas para un test. \nLa cantidad de preguntas tiene que ser igual a la cantidad de respuestas.');
     return;
   }
@@ -35,7 +35,6 @@ const createQuestionsAndAnswers = (questions, answers, testId, idQuestion = 1, k
         answer: j == 0 ? answers[i] : answers[searchRandomAns(indexInsertedAnsToExclude, questions.length)],
         correct: j == 0
       })
-      console.log(`en la posicion i:${i} y j:${j}, el array tiene: ${indexInsertedAnsToExclude}`)
     }
   }
   return [questionsMade, answersMade]
@@ -59,3 +58,24 @@ ARRAYS DE PRUEBA
 let questions = ['Donde estudiamos?', 'Cuanto tiempo se estudia?', 'De donde es Nahuel', 'Como se llama mi perro?', 'Cuantos anios tiene nahuel?'];
 let answers = ['En P5', '4 Meses', 'Ituzaingo', 'Lito', '26 años'];
  */
+
+let questions = ['¿Cuánto es 2 + 2?', '¿Cúal es el resultado de restar 10 a 25?', '¿Cuánto es 2 elevado a la 8?', '¿Cúal es el resultado de la siguiente operación? \n50-10*5', '¿Cúal es la raíz cuadrada de 2?', '¿Cuánto es 0.1 * 10^4?', 'Si Juan tiene 2 manzanas y Pedro, su amigo, le pide 1 con la promesa que se la va a devolver en 3 días.  ¿Cúal es el valor de la constante de Plank?', '¿Cuánto es 2 + 6 - 5?', '¿Cuánto es 2*2-3?', '¿Qué base tiene el código binario? ', '¿Qué base tiene el código hexadecimal?'];
+
+let answers = ['4', '15', '256', '0', 'Ninguna es correcta', '1000', '6.626 070 15 × 10^-34 J.s', '3', '1', '2', '16'];
+
+questions = ['¿Cúal es código ASCII del siguiente carácter? \'A\'',
+'¿Cúal es código ASCII del siguiente carácter? \'$\'',
+'¿Cúal es código ASCII del siguiente carácter? \'p\'',
+'¿Cúal es código ASCII del salto de linea?',
+'¿Cúal es código ASCII del siguiente carácter? \'&\'',
+'¿Cúal es código ASCII del siguiente carácter? \'[\'',
+'¿Cúal es código ASCII del siguiente carácter? \'Z\'',
+'¿Cúal es código ASCII del siguiente carácter? \'?\'',
+'¿Cúal es código ASCII del siguiente carácter? \';\'',
+'¿Cúal es código ASCII del carácter nulo?',
+'¿Cúal es código ASCII del siguiente carácter? \'0\'',
+'¿Cúal es código ASCII del carácter de espacio?',
+'¿Cúal es código ASCII del siguiente carácter? \'m\'',
+'¿Cúal es código ASCII del siguiente carácter? \'|\'',
+'¿Cúal es código ASCII del siguiente carácter? \'#\''];
+answers = ['65','36','112','13','38','91','90','63','59','0','48','32','109','124','35'];

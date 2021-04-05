@@ -8,3 +8,7 @@ body {
 .body{
   min-height: 74vh;
 }
+
+.error{
+  height: 63.3vh;
+}

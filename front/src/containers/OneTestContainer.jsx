@@ -56,7 +56,8 @@ const TestContainer = ({ id }) => {
   };
 
   //estado local que se renderiza hasta que se traiga toda la data del back
-  if (loading) return <div>loading</div>;
+
+  if(loading) return <div className={styles.loading}>loading</div>
 
   return (
     <div className={styles.container}>

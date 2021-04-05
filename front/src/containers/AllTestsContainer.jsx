@@ -45,6 +45,7 @@ const allTestsContainer = () => {
             return (
               <>
                 <div
+
                   onClick={() => getModal(test.id)}
                   className={`${styles.link}`}
                   key={test.id}
