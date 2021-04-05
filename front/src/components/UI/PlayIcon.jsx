@@ -1,10 +1,12 @@
 import React from "react"
 import styles from '../../styles/modal.module.scss';
 
+import play from "../../assets/Play.png"
+
 const PlayIcon = () => {
     return(
         <>
-<img src="http://localhost:3000/Play.png" className={`${styles.icon} ${styles.cursor}`}></img>
+<img src={play} className={`${styles.icon} ${styles.cursor}`}></img>
         </>
     )
 }

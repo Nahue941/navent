@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&family=Raleway:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@300;400;500&display=swap');
+
+
+* {
+  font-family: 'Hind Vadodara', sans-serif;
+
+}
+
+h1 {
+  font-family: 'Hind Vadodara', sans-serif;
+  font-weight: 500;
+}
+
+h2 {
+  // font-family: 'Raleway';
+  font-weight: 200;
+  font-size: 24px;
+}
+
+input:active {
+  outline: none;
+}
+
+body {
+  min-height: 100vh;
+}
+
+
+
+a,
+input[type='button'],
+button {
+  // font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+}
