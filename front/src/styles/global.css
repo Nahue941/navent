@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&family=Raleway:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&family=Roboto:wght@100&display=swap');
 /* 
 *{
     margin:0;
@@ -6,11 +7,11 @@
 } */
 
 h1 {
-    font-family: "Montserrat";
+    font-family: 'Roboto', sans-serif
 }
 
 h2 {
-    font-family: "Raleway";
+    font-family: 'Roboto', sans-serif
 }
 
 input:active {

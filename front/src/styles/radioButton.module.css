@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&family=Roboto:wght@100&display=swap');
+
 .body{
   display: inline-block;;
   justify-content: left;
@@ -6,6 +8,7 @@
 }
 
 p {
+  font-family: 'Open Sans', sans-serif;
   display: inline;
   position: relative;
   margin-left: 20px;

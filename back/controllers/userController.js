@@ -4,6 +4,7 @@ const userController = {
   register: async (req, res, next) => {
     try {
       const userCreated = await User.create(req.body);
+      console.log(req.body, '<------ ESTO ES EL BODY EN EL BACK');
       res.status(201);
       return res.send(userCreated);
     } catch (error) {
