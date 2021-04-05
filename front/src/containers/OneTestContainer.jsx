@@ -9,12 +9,12 @@ import {
   setIndexQuestion,
   resetQuestions,
 } from '../state/questions/actions';
-import {results} from "../state/user/actions"
+import { results } from '../state/user/actions';
 import { resetAnswers } from '../state/answers/actions';
 import Button from '../components/UI/Button';
 import ProgressBar from '../components/UI/ProgressBar';
 
-const TestContainer = ({ id }) => {
+const TestContainer = ({ testId }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.question.all);
@@ -28,8 +28,7 @@ const TestContainer = ({ id }) => {
     dispatch(setIndexQuestion(0));
     dispatch(resetAnswers());
     dispatch(setDisabled(true));
-    dispatch(allQuestions(id)).then(() => setLoading(false));
-
+    dispatch(allQuestions(testId)).then(() => setLoading(false));
 
     return () => {
       dispatch(resetQuestions());
@@ -43,25 +42,27 @@ const TestContainer = ({ id }) => {
     );
   };
 
-
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const nextQuestion = indexQuestion + 1;
     if (nextQuestion < questions.length) {
       dispatch(setIndexQuestion(nextQuestion));
       dispatch(setDisabled(true));
+    } else {
+      const res = await dispatch(
+        results({
+          result: countCorrectAnswers() / questions.length,
+          userId: 1,
+          testId,
+        }),
+      );
+      history.push(`/results/`);
     }
-    else
-      setTimeout(() => {
-        history.push('/results/1');
-      }, 500);
-    // alert(`Respuestas correctas: ${countCorrectAnswers()}/${questions.length}`);
   };
 
   //estado local que se renderiza hasta que se traiga toda la data del back
 
-  if(loading) return <div className={styles.loading}>loading</div>
+  if (loading) return <div className={styles.loading}>loading</div>;
 
   return (
     <div className={styles.container}>
@@ -70,7 +71,7 @@ const TestContainer = ({ id }) => {
           {indexQuestion + 1} de {Object.keys(totalQuestions).length}
         </h2>
         <ProgressBar
-          questionNum={indexQuestion+1}
+          questionNum={indexQuestion + 1}
           totalQuestions={Object.keys(totalQuestions).length}
         />
       </div>
