@@ -7,9 +7,11 @@ import { addAnswer } from '../state/answers/actions';
 
 
 const Question = ({ question }) => {
-
+console.log(question);
   const dispatch = useDispatch();
   const indexQuestion = useSelector((state) => state.question.indexQuestion)
+
+
 
   const handleRadioButtonValue = (e, answer) => {
     dispatch(setDisabled(false))

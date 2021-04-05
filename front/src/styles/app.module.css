@@ -1,16 +1,12 @@
-html {
-  height: auto;
-  padding: 0;
-  
-}
 body {
-  height: 100%;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative
 }
 
 .body{
-  min-height: 59.3vh;
+  min-height: 74vh;
 }
 
 .error{
