@@ -10,18 +10,20 @@ import {
   resetQuestions,
 } from '../state/questions/actions';
 import { resetAnswers } from '../state/answers/actions';
-import Button from '../components/UI/Button';
+import Button from '../components/UI/Button'
+import Timer from '../components/Timer'
 import ProgressBar from '../components/UI/ProgressBar';
 
 const TestContainer = ({ id }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const questions = useSelector((state) => state.question.all);
+  const tests = useSelector((state) => state.question.tests);
   const selectedAnswers = useSelector((state) => state.answer.selectedAnswers);
   const disabled = useSelector((state) => state.question.disabled);
   const indexQuestion = useSelector((state) => state.question.indexQuestion);
   const [loading, setLoading] = useState(true);
-  const totalQuestions = useSelector((state) => state.question.all);
+  const [time, setTime] = useState(3000);
 
   useEffect(() => {
     dispatch(setIndexQuestion(0));
@@ -33,7 +35,7 @@ const TestContainer = ({ id }) => {
       dispatch(resetQuestions());
     };
   }, [dispatch]);
-
+  
   const countCorrectAnswers = () => {
     return selectedAnswers.reduce(
       (trueAnswers = 0, answer) => (trueAnswers += answer.correct ? 1 : 0),
@@ -47,7 +49,9 @@ const TestContainer = ({ id }) => {
     if (nextQuestion < questions.length) {
       dispatch(setIndexQuestion(nextQuestion));
       dispatch(setDisabled(true));
+      setTime(6000)
     }
+
     else
       setTimeout(() => {
         history.push('/results/1');
@@ -59,6 +63,8 @@ const TestContainer = ({ id }) => {
 
   if(loading) return <div className={styles.loading}>loading</div>
 
+  console.log("index",indexQuestion)
+  
   return (
     <div className={styles.container}>
       <div className={styles.header}>
