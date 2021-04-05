@@ -16,12 +16,12 @@ const Navbar = () => {
         />
       </Link>
       {!logged ? (
-        <Link to="/login">
-          <button className={styles.button}>Login</button>
+        <Link to="/register">
+          <button className={styles.button}>Register</button>
         </Link>
       ) : (
-        <Link to="/test">
-          <button className={styles.button}>Test</button>
+        <Link to="/login">
+          <button className={styles.button}>Login</button>
         </Link>
       )}
     </div>

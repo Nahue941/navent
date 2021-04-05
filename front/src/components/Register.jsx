@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../state/user/actions';
+import { registerUser } from '../state/user/actions';
 
-const Login = () => {
+const Register = () => {
   const { register, handleSubmit, watch, errors } = useForm();
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
     console.log(data, '<-----Este es el body');
-    dispatch(login(data));
+    dispatch(registerUser(data));
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <input
+        placeholder="name"
+        name="name"
+        ref={register({
+          required: { value: true, message: 'Ingrese un nombre de usuario' },
+        })}
+      />
       <input
         placeholder="mail"
         name="mail"
@@ -28,11 +35,12 @@ const Login = () => {
           required: { value: true, message: 'Ingrese una contraseña' },
         })}
       />
+      <span>{errors?.name?.message}</span>
       <span>{errors?.mail?.message}</span>
       <span>{errors?.password?.message}</span>
-      <button>Login</button>
+      <button>Register</button>
     </form>
   );
 };
 
-export default Login;
+export default Register;
