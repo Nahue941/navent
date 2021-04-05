@@ -7,6 +7,7 @@ const Navbar = () => {
   const logged = useSelector((state) => state.user.isAuth);
 
   return (
+<<<<<<< HEAD
     <>
         <div className={styles.navbar}>
           <div className={styles.container}>
@@ -32,6 +33,26 @@ const Navbar = () => {
         </div>
       </>
    
+=======
+    <div className={styles.navbar}>
+      <Link to="/">
+        <img
+          className={styles.logo}
+          src={process.env.PUBLIC_URL + '/Navent.png'}
+          alt="logo"
+        />
+      </Link>
+      {!logged ? (
+        <Link to="/register">
+          <button className={styles.button}>Register</button>
+        </Link>
+      ) : (
+        <Link to="/login">
+          <button className={styles.button}>Login</button>
+        </Link>
+      )}
+    </div>
+>>>>>>> development
   );
 };
 

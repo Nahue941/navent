@@ -17,8 +17,13 @@ const Modal = ({ info, time, name, id, onHide, show }) => {
           </div>
           
             <h2 className={styles.h2}>{name}</h2>
+<<<<<<< HEAD
             <h3> {info}</h3>
             <h3>Duración: {timeMin} min</h3>
+=======
+            <h4>{info}</h4>
+            <h4>Duración: {timeMin} min</h4>
+>>>>>>> development
             <Link to={`/test/${id}`} className={styles.container}>
               <PlayIcon />
             </Link>
