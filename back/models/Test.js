@@ -52,8 +52,8 @@ Test.getRemainingDays = async function (testsArray, userId) {
     const today = moment().format('YYYY-MM-DD');
     const dateTestMaded = testMade?.date;
     const daysToMade = 5;
-    const daysRemaing = differenceBetweenDates(today, dateTestMaded, daysToMade);
-    return { ...test.dataValues, daysRemaing }
+    const daysRemaining = differenceBetweenDates(today, dateTestMaded, daysToMade);
+    return { ...test.dataValues, daysRemaining }
   });
 
   const tests = await Promise.all(testsPromise);
