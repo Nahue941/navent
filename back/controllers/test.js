@@ -4,8 +4,10 @@ const S = require('sequelize');
 const testController = {
     async getAll(req, res, next) {
         try {
-            const data = await Test.findAll({});
-            res.send(data);
+            const userId = req.params.userId;
+            const data = await Test.findAll();
+            const tests = await Test.getRemainingDays(data, userId);
+            res.send(tests);
         } catch (error) {
             next(error);
         }
