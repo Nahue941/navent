@@ -10,7 +10,7 @@ import Register from '../components/Register'; // es una ruta publica
 import NotFound from '../components/NotFound'; // ruta publica
 import Results from "../components/Results" //ruta privada
 
-import Router from './routers/Router'; // Componente de todas las rutas del front
+import PublicRoute from './routers/PublicRoute'; // Componente de todas las rutas del front
 
 const App = () => {
   return (
@@ -25,7 +25,7 @@ const App = () => {
           />
           <Route path="/test" render={() => <AllTestContainer />} />
           <Route exact path="/" render={() => <div>Inicio</div>} />
-          <Router/>
+          <PublicRoute/>
           <Route path="/results/:id" render={() => <Results />} />
           <Route path="/register" component={Register} />
           <Route path="/404" render={() => <NotFound />} />
