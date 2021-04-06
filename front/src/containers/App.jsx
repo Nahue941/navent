@@ -1,15 +1,16 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import TestContainer from './OneTestContainer';
-import AllTestContainer from './AllTestsContainer';
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
-import styles from '../styles/app.module.css';
-import Register from '../components/Register';
-import Login from '../components/Login';
-import NotFound from '../components/NotFound';
-import Results from "../components/Results"
+import { Switch, Route, Redirect } from 'react-router-dom';// Esto va a rutas del front
+import TestContainer from './OneTestContainer';//ruta privada
+import AllTestContainer from './AllTestsContainer';//ruta privada
+import Footer from '../components/Footer';//no es una ruta
+import Navbar from '../components/Navbar'; //no es una ruta
+import styles from '../styles/app.module.css'; // aca va bien
+import Register from '../components/Register'; // es una ruta publica
+// import Login from '../components/Login'; // esto es una ruta publica
+import NotFound from '../components/NotFound'; // ruta publica
+import Results from "../components/Results" //ruta privada
 
+import Router from './routers/Router'; // Componente de todas las rutas del front
 
 const App = () => {
   return (
@@ -24,7 +25,7 @@ const App = () => {
           />
           <Route path="/test" render={() => <AllTestContainer />} />
           <Route exact path="/" render={() => <div>Inicio</div>} />
-          <Route path="/login" component={Login} />
+          <Router/>
           <Route path="/results/:id" render={() => <Results />} />
           <Route path="/register" component={Register} />
           <Route path="/404" render={() => <NotFound />} />

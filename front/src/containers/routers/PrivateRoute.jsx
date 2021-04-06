@@ -1,10 +1,12 @@
 import React from 'react'
-import { Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 const PrivateRoute = () => {
     return (
         <div>
-            
+                    <Switch>
+                        
+                    </Switch>
         </div>
     )
 }
