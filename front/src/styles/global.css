@@ -1,23 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&family=Raleway:wght@200&display=swap');
-/* 
-*{
+@font-face {
+    font-family: 'Hind Vadodara';
+    src: url("https://fonts.googleapis.com/css2?family=Hind+Vadodara&display=swap");
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Hind Vadodara';
+    src: url("https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@600&display=swap");
+    font-weight: 600;
+}
+
+
+* {
     margin:0;
     padding: 0;
-} */
+} 
 
-h1 {
-    font-family: "Montserrat";
+h1 ,h2,h3, h4{
+    font-family: 'Hind Vadodara', sans-serif;
 }
 
-h2 {
-    font-family: "Raleway";
-}
 
-input:active {
+input:active, button:active , a:active {
      outline:none
 }
 
-h4 {
-    font-family: 'Raleway', sans-serif;
-    font-size: 90%;
-}
+
+

@@ -10,6 +10,8 @@ import {
   resetQuestions,
 } from '../state/questions/actions';
 import { results } from '../state/user/actions';
+import { wrongAnswered } from '../state/answers/actions';
+
 import { resetAnswers } from '../state/answers/actions';
 import Button from '../components/UI/Button';
 import ProgressBar from '../components/UI/ProgressBar';
@@ -46,6 +48,10 @@ const TestContainer = ({ testId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const nextQuestion = indexQuestion + 1;
+    if(!selectedAnswers[indexQuestion].correct){
+     dispatch(wrongAnswered(questions[indexQuestion]))
+    } 
+
     if (nextQuestion < questions.length) {
       dispatch(setIndexQuestion(nextQuestion));
       dispatch(setDisabled(true));
