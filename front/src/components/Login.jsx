@@ -12,35 +12,33 @@ const Login = () => {
     //dispatch(login(data));
   };
   return (
-    <header>
-      <div style={styles.header}>
-        <h2 style={styles.h2}>Ingresa tus datos</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <input
-            style={styles.input}
-            placeholder="Mail"
-            name="mail"
-            ref={register({
-              required: { value: true, message: 'Ingrese un mail' },
-            })}
-          />
-          <hr style={styles.hr} />
-          <input
-            style={styles.input}
-            placeholder="Password"
-            type="password"
-            name="password"
-            ref={register({
-              required: { value: true, message: 'Ingrese una contraseña' },
-            })}
-          />
-          <span>{errors?.mail?.message}</span>
-          <span>{errors?.password?.message}</span>
-          <hr style={styles.hr} />
-          <button style={styles.button}>Login</button>
-        </form>
-      </div>
-    </header>
+    <div className={styles.container}>
+      <h2 className={styles.h2}>Ingresa tus datos</h2>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input
+          className={styles.input}
+          placeholder="Mail"
+          name="mail"
+          ref={register({
+            required: { value: true, message: 'Ingrese un mail' },
+          })}
+        />
+        <hr className={styles.hr} />
+        <input
+          className={styles.input}
+          placeholder="Password"
+          type="password"
+          name="password"
+          ref={register({
+            required: { value: true, message: ' Ingrese una contraseña' },
+          })}
+        />
+        <span>{errors?.mail?.message}</span>
+        <span>{errors?.password?.message}</span>
+        <hr className={styles.hr} />
+        <button className={styles.button}>Login</button>
+      </form>
+    </div>
   );
 };
 
