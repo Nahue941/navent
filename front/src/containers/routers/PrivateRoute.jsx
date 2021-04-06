@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import TestContainer from './OneTestContainer'; //ruta privada
-import AllTestContainer from './AllTestsContainer'; //ruta privada
-import Results from "../components/Results";// ruta privada
+import TestContainer from '../../containers/OneTestContainer'; //ruta privada
+import AllTestContainer from '../../containers/AllTestsContainer'; //ruta privada
+import Results from "../../components/Results";// ruta privada
 const PrivateRoute = () => {
   return (
     <div>

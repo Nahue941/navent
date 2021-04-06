@@ -9,16 +9,15 @@ import styles from '../styles/app.module.css'; // aca va bien
 // import Login from '../components/Login'; // esto es una ruta publica
 // import NotFound from '../components/NotFound'; // ruta publica
 // import Results from "../components/Results"; //ruta privada
-
 import Router from './routers/Router'; // Componente de todas las rutas del front
 
 const App = () => {
   return (
     <>
       <Navbar />
-      <div className={styles.body}>
-          <Router/>          
-      </div>
+        <div className={styles.body}>
+            <Router/>          
+        </div>
       <Footer />
     </>
   );
