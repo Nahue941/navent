@@ -99,6 +99,9 @@ const TestContainer = ({ testId }) => {
                 indexQuestion < questions.length - 1 ? 'Siguiente' : 'Finalizar'
               }
               type="submit"
+              color="blue"
+              marginLeft= "38%"
+              marginTop="-5%"
             />
           </form>
         )}

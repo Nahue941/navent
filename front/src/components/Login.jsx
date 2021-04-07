@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../state/user/actions';
 import styles from '../styles/form.module.css';
+import Button from '../components/UI/Button'
 const Login = () => {
   const { register, handleSubmit, watch, errors } = useForm();
   const dispatch = useDispatch();
@@ -36,7 +37,13 @@ const Login = () => {
         <span>{errors?.mail?.message}</span>
         <span>{errors?.password?.message}</span>
         <hr className={styles.hr} />
-        <button className={styles.button}>Login</button>
+        <Button
+              value="Login"
+              type="submit"
+              color="#eb0064"
+              marginLeft="25%"
+              marginTop="10%"
+            />
       </form>
     </div>
   );
