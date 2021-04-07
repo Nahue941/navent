@@ -1,0 +1,53 @@
+.container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  flex-direction: column;
+
+}
+
+.input {
+  width: 90%;
+  padding: 1rem;
+  margin: 20px 0px;
+  background: transparent;
+  font-size: 1.3rem;
+  outline: none;
+  border-radius: 5px;
+}
+
+.h2 {
+  text-align: center;
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+.hr {
+  width: 50%;
+  margin: auto;
+  padding: 5px;
+  border: none;
+}
+
+.button {
+  background-color: blue;
+  border-radius: 8px;
+  border: blue;
+  width: 160px;
+  height: 50px;
+  font-family: 'Hind Vadodara', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  margin-left: 17.5%;
+  cursor: pointer;
+  background-color: #eb0064;
+  border-color: #d20059;
+}

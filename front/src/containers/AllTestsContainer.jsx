@@ -4,7 +4,6 @@ import { allTests } from '../state/questions/actions';
 import { Link } from 'react-router-dom';
 import styles from '../styles/skillsView.module.scss';
 import Modal from '../components/UI/Modal';
-// import trophy from "../assets/Trophy.png"
 
 const allTestsContainer = () => {
   const [modal, setModal] = useState(false);
@@ -47,7 +46,6 @@ const allTestsContainer = () => {
                 <div
                   onClick={() => getModal(test.id)}
                   className={`${styles.link}`}
-                
                 >
                   <div className={styles.skills}>
                     <h2>{test.name}</h2>

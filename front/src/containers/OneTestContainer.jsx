@@ -14,6 +14,7 @@ import { wrongAnswered } from '../state/answers/actions';
 
 import { resetAnswers } from '../state/answers/actions';
 import Button from '../components/UI/Button';
+import Timer from '../components/Timer';
 import ProgressBar from '../components/UI/ProgressBar';
 import moment from 'moment' 
 
@@ -25,7 +26,7 @@ const TestContainer = ({ testId }) => {
   const disabled = useSelector((state) => state.question.disabled);
   const indexQuestion = useSelector((state) => state.question.indexQuestion);
   const [loading, setLoading] = useState(true);
-  const totalQuestions = useSelector((state) => state.question.all);
+  const [time, setTime] = useState(1000);
 
   useEffect(() => {
     dispatch(setIndexQuestion(0));
@@ -55,31 +56,31 @@ const TestContainer = ({ testId }) => {
     if (nextQuestion < questions.length) {
       dispatch(setIndexQuestion(nextQuestion));
       dispatch(setDisabled(true));
+      setTime(1000);
     } else {
       const res = await dispatch(
         results({
           result: ( countCorrectAnswers() / questions.length ) * 100,
-          userId: 1,
+          userId: 1, //user.id
           testId: Number(testId),
           date:moment().format('YYYY-MM-DD')
         }),
       );
-      history.push(`/results/`);
+      history.push(`/results`);
     }
   };
 
   //estado local que se renderiza hasta que se traiga toda la data del back
-
   if (loading) return <div className={styles.loading}>loading</div>;
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <h2 className={styles.h2}>
-          {indexQuestion + 1} de {Object.keys(totalQuestions).length}
+          {indexQuestion + 1} de {questions.length}
         </h2>
         <ProgressBar
           questionNum={indexQuestion + 1}
-          totalQuestions={Object.keys(totalQuestions).length}
+          totalQuestions={questions.length}
         />
       </div>
       <div className={styles.header}>
@@ -87,6 +88,7 @@ const TestContainer = ({ testId }) => {
           <form onSubmit={handleSubmit}>
             <Question question={questions[indexQuestion]} />
             <br />
+            <Timer time={time} setTime={setTime} countCorrectAnswers={countCorrectAnswers} />
             <br />
             <Button
               disabled={disabled}
