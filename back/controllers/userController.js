@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, TestMade } = require('../models');
 
 const userController = {
   register: async (req, res, next) => {
@@ -20,7 +20,7 @@ const userController = {
         },
       });
       if (userFound.log(req.body.mail, req.body.password)) {
-        return res.send('Loged');
+        res.send('Loged');
       } else {
         res.status(401).send('Hubo un error');
       }
@@ -28,6 +28,17 @@ const userController = {
       next(error);
     }
   },
+
+  saveResult: async (req, res, next) => {
+    try {
+      console.log(req.body);
+      const newResult = await TestMade.create({...req.body})
+      res.status(201).send(newResult);
+    } catch (error) {
+      next(error);
+    }
+  }
+
 };
 
 module.exports = userController;

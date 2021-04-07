@@ -20,12 +20,12 @@ const App = () => {
           <Redirect exact from="/" to="/test" />
           <Route
             path="/test/:id"
-            render={({ match }) => <TestContainer id={match.params.id} />}
+            render={({ match }) => <TestContainer testId={match.params.id} />}
           />
           <Route path="/test" render={() => <AllTestContainer />} />
           <Route exact path="/" render={() => <div>Inicio</div>} />
           <Route path="/login" component={Login} />
-          <Route path="/results/:id" render={() => <Results />} />
+          <Route path="/results" render={() => <Results />} />
           <Route path="/register" component={Register} />
           <Route path="/404" render={() => <NotFound />} />
           <Redirect to="/404" />
