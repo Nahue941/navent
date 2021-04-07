@@ -21,7 +21,7 @@ const allTestsContainer = () => {
   const tests = useSelector((state) => state.question.tests);
 
   useEffect(() => {
-    dispatch(allTests());
+    dispatch(allTests()); //aca habria que mandar el userId
   }, [dispatch]);
 
   return (
@@ -41,7 +41,7 @@ const allTestsContainer = () => {
       <div className={styles.main}>
         <h1 className={styles.title}>Skills</h1>
         <div className={styles.container}>
-          {tests.map((test) => {
+          {tests?.map((test) => {
             return (
               <div  key={test.id}>
                 <div
