@@ -4,7 +4,6 @@ import { allTests } from '../state/questions/actions';
 import { Link } from 'react-router-dom';
 import styles from '../styles/skillsView.module.scss';
 import Modal from '../components/UI/Modal';
-// import trophy from "../assets/Trophy.png"
 
 const allTestsContainer = () => {
   const [modal, setModal] = useState(false);
@@ -21,7 +20,7 @@ const allTestsContainer = () => {
   const tests = useSelector((state) => state.question.tests);
 
   useEffect(() => {
-    dispatch(allTests());
+    dispatch(allTests()); //aca habria que mandar el userId
   }, [dispatch]);
 
   return (
@@ -41,14 +40,12 @@ const allTestsContainer = () => {
       <div className={styles.main}>
         <h1 className={styles.title}>Skills</h1>
         <div className={styles.container}>
-          {tests.map((test) => {
+          {tests?.map((test) => {
             return (
-              <>
+              <div  key={test.id}>
                 <div
-
                   onClick={() => getModal(test.id)}
                   className={`${styles.link}`}
-                  key={test.id}
                 >
                   <div className={styles.skills}>
                     <h2>{test.name}</h2>
@@ -62,7 +59,7 @@ const allTestsContainer = () => {
                   name={test.name}
                   id={test.id}
                 />
-              </>
+              </div>
             );
           })}
         </div>
