@@ -47,9 +47,10 @@ const TestContainer = ({ testId }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    if(e) e.preventDefault();
     const nextQuestion = indexQuestion + 1;
-    if(!selectedAnswers[indexQuestion].correct){
+
+    if(!selectedAnswers[indexQuestion] || !selectedAnswers[indexQuestion].correct){
      dispatch(wrongAnswered(questions[indexQuestion]))
     } 
 
@@ -58,6 +59,7 @@ const TestContainer = ({ testId }) => {
       dispatch(setDisabled(true));
       setTime(1000);
     } else {
+      setTime(0);
       const res = await dispatch(
         results({
           result: ( countCorrectAnswers() / questions.length ) * 100,
@@ -88,7 +90,8 @@ const TestContainer = ({ testId }) => {
           <form onSubmit={handleSubmit}>
             <Question question={questions[indexQuestion]} />
             <br />
-            <Timer time={time} setTime={setTime} countCorrectAnswers={countCorrectAnswers} />
+            <Timer time={time} setTime={setTime} countCorrectAnswers={countCorrectAnswers} 
+            handleSubmit={handleSubmit}/>
             <br />
             <Button
               disabled={disabled}
