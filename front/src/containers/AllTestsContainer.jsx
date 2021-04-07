@@ -1,7 +1,6 @@
-import React, { useDebugValue, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { allTests } from '../state/questions/actions';
-import { Link } from 'react-router-dom';
 import styles from '../styles/skillsView.module.scss';
 import Modal from '../components/UI/Modal';
 
@@ -45,9 +44,9 @@ const allTestsContainer = () => {
               <div  key={test.id}>
                 <div
                   onClick={() => getModal(test.id)}
-                  className={`${styles.link}`}
+                  className={styles.link}
                 >
-                  <div className={styles.skills}>
+                  <div className={`${styles.skills} ${test.daysRemaining >0 && styles.disabled}`}>
                     <h2>{test.name}</h2>
                   </div>
                 </div>
@@ -58,6 +57,7 @@ const allTestsContainer = () => {
                   time={test.timeToComplete}
                   name={test.name}
                   id={test.id}
+                  daysRemaining={test.daysRemaining}
                 />
               </div>
             );
