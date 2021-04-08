@@ -64,6 +64,7 @@ const TestContainer = ({ testId }) => {
       dispatch(setDisabled(true));
       setTime(1000);
     } else {
+      // hacer el dispatch por un lado con info desde el front y hacer el post por otro. 
       const res = await dispatch(
         results({
           result: ( countCorrectAnswers() / questions.length ) * 100,
