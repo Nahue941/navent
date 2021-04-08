@@ -37,3 +37,4 @@ export const results = createAsyncThunk(
 );
 
 export const clear = createAction("RESET")
+
