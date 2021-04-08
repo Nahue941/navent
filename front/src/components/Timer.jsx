@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { format } from '../utils/format';
 
+
 const Timer = ({ time, setTime, handleSubmit }) => {
 
   useEffect(() => {
@@ -14,6 +15,7 @@ const Timer = ({ time, setTime, handleSubmit }) => {
       clearTimeout(timer);
     }
   }, [time]);
+
 
   return (
     <div>
