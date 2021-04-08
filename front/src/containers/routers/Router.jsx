@@ -9,7 +9,7 @@ const Router = () => {
 
     const loggedUser = {
       auth: true,
-      admin: false
+      admin: true
     }
 
     return (
