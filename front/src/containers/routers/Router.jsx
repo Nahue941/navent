@@ -13,8 +13,12 @@ const Router = () => {
 
   return (
     <div>
+
+        <Redirect from="/test/:id" to="/test" />
         <PublicRoute />
+
         {loggedUser.auth ? <PrivateRoute /> : <Redirect to="/404" />}
+        <Redirect/>
         {loggedUser.auth ? <AdminRoute /> : <Redirect to="/404" />}
 
 
