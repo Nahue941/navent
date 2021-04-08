@@ -14,7 +14,7 @@ const Router = () => {
   return (
     <div>
 
-        <Redirect from="/test/:id" to="/test" />
+        <Redirect from="/test/:id" to="/404" />
         <PublicRoute />
 
         {loggedUser.auth ? <PrivateRoute /> : <Redirect to="/404" />}

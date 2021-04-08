@@ -28,12 +28,19 @@ const TestContainer = ({ testId }) => {
   const [time, setTime] = useState(1000);
 
   useEffect(() => {
-    
-    if (!questions.length) {
-      dispatch(allQuestions(testId)).then(() => setLoading(false)).catch(()=> history.push(`/404`));
-      dispatch(setIndexQuestion(0));
-      
-    } else {history.push(`/404`)}
+
+    if(questions){
+
+      if (!questions.length) {
+        dispatch(allQuestions(testId)).then(() => setLoading(false)).catch(()=> history.push(`/404`));
+        dispatch(setIndexQuestion(0));
+        
+      } 
+    } 
+      else {
+        history.push(`/404`)
+      }
+
     setLoading(false);
     dispatch(setDisabled(true));
   }, [dispatch]);

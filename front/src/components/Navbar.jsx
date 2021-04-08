@@ -10,7 +10,7 @@ const Navbar = () => {
     <>
         <div className={styles.navbar}>
           <div className={styles.container}>
-            <Link to="/">
+            <Link to="/test">
               <img
                 className={styles.logo}
                 src={
