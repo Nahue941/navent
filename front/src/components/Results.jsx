@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Spinner from './UI/Spinner';
 import styles from '../styles/results.module.scss';
 import { useSelector, useDispatch } from 'react-redux';

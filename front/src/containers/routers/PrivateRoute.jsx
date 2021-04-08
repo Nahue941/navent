@@ -10,10 +10,10 @@ const PrivateRoute = () => {
         <Redirect exact from="/" to="/test" />
         <Route
           path="/test/:id"
-          render={({ match }) => <TestContainer id={match.params.id} />}
+          render={({ match }) => <TestContainer testId={match.params.id} />}
         />
         <Route path="/test" render={() => <AllTestContainer />} />
-        <Route path="/results/:id" render={() => <Results />} />
+        <Route path="/results" render={() => <Results />} />
       </Switch>
     </div>
   );
