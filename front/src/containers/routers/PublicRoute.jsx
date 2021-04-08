@@ -9,11 +9,10 @@ const PublicRoute = () => {
     return (
         <div>
             <Switch>
-            <Redirect exact from="/" to="/" />
-            <Route exact path="/" render={() => <div>Inicio</div>} />
+            <Route exact path="/" render={() => <div>Inicio</div>} />    
             <Route path="/login" render={() => <Login />} />            
             <Route path="/register" component={Register} />
-
+            <Route path="/404" render={()=> <NotFound/>}/>            
             </Switch>
         </div>
     )
