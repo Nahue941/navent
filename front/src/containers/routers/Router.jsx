@@ -13,12 +13,11 @@ const Router = () => {
 
   return (
     <div>
-      <Switch>
-        {loggedUser.auth ? <PrivateRoute /> : <Redirect to="/404" />}
-        {loggedUser.admin ? <AdminRoute /> : <Redirect to="/404" />}
+        {loggedUser.auth ? (<PrivateRoute />) : <Redirect to="/404" />}
         <PublicRoute />
-        <Route path="/404" render={() => <NotFound />} />
-        <Route path="/*" render={() => <Redirect to="/404" />} />
+      <Switch>
+        {loggedUser.admin ? <AdminRoute /> : <Redirect to="/404" />}
+
       </Switch>
     </div>
   );

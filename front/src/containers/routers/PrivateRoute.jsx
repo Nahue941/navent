@@ -16,11 +16,12 @@ const PrivateRoute = () => {
         />
         <Route path="/test" render={() => <AllTestContainer />} />
         <Route path="/results" render={() => <Results />} />
-        <Route path="/404" render={() => <NotFound />} />
-        <Route path="/*" render={() => <Redirect to="/404" />} />
+
       </Switch>
     </div>
   );
 };
 
 export default PrivateRoute;
+{/* <Route path="/404" render={() => <NotFound />} />
+<Route path="/*" render={() => <Redirect to="/404" />} /> */}
