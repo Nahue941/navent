@@ -3,6 +3,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import TestContainer from '../../containers/OneTestContainer'; //ruta privada
 import AllTestContainer from '../../containers/AllTestsContainer'; //ruta privada
 import Results from "../../components/Results";// ruta privada
+import NotFound from '../../components/NotFound'; // ruta publica
+
 const PrivateRoute = () => {
   return (
     <div>
@@ -14,6 +16,8 @@ const PrivateRoute = () => {
         />
         <Route path="/test" render={() => <AllTestContainer />} />
         <Route path="/results" render={() => <Results />} />
+        <Route path="/404" render={() => <NotFound />} />
+        <Route path="/*" render={() => <Redirect to="/404" />} />
       </Switch>
     </div>
   );
