@@ -3,16 +3,20 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import NotFound from '../../components/NotFound'; // ruta publica
-
+import AdminRoute from './AdminRoute';
 //falta la lógica del estado del user para manejar lo que se ve y lo que no, está hardcodeado
 const Router = () => {
 
-    const loggedUser = true
+    const loggedUser = {
+      auth: true,
+      admin: false
+    }
 
     return (
         <div>
             
-            {loggedUser? <PrivateRoute/> : <Redirect to="/404" />}
+            {loggedUser.auth? <PrivateRoute/> : <Redirect to="/404" />}
+            {loggedUser.admin? <AdminRoute/> : <Redirect to="/404" />}
 
             <PublicRoute/>
             
