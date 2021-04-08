@@ -64,12 +64,12 @@ const TestContainer = ({ testId }) => {
       dispatch(setDisabled(true));
       setTime(1000);
     } else {
-      dispatch(
+      const res = await dispatch(
         results({
-          result: (countCorrectAnswers() / questions.length) * 100,
+          result: ( countCorrectAnswers() / questions.length ) * 100,
           userId: 1, //user.id
           testId: Number(testId),
-          date: moment().format('YYYY-MM-DD'),
+          date:moment().format('YYYY-MM-DD')
         }),
       );
       history.push(`/results`);
