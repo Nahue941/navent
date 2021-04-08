@@ -12,7 +12,6 @@ import {
 import { results } from '../state/user/actions';
 import { wrongAnswered } from '../state/answers/actions';
 
-
 import Button from '../components/UI/Button';
 import Timer from '../components/Timer';
 import ProgressBar from '../components/UI/ProgressBar';
@@ -30,15 +29,11 @@ const TestContainer = ({ testId }) => {
 
   useEffect(() => {
     if (!questions.length) {
-      dispatch(allQuestions(testId)).then(() => setLoading(false))
+      dispatch(allQuestions(testId)).then(() => setLoading(false));
       dispatch(setIndexQuestion(0));
     }
-    setLoading(false)
+    setLoading(false);
     dispatch(setDisabled(true));
-
-    return () => {
-      // dispatch(resetQuestions());
-    };
   }, [dispatch]);
 
   const countCorrectAnswers = () => {
@@ -64,13 +59,13 @@ const TestContainer = ({ testId }) => {
       dispatch(setDisabled(true));
       setTime(1000);
     } else {
-      // hacer el dispatch por un lado con info desde el front y hacer el post por otro. 
+      // hacer el dispatch por un lado con info desde el front y hacer el post por otro.
       const res = await dispatch(
         results({
-          result: ( countCorrectAnswers() / questions.length ) * 100,
+          result: (countCorrectAnswers() / questions.length) * 100,
           userId: 1, //user.id
           testId: Number(testId),
-          date:moment().format('YYYY-MM-DD')
+          date: moment().format('YYYY-MM-DD'),
         }),
       );
       history.push(`/results`);
