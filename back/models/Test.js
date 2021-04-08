@@ -1,8 +1,11 @@
 const S = require('sequelize');
 const db = require('../config/db');
 const shufleArrayInPlace = require('../utils/shufleArrayInPlace');
+const TestMade = require('./TestMade');
+const moment = require('moment');
+const differenceBetweenDates = require('../utils/differenceBetweenDates');
 
-class Test extends S.Model {}
+class Test extends S.Model { }
 Test.init(
   {
     name: {
@@ -34,5 +37,28 @@ Test.prototype.insertCorrectAnswersToQuestion = function () {
     return questionInstance;
   });
 };
+
+Test.getRemainingDays = async function (testsArray, userId) {
+  const testsPromise = testsArray.map(async (test) => {
+    const [testMade] = await TestMade.findAll({
+      limit: 1,
+      where: {
+        testId: test.id,
+        userId: userId
+      },
+      order: [['createdAt', 'DESC']] // hacerlo con date
+    });
+    //los dias estan harcodeados pero tendrian que ser test.days o algo asi
+    const today = moment().format('YYYY-MM-DD');
+    const dateTestMaded = testMade?.date;
+    const daysToMade = 5;
+    const daysRemaining = differenceBetweenDates(today, dateTestMaded, daysToMade);
+    return { ...test.dataValues, daysRemaining }
+  });
+
+  const tests = await Promise.all(testsPromise);
+  return tests;
+
+}
 
 module.exports = Test;

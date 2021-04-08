@@ -5,12 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setDisabled } from '../state/questions/actions';
 import { addAnswer } from '../state/answers/actions';
 
+
 const Question = ({ question }) => {
-console.log(question);
   const dispatch = useDispatch();
   const indexQuestion = useSelector((state) => state.question.indexQuestion)
-
-
 
   const handleRadioButtonValue = (e, answer) => {
     dispatch(setDisabled(false))

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../../styles/spinner.module.scss';
 
-const Spinner = ({ radius = 150, stroke = 5, percentage }) => {
+const Spinner = ({ radius = 200, stroke = 4, percentage }) => {
   const [progress, setProgress] = useState(0);
   const normalizedRadius = radius - stroke * 2;
   const circumference = normalizedRadius * 2 * Math.PI;
   const strokeDashoffset = circumference - (progress / 100) * circumference;
-
+  percentage = Math.round(percentage)
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress(percentage);

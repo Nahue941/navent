@@ -1,15 +1,44 @@
-.container {
+.container1 {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  flex-direction: column;
   width: 50vw;
   height: 80vh;
-  border-right: 1px solid grey;
+  margin: 30px;
+}
+.container2 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 50vw;
+  height: 80vh;
+}
+
+.left {
+  text-align: left;
 }
 
 .main {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  
+  margin: 50px;
+}
+.h1 {
+  font-size: 3em;
+  font-weight: normal;
+  margin: 20px 0px 50px 0px ;
+}
+
+.h2 {
+  font-size: 2em;
+  margin: 50px 0px 50px 0px ;
+
+}
+
+
+.incorrect {
+  min-height: 200px;
 }

@@ -35,6 +35,7 @@
     &:hover{
         box-shadow: -2px 7px 9px 1px rgba(34, 35, 75, 0.22);
         transition: 0.3s ease-in-out;
+        cursor: pointer;
     }
 }
 
@@ -55,6 +56,14 @@
   justify-content: space-between;
   align-content: center;
   height: 100%;
+}
+
+
+@media (max-width: 600px) {
+  .bcImage{
+  width: 15px;
+  height: 100%;
+  }
 }
 
 .divSkills {
@@ -93,3 +102,5 @@
   color: rgba(0, 0, 0, 0.64);
   font-weight: 300;
 }
+
+
