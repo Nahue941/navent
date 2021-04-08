@@ -8,10 +8,11 @@ import NotFound from '../../components/NotFound'; // ruta publica
 const PublicRoute = () => {
     return (
         <div>
-            <Switch>            
+            <Switch>
+            <Redirect exact from="/" to="/" />
+            <Route exact path="/" render={() => <div>Inicio</div>} />
             <Route path="/login" render={() => <Login />} />            
             <Route path="/register" component={Register} />
-            <Route exact path="/" render={() => <div>Inicio</div>} />
 
             </Switch>
         </div>

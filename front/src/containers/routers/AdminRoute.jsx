@@ -6,10 +6,6 @@ const AdminRoute = () => {
     return (
         <div>
             <h3>Admin</h3>
-            <Switch>
-            <Route path="/404" render={() => <NotFound />} />
-            <Route path="/*" render={() => <Redirect to="/404" />} />
-            </Switch>
         </div>
     )
 }

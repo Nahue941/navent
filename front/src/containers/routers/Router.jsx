@@ -8,17 +8,14 @@ import NotFound from '../../components/NotFound'; // ruta publica
 const Router = () => {
   const loggedUser = {
     auth: true,
-    admin: false,
+    admin: true,
   };
 
   return (
     <div>
-        {loggedUser.auth ? (<PrivateRoute />) : <Redirect to="/404" />}
         <PublicRoute />
-      <Switch>
-        {loggedUser.admin ? <AdminRoute /> : <Redirect to="/404" />}
-
-      </Switch>
+        {loggedUser.auth ? (<PrivateRoute />) : <Redirect to="/404" />}
+        {loggedUser.admin? (<AdminRoute />) : <Redirect to="/404" />}
     </div>
   );
 };

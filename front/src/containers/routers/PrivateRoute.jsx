@@ -14,6 +14,8 @@ const PrivateRoute = () => {
           path="/test/:id"
           render={({ match }) => <TestContainer testId={match.params.id} />}
         />
+        <Route path="/test:id" render={() => <Redirect to="/404" />} />
+        <Route path="/404" render={()=> <NotFound/>}/>
         <Route path="/test" render={() => <AllTestContainer />} />
         <Route path="/results" render={() => <Results />} />
 
