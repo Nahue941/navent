@@ -12,11 +12,10 @@ import {
 import { results } from '../state/user/actions';
 import { wrongAnswered } from '../state/answers/actions';
 
-import { resetAnswers } from '../state/answers/actions';
 import Button from '../components/UI/Button';
 import Timer from '../components/Timer';
 import ProgressBar from '../components/UI/ProgressBar';
-import moment from 'moment' 
+import moment from 'moment';
 
 const TestContainer = ({ testId }) => {
   const history = useHistory();
@@ -29,14 +28,12 @@ const TestContainer = ({ testId }) => {
   const [time, setTime] = useState(1000);
 
   useEffect(() => {
-    dispatch(setIndexQuestion(0));
-    dispatch(resetAnswers());
+    if (!questions.length) {
+      dispatch(allQuestions(testId)).then(() => setLoading(false));
+      dispatch(setIndexQuestion(0));
+    }
+    setLoading(false);
     dispatch(setDisabled(true));
-    dispatch(allQuestions(testId)).then(() => setLoading(false));
-
-    return () => {
-      dispatch(resetQuestions());
-    };
   }, [dispatch]);
 
   const countCorrectAnswers = () => {
@@ -47,25 +44,28 @@ const TestContainer = ({ testId }) => {
   };
 
   const handleSubmit = async (e) => {
-    if(e) e.preventDefault();
+    if (e) e.preventDefault();
     const nextQuestion = indexQuestion + 1;
 
-    if(!selectedAnswers[indexQuestion] || !selectedAnswers[indexQuestion].correct){
-     dispatch(wrongAnswered(questions[indexQuestion]))
-    } 
+    if (
+      !selectedAnswers[indexQuestion] ||
+      !selectedAnswers[indexQuestion].correct
+    ) {
+      dispatch(wrongAnswered(questions[indexQuestion]));
+    }
 
     if (nextQuestion < questions.length) {
       dispatch(setIndexQuestion(nextQuestion));
       dispatch(setDisabled(true));
       setTime(1000);
     } else {
-      setTime(0);
+      // hacer el dispatch por un lado con info desde el front y hacer el post por otro.
       const res = await dispatch(
         results({
-          result: ( countCorrectAnswers() / questions.length ) * 100,
+          result: (countCorrectAnswers() / questions.length) * 100,
           userId: 1, //user.id
           testId: Number(testId),
-          date:moment().format('YYYY-MM-DD')
+          date: moment().format('YYYY-MM-DD'),
         }),
       );
       history.push(`/results`);
@@ -90,8 +90,12 @@ const TestContainer = ({ testId }) => {
           <form onSubmit={handleSubmit}>
             <Question question={questions[indexQuestion]} />
             <br />
-            <Timer time={time} setTime={setTime} countCorrectAnswers={countCorrectAnswers} 
-            handleSubmit={handleSubmit}/>
+            <Timer
+              time={time}
+              setTime={setTime}
+              countCorrectAnswers={countCorrectAnswers}
+              handleSubmit={handleSubmit}
+            />
             <br />
             <Button
               disabled={disabled}
@@ -100,7 +104,7 @@ const TestContainer = ({ testId }) => {
               }
               type="submit"
               color="blue"
-              marginLeft= "38%"
+              marginLeft="38%"
               marginTop="-5%"
             />
           </form>

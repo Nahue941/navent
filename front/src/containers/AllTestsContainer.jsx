@@ -1,9 +1,11 @@
-import React, { useDebugValue, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { allTests } from '../state/questions/actions';
-import { Link } from 'react-router-dom';
 import styles from '../styles/skillsView.module.scss';
 import Modal from '../components/UI/Modal';
+import {resetQuestions} from "../state/questions/actions"
+import { resetAnswers } from '../state/answers/actions';
+import {clear} from "../state/user/actions"
 
 const allTestsContainer = () => {
   const [modal, setModal] = useState(false);
@@ -20,6 +22,9 @@ const allTestsContainer = () => {
   const tests = useSelector((state) => state.question.tests);
 
   useEffect(() => {
+    dispatch(clear())
+    dispatch(resetAnswers())
+    dispatch(resetQuestions())
     dispatch(allTests()); //aca habria que mandar el userId
   }, [dispatch]);
 

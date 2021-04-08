@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { addAnswer, resetAnswers, wrongAnswered } from './actions';
+import { addAnswer, resetAnswers, wrongAnswered , clear} from './actions';
 
 const initialState = {
   selectedAnswers: [],
@@ -20,6 +20,9 @@ const answersReducer = createReducer(initialState, {
   [wrongAnswered]: (state, action) => {
     const wrongQ = [...state.wronglyAnsQuestions, action.payload];
     state.wronglyAnsQuestions = wrongQ;
+  },
+  [clear]: (state, action) => {
+    state.selectedAnswers = [];
   },
 });
 
