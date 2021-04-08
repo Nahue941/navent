@@ -7,7 +7,9 @@ const Spinner = ({ radius = 200, stroke = 4, percentage }) => {
   const circumference = normalizedRadius * 2 * Math.PI;
   const strokeDashoffset = circumference - (progress / 100) * circumference;
   percentage = Math.round(percentage)
+  console.log(percentage);
   useEffect(() => {
+    console.log("entree");
     const interval = setInterval(() => {
       setProgress(percentage);
     }, 10);

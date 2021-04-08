@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const login = createAsyncThunk('LOGIN', async (user) => {
@@ -35,3 +35,5 @@ export const results = createAsyncThunk(
     }
   },
 );
+
+export const clear = createAction("RESET")
