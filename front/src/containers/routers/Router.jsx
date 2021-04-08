@@ -13,10 +13,10 @@ const Router = () => {
         <div>
             
             {loggedUser? <PrivateRoute/> : <Redirect to="/404" />}
+
             <PublicRoute/>
             
             <Route path="/404" render={() => <NotFound />} />
-            
             
         </div>
     )

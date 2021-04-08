@@ -28,10 +28,12 @@ const TestContainer = ({ testId }) => {
   const [time, setTime] = useState(1000);
 
   useEffect(() => {
+    
     if (!questions.length) {
-      dispatch(allQuestions(testId)).then(() => setLoading(false));
+      dispatch(allQuestions(testId)).then(() => setLoading(false)).catch(()=> history.push(`/404`));
       dispatch(setIndexQuestion(0));
-    }
+      
+    } else {history.push(`/404`)}
     setLoading(false);
     dispatch(setDisabled(true));
   }, [dispatch]);
@@ -78,11 +80,11 @@ const TestContainer = ({ testId }) => {
     <div className={styles.container}>
       <div className={styles.header}>
         <h2 className={styles.h2}>
-          {indexQuestion + 1} de {questions.length}
+          {indexQuestion + 1} de {questions ? questions.length : history.push(`/404`)}
         </h2>
         <ProgressBar
           questionNum={indexQuestion + 1}
-          totalQuestions={questions.length}
+          totalQuestions={questions ? questions.length : history.push(`/404`)}
         />
       </div>
       <div className={styles.header}>
