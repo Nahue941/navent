@@ -1,15 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Spinner from './UI/Spinner';
 import styles from '../styles/results.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
-import { format } from '../utils/format';
+import { singleTest } from '../state/test/actions'
+import { format } from '../utils/format'
 
 const Results = () => {
   const numQuestions = useSelector((state) => state.answer.selectedAnswers)
     .length;
   const results = useSelector((state) => state.user.results);
-  console.log("results",results)
   const wrongAnswers = useSelector((state) => state.answer.wronglyAnsQuestions);
+  const dispatch = useDispatch()
+  const singleTests = useSelector((state) => state.test.singleTest)
+
+  useEffect(() => {
+    dispatch(singleTest(results.testId))
+  }, [])
+
+console.log(singleTests)
+
   return (
     <div className={styles.main}>
       <div className={styles.container1}>
@@ -23,11 +32,11 @@ const Results = () => {
         <div className={styles.incorrect}>
           {wrongAnswers.map((question) => {
             console.log(question);
-            return <h3 key={question.id}>{question.question}</h3>;
+            return <h4 key={question.id}>{question.question}</h4> ;
           })}{' '}
         </div>
         <h3 className={styles.h3}>{`Tiempo: ${format(results.time)}`}</h3>
-        <h3 className={styles.h3}>Puede volverse a intentar desde:</h3>
+        <h3 className={styles.h3}>{`Puede volver a intentarlo en ${singleTests[0].daysRemaining} días`}</h3>
       </div>
     </div>
   );

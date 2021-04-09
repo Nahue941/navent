@@ -39,6 +39,20 @@ const testController = {
             next(error);
         }
     },
+    async getOneByUser(req, res, next) {
+        try {
+            const userId = req.params.userId;
+            const test = await Test.findByPk(req.params.id
+            );
+            const array = [test]
+            const data = await Test.getRemainingDays(array, userId);
+            res.send(data);
+         
+        }
+        catch (error) {
+            next(error);
+        }
+    },
     async createTest(req, res, next) {
         try {
             const test = await Test.create(req.body);
