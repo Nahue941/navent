@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import AuthRoute from './AuthRoute';
 import NotFound from '../../components/NotFound'; // ruta publica
