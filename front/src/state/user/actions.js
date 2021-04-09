@@ -25,10 +25,12 @@ export const registerUser = createAsyncThunk('REGISTER_USER', async (body) => {
 export const results = createAsyncThunk(
   'RESULTS_TEST',
   async (body) => {
+    console.log("body",body)
     try {
       const testResults = await axios.post('http://localhost:3001/api/result', 
        body
       );
+      console.log("data",testResults.data)
       return testResults.data;
     } catch (error) {
       return console.error(error);

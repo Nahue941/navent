@@ -19,6 +19,10 @@ TestMade.init(
     date : {
       type:S.STRING,
       allowNull:false
+    },
+    time: {
+      type: S.INTEGER,
+      allowNull:false
     }
   },
   { sequelize: db, modelName: 'testMade' },

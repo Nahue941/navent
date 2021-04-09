@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       <Navbar />
-        <div className={styles.bodygit}>
+        <div className="body">
             <Router/>          
         </div>
       <Footer />
