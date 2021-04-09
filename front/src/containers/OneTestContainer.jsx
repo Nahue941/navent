@@ -26,14 +26,33 @@ const TestContainer = ({ testId }) => {
   const indexQuestion = useSelector((state) => state.question.indexQuestion);
   const [loading, setLoading] = useState(true);
   const [time, setTime] = useState(1000);
+  const [lastedTime, setLastedTime] = useState(0)
 
   useEffect(() => {
-    
-    if (!questions.length) {
-      dispatch(allQuestions(testId)).then(() => setLoading(false)).catch(()=> history.push(`/404`));
-      dispatch(setIndexQuestion(0));
-      
-    } else {history.push(`/404`)}
+    const timer = setTimeout(() => {
+      setLastedTime((timer) => timer + 100);
+      console.log("lastedTime", lastedTime)
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+    }
+  }, [lastedTime]);
+
+  useEffect(() => {
+
+    if(questions){
+
+      if (!questions.length) {
+        dispatch(allQuestions(testId)).then(() => setLoading(false)).catch(()=> history.push(`/404`));
+        dispatch(setIndexQuestion(0));
+        
+      } 
+    } 
+      else {
+        history.push(`/404`)
+      }
+
     setLoading(false);
     dispatch(setDisabled(true));
   }, [dispatch]);
@@ -68,6 +87,7 @@ const TestContainer = ({ testId }) => {
           userId: 1, //user.id
           testId: Number(testId),
           date: moment().format('YYYY-MM-DD'),
+          time: lastedTime
         }),
       );
       history.push(`/results`);
