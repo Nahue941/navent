@@ -4,7 +4,7 @@
   display: inline-block;;
   justify-content: left;
   align-items: center;
-  width: 500px;
+  width: 30vw;
 }
 
 p {
@@ -15,6 +15,7 @@ p {
 }
 
 .radioBtn {
+  margin: 12px;
   display: flex;
   justify-content: left;
   align-items: center;

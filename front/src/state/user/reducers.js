@@ -1,4 +1,4 @@
-import { login, registerUser, results, clear } from './actions';
+import { login, registerUser, results, clear, setAuth } from './actions';
 import { createReducer } from '@reduxjs/toolkit';
 
 const initialState = { user: {}, isAuth: false, results: 0 }; //este es el estado Inicial
@@ -15,6 +15,9 @@ const userReducer = createReducer(initialState, {
   [clear]: (state, action) => {
     state.results = {};
   },
-});
+  [setAuth] : (state,action) => {
+    state.isAuth = true
+  }
+ });
 
 export default userReducer;

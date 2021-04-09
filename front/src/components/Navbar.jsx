@@ -10,7 +10,7 @@ const Navbar = () => {
     <>
         <div className={styles.navbar}>
           <div className={styles.container}>
-            <Link to="/">
+            <Link to="/test">
               <img
                 className={styles.logo}
                 src={
@@ -19,15 +19,11 @@ const Navbar = () => {
                 alt="logo"
               />
             </Link>
-            {!logged ? (
+            {!logged && (
               <Link to="/login" className={styles.link}>
                 <input type="button" value="Login" className={styles.link} />
               </Link>
-            ) : (
-              <Link to="/test">
-                <button className={styles.button}>Test</button>
-              </Link>
-            )}
+            ) }
           </div>
         </div>
       </>

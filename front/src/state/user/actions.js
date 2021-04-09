@@ -38,3 +38,5 @@ export const results = createAsyncThunk(
 
 export const clear = createAction("RESET")
 
+export const setAuth = createAction("SET_AUTH")
+
