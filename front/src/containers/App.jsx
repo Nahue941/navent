@@ -15,7 +15,7 @@ const App = () => {
   return (
     <>
       <Navbar />
-        <div className={styles.body}>
+        <div className={styles.bodygit}>
             <Router/>          
         </div>
       <Footer />
