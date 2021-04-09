@@ -18,11 +18,12 @@
 }
 
 .answers {
+    padding: 12px;
     display: flex;
     flex-direction: column;
     font-family: 'Montserrat';
     border-radius: 15px;
-    background-color: rgba(73, 64, 64, 0.089);
+    background-color: rgba(219, 219, 219, 0.678);
     border-radius: 15px;
     box-shadow: -2px 7px 9px 1px rgba(34, 35, 75, 0.254);
 }
@@ -31,6 +32,7 @@
     color: #0A26EE ;
     font-weight: 400;
     text-align: center;
+    margin: 12px;
 }
 
 .header {
