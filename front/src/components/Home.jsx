@@ -28,7 +28,8 @@ const Home = () => {
         <Button
           value={'Ingresar'}
           color={'#0000FF'}
-          marginTop={'30px'}
+          marginTop={'50px'}
+        
           
           onClick={() => {
             dispatch(setAuth())

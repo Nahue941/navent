@@ -1,6 +1,6 @@
 .main {
     width: 100%;
-    height:100vh;
+    height:90vh;
 }
 
 .bg {
@@ -25,6 +25,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    margin: 20px;
   }
 
 .h1 {
@@ -61,8 +62,3 @@
 
 }
 
-.footerIcon {
-   width: 120px;
-   height: 60px;
-   opacity: 0.6;
-}

@@ -8,9 +8,9 @@ const AuthRoutes = () => {
   return (
     <div>
       <Switch>
+        <Route exact path="/" render={() => <Home />} />
         <Route path="/login" render={() => <Login />} />
         <Route path="/register" render={() => <Register />} />
-        <Route exact path="/" render={() => <Home />} />
         <Redirect to="/404"/>
 
       </Switch>

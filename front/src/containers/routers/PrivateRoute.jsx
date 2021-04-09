@@ -14,6 +14,7 @@ const PrivateRoute = () => {
         />
         <Route path="/test" render={() => <AllTestContainer />} />
         <Route path="/results" render={() => <Results />} />
+        <Redirect from="/" to="/test" />
         <Redirect to="/404" />
       </Switch>
     </div>
