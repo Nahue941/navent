@@ -26,6 +26,18 @@ const TestContainer = ({ testId }) => {
   const indexQuestion = useSelector((state) => state.question.indexQuestion);
   const [loading, setLoading] = useState(true);
   const [time, setTime] = useState(1000);
+  const [lastedTime, setLastedTime] = useState(0)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLastedTime((timer) => timer + 100);
+      console.log("lastedTime", lastedTime)
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+    }
+  }, [lastedTime]);
 
   useEffect(() => {
 
@@ -75,6 +87,7 @@ const TestContainer = ({ testId }) => {
           userId: 1, //user.id
           testId: Number(testId),
           date: moment().format('YYYY-MM-DD'),
+          time: lastedTime
         }),
       );
       history.push(`/results`);
