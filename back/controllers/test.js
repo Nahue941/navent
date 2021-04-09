@@ -47,7 +47,7 @@ const testController = {
             const array = [test]
             const data = await Test.getRemainingDays(array, userId);
             res.send(data);
-         
+
         }
         catch (error) {
             next(error);

@@ -1,27 +1,17 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
-import PublicRoute from './PublicRoute';
-import AdminRoute from './AdminRoute';
+import AuthRoute from './AuthRoute';
 import NotFound from '../../components/NotFound'; // ruta publica
+import { useSelector } from 'react-redux';
+
 //falta la lógica del estado del user para manejar lo que se ve y lo que no, está hardcodeado
 const Router = () => {
-  const loggedUser = {
-    auth: true,
-    admin: true,
-  };
-
+  const { isAuth } = useSelector((state) => state.user);
   return (
     <div>
-
-        <Redirect from="/test/:id" to="/404" />
-        <PublicRoute />
-
-        {loggedUser.auth ? <PrivateRoute /> : <Redirect to="/404" />}
-        <Redirect/>
-        {loggedUser.auth ? <AdminRoute /> : <Redirect to="/404" />}
-
-
+      {isAuth ? <PrivateRoute /> : <AuthRoute />}
+        <Route path="/404" component={NotFound} />
     </div>
   );
 };

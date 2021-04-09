@@ -10,6 +10,8 @@
   text-align: center;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   padding-bottom: 0.5em;
   height: 22vh;
@@ -21,6 +23,7 @@
   font-size: 14px;
   font-family: Raleway;
   line-height: 0.5;
+  margin: 10px;
 }
 
 .textSmall {
@@ -29,6 +32,8 @@
   font-weight: 400;
   font-size: 10px;
   font-family: Raleway;
+  margin: 10px;
+
 }
 
 .logo {
@@ -42,9 +47,6 @@
   .text {
     padding-right: 1.9em;
   }
-}
-
-@media (max-width: 600px) {
   .textSmall {
     text-shadow: rgb(255, 255, 255);
     font-weight: 400;
@@ -52,9 +54,6 @@
     font-family: Raleway;
     padding-right: 5em;
   }
-}
-
-@media (max-width: 600px) {
   .logo {
     display: flexbox;
     padding-top: 1em;

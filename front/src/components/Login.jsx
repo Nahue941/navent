@@ -9,7 +9,6 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    console.log(data, '<-----Este es el body');
     //dispatch(login(data));
   };
   return (

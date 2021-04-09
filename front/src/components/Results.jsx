@@ -17,8 +17,6 @@ const Results = () => {
     dispatch(singleTest(results.testId))
   }, [])
 
-console.log(singleTests)
-
   return (
     <div className={styles.main}>
       <div className={styles.container1}>
@@ -36,7 +34,7 @@ console.log(singleTests)
           })}{' '}
         </div>
         <h3 className={styles.h3}>{`Tiempo: ${format(results.time)}`}</h3>
-        <h3 className={styles.h3}>{`Puede volver a intentarlo en ${singleTests[0].daysRemaining} días`}</h3>
+        <h3 className={styles.h3}>{`Puede volver a intentarlo en ${singleTests[0] && singleTests[0].daysRemaining} días`}</h3>
       </div>
     </div>
   );
