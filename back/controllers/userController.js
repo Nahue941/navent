@@ -17,9 +17,9 @@ const userController = {
         where: {
           mail: req.body.mail,
         },
-      });
-      if (userFound.log(req.body.mail, req.body.password)) {
-        res.send('Loged');
+      })
+      if (userFound) {
+        res.send(userFound);
       } else {
         res.status(401).send('Hubo un error');
       }
@@ -30,7 +30,6 @@ const userController = {
 
   saveResult: async (req, res, next) => {
     try {
-      console.log(req.body);
       const newResult = await TestMade.create({...req.body})
       res.status(201).send(newResult);
     } catch (error) {
