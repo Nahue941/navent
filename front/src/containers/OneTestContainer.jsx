@@ -7,7 +7,6 @@ import {
   allQuestions,
   setDisabled,
   setIndexQuestion,
-  resetQuestions,
 } from '../state/questions/actions';
 import { results } from '../state/user/actions';
 import { wrongAnswered } from '../state/answers/actions';

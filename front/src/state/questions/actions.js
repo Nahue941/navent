@@ -9,9 +9,9 @@ export const allQuestions = createAsyncThunk('GET_QUESTIONS', (id) => {
     .catch((err) => console.log(err));
 });
 
-export const allTests = createAsyncThunk('GET_TESTS', () => {
+export const allTests = createAsyncThunk('GET_TESTS', (userId) => {
   return axios
-    .get(`http://localhost:3001/api/test/all/1`) //`http://localhost:3001/api/test/all/${userId}`
+    .get(`http://localhost:3001/api/test/all/${userId}`)
     .then((tests) => tests.data)
     .catch((err) => console.log(err));
 });

@@ -29,7 +29,6 @@ const Results = () => {
         </h2>
         <div className={styles.incorrect}>
           {wrongAnswers.map((question) => {
-            console.log(question);
             return <h4 key={question.id}>{question.question}</h4> ;
           })}{' '}
         </div>

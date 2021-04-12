@@ -20,12 +20,13 @@ const allTestsContainer = () => {
 
   const dispatch = useDispatch();
   const tests = useSelector((state) => state.question.tests);
+  const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
     dispatch(clear())
     dispatch(resetAnswers())
     dispatch(resetQuestions())
-    dispatch(allTests()); //aca habria que mandar el userId
+    dispatch(allTests(user.id));
   }, [dispatch]);
 
   return (
