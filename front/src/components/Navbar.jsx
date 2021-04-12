@@ -14,7 +14,7 @@ const Navbar = () => {
     <>
       <div className={styles.navbar}>
         <div className={styles.container}>
-          <Link to="/test">
+          <Link to={logged ? "/test" : "/"}>
             <img
               className={styles.logo}
               src={
