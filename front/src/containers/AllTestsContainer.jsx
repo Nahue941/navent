@@ -6,6 +6,7 @@ import Modal from '../components/UI/Modal';
 import {resetQuestions} from "../state/questions/actions"
 import { resetAnswers } from '../state/answers/actions';
 import {clear} from "../state/user/actions"
+import {totalTimeReset} from '../state/time/actions'
 
 const allTestsContainer = () => {
   const [modal, setModal] = useState(false);
@@ -22,6 +23,7 @@ const allTestsContainer = () => {
   const tests = useSelector((state) => state.question.tests);
 
   useEffect(() => {
+    dispatch(totalTimeReset())
     dispatch(clear())
     dispatch(resetAnswers())
     dispatch(resetQuestions())

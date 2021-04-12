@@ -10,6 +10,7 @@ import {
 } from '../state/questions/actions';
 import { results } from '../state/user/actions';
 import { wrongAnswered } from '../state/answers/actions';
+import { timeReset, stop, start } from '../state/time/actions';
 
 import Question from '../components/Question';
 import Button from '../components/UI/Button';
@@ -21,25 +22,16 @@ import styles from '../styles/oneTestContainer.module.css';
 const TestContainer = ({ testId }) => {
   const history = useHistory();
   const dispatch = useDispatch();
+
   const questions = useSelector((state) => state.question.all);
   const selectedAnswers = useSelector((state) => state.answer.selectedAnswers);
   const disabled = useSelector((state) => state.question.disabled);
   const indexQuestion = useSelector((state) => state.question.indexQuestion);
+  const allTime = useSelector((state) => state.time.total);
+
   const [loading, setLoading] = useState(true);
-  const [time, setTime] = useState(1000);
-  const [lastedTime, setLastedTime] = useState(0);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLastedTime((timer) => timer + 100);
-      console.log('lastedTime', lastedTime);
-    }, 1000);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [lastedTime]);
-
+  
   useEffect(() => {
     if (questions) {
       if (!questions.length) {
@@ -77,19 +69,20 @@ const TestContainer = ({ testId }) => {
     if (nextQuestion < questions.length) {
       dispatch(setIndexQuestion(nextQuestion));
       dispatch(setDisabled(true));
-      setTime(1000);
+      dispatch(timeReset(1000));
     } else {
       // hacer el dispatch por un lado con info desde el front y hacer el post por otro.
+
       const res = await dispatch(
         results({
           result: (countCorrectAnswers() / questions.length) * 100,
           userId: 1, //user.id
           testId: Number(testId),
           date: moment().format('YYYY-MM-DD'),
-          time: lastedTime,
+          time: allTime,
         }),
       );
-      history.push(`/results`);
+      history.push({ pathname: '/results', state: { testId } });
     }
   };
 
@@ -113,8 +106,6 @@ const TestContainer = ({ testId }) => {
             <Question question={questions[indexQuestion]} />
             <br />
             <Timer
-              time={time}
-              setTime={setTime}
               countCorrectAnswers={countCorrectAnswers}
               handleSubmit={handleSubmit}
             />
