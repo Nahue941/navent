@@ -4,8 +4,10 @@ const S = require('sequelize');
 const testController = {
     async getAll(req, res, next) {
         try {
-            const data = await Test.findAll({});
-            res.send(data);
+            const userId = req.params.userId;
+            const data = await Test.findAll();
+            const tests = await Test.getRemainingDays(data, userId);
+            res.send(tests);
         } catch (error) {
             next(error);
         }
@@ -34,6 +36,20 @@ const testController = {
 
             res.send(testWithAllAnswers);
         } catch (error) {
+            next(error);
+        }
+    },
+    async getOneByUser(req, res, next) {
+        try {
+            const userId = req.params.userId;
+            const test = await Test.findByPk(req.params.id
+            );
+            const array = [test]
+            const data = await Test.getRemainingDays(array, userId);
+            res.send(data);
+
+        }
+        catch (error) {
             next(error);
         }
     },

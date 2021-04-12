@@ -1,15 +1,16 @@
 import React from 'react';
 import styles from '../../styles/button.module.css';
 
-const Button = ({type='button', value='Value', onClick=((e)=> console.log(e)), disabled=false}) => {
+const Button = ({marginLeft='marginLeft', marginTop='marginTop',color='color', type='button', value='Value', onClick, disabled=false}) => {
     return (
         <div>
             <input 
             className={styles.input}
             type={`${type}`}
             value={`${value}`}
-            onClick={onClick}
-            disabled={disabled}/>
+            onClick={(e) => {if(onClick) onClick(e)} }
+            disabled={disabled}
+            style={{backgroundColor: `${color}`, border: `${color}`, marginLeft: `${marginLeft}`, marginTop: `${marginTop}`}}/>
         </div>
     );
 };

@@ -1,34 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&family=Raleway:wght@200&display=swap');
 
 .container {
-  background-color: rgb(87 37 103);
-  position: relative;
-  left:0;
-  bottom:0;
-  right:0;
+  /* background-color: rgb(87 37 103); */
+  /* background-color: rgb(10, 38, 238); */
+  background-color: white;
+
+  box-shadow: -2px -9px 12px -14px rgba(0, 0, 0, 0.75);
+  width: 100%;
   text-align: center;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   padding-bottom: 0.5em;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  height: 22vh;
 }
 
 .text {
-  color: white;
+  color: black;
   text-shadow: rgb(255, 255, 255);
   font-size: 14px;
   font-family: Raleway;
   line-height: 0.5;
+  margin: 10px;
 }
 
 .textSmall {
-  color: white;
+  color: black;
   text-shadow: rgb(255, 255, 255);
   font-weight: 400;
   font-size: 10px;
   font-family: Raleway;
+  margin: 10px;
+
 }
 
 .logo {
@@ -42,27 +47,19 @@
   .text {
     padding-right: 1.9em;
   }
-}
-
-@media (max-width: 600px) {
   .textSmall {
-    color: white;
     text-shadow: rgb(255, 255, 255);
     font-weight: 400;
     font-size: 10px;
     font-family: Raleway;
-    padding-right: 5em;    
+    padding-right: 5em;
   }
-}
-
-@media (max-width: 600px) {
   .logo {
     display: flexbox;
     padding-top: 1em;
     font-size: 1em;
     width: 5.5em;
     height: auto;
-    padding-right: 1.9em; 
+    padding-right: 1.9em;
   }
 }
-
