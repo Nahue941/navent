@@ -30,7 +30,7 @@ const Navbar = () => {
               alt="logo"
             />
           </Link>
-          {!user?.id ? (
+          {! (user?.id) ? (
             <Link to="/login" className={styles.link}>
               <input type="button" value="Login" className={styles.link} />
             </Link>

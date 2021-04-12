@@ -16,8 +16,7 @@ const Router = () => {
     return (
         <div>
             
-            {user?.id ? <PrivateRoute/> : <Redirect to="/404" />}
-            <AuthRoute/>
+            {user?.id ? <PrivateRoute/> : <AuthRoute/>}
             
             <Route path="/404" render={() => <NotFound />} />
             

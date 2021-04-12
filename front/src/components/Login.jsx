@@ -50,7 +50,7 @@ const Login = () => {
         <Link to='/register'>
           <Button
             value="Register"
-            color="#eb0064"
+            color="gray"
             marginLeft="25%"
             marginTop="10%"
           />
