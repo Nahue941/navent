@@ -9,7 +9,8 @@ import {clear} from "../state/user/actions"
 
 const allTestsContainer = () => {
   const [modal, setModal] = useState(false);
-
+  const results = useSelector((state) => state.user.results);
+  
   const getModal = (value) => {
     setModal(value);
   };
@@ -28,6 +29,8 @@ const allTestsContainer = () => {
     dispatch(allTests()); //aca habria que mandar el userId
   }, [dispatch]);
 
+
+  console.log(results.result, "soy result")
   return (
     <>
       <div className={styles.bcImage}>
@@ -59,10 +62,11 @@ const allTestsContainer = () => {
                 <Modal
                   show={modal === test.id}
                   onHide={hideModal}
-                  info={test.description}
+                  info={results.result}
                   time={test.timeToComplete}
                   name={test.name}
                   id={test.id}
+                  lastResult={test.lastResult}
                   daysRemaining={test.daysRemaining}
                 />
               </div>
