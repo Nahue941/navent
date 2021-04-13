@@ -51,10 +51,11 @@ Test.getRemainingDays = async function (testsArray, userId) {
     //los dias estan harcodeados pero tendrian que ser test.days o algo asi
     const today = moment().format('YYYY-MM-DD');
     console.log(testMade);
+    const getResult = testMade?.result//agregado para tener esta data en el modal del test
     const dateTestMaded = testMade?.date;
-    const daysToMade = 5;
+    const daysToMade = 6;
     const daysRemaining = differenceBetweenDates(today, dateTestMaded, daysToMade);
-    return { ...test.dataValues, daysRemaining }
+    return { ...test.dataValues, daysRemaining, getResult }
   });
 
   const tests = await Promise.all(testsPromise);
