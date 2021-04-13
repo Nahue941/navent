@@ -3,7 +3,11 @@ import styles from '../../styles/modal.module.scss';
 import { Link } from 'react-router-dom';
 import PlayIcon from '../UI/PlayIcon';
 import CloseIcon from '../UI/CloseIcon';
-
+//agregar ultimo resultado
+//poner lo intentaste
+//poner los exitos en %
+//traer el resultado más reciente
+//crear una key en el modal que diga ultimo intento y de ahi lo mando al axios
 const Modal = ({ info, time, name, id, onHide, show, daysRemaining }) => {
   const timeMin = time / 60;
   return (
