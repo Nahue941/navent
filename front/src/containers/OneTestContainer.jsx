@@ -45,7 +45,6 @@ const TestContainer = ({ testId }) => {
       if (!questions.length) {
         dispatch(allQuestions(testId)).then(() => setLoading(false)).catch(()=> history.push(`/404`));
         dispatch(setIndexQuestion(0));
-        
       } 
     } 
       else {
