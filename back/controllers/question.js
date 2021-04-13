@@ -1,4 +1,4 @@
-const { Question, Answer } = require('../models'); //revisar si están bien requeridos
+const { Question, Answer } = require('../models');
 
 const questionController = {
     async getOne(req, res, next) {
@@ -22,18 +22,28 @@ const questionController = {
     },
     async editQuestion(req, res, next) {
         try {
-            const question = await Question.findByPk(req.params.id);
-            const editedQuestion = await question.update(req.body);
-            res.sendStatus(200);
+            const updatedQuestion = await Question.update(
+                req.body,
+                {
+                    where: {
+                        id: req.params.id
+                    }
+                });
+            res.send(updatedQuestion);
         } catch (error) {
             next(error);
         }
     },
     async deleteQuestion(req, res, next) {
         try {
-            const question = await Question.findByPk(req.params.id);
-            const updatedQuestion = await question.update({ active: false })
-            res.sendStatus(200);
+            const deletedQuestion = await Question.update(
+                { active: false },
+                {
+                    where: {
+                        id: req.params.id
+                    }
+                });
+            res.send(200);
         } catch (error) {
             next(error);
         }

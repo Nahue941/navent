@@ -12,9 +12,10 @@ const Results = () => {
   const wrongAnswers = useSelector((state) => state.answer.wronglyAnsQuestions);
   const dispatch = useDispatch()
   const singleTests = useSelector((state) => state.test.singleTest)
+  const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
-    dispatch(singleTest(results.testId))
+    dispatch(singleTest(results.testId, user.id))
   }, [])
 
   return (
