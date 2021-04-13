@@ -20,6 +20,7 @@ import ProgressBar from '../components/UI/ProgressBar';
 import styles from '../styles/oneTestContainer.module.css';
 
 const TestContainer = ({ testId }) => {
+
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -27,7 +28,7 @@ const TestContainer = ({ testId }) => {
   const selectedAnswers = useSelector((state) => state.answer.selectedAnswers);
   const disabled = useSelector((state) => state.question.disabled);
   const indexQuestion = useSelector((state) => state.question.indexQuestion);
-  const allTime = useSelector((state) => state.time.total);
+  const {total,countDown} = useSelector((state) => state.time);
 
   const [loading, setLoading] = useState(true);
 
@@ -36,7 +37,7 @@ const TestContainer = ({ testId }) => {
     if (questions) {
       if (!questions.length) {
         dispatch(allQuestions(testId))
-          .then(() => setLoading(false))
+          .then(() =>setTimeout(()=> setLoading(false),1500))
           .catch(() => history.push(`/404`));
         dispatch(setIndexQuestion(0));
       }
@@ -56,6 +57,7 @@ const TestContainer = ({ testId }) => {
   };
 
   const handleSubmit = async (e) => {
+   
     if (e) e.preventDefault();
     const nextQuestion = indexQuestion + 1;
 
@@ -71,15 +73,13 @@ const TestContainer = ({ testId }) => {
       dispatch(setDisabled(true));
       dispatch(timeReset(1000));
     } else {
-      // hacer el dispatch por un lado con info desde el front y hacer el post por otro.
-
       const res = await dispatch(
         results({
           result: (countCorrectAnswers() / questions.length) * 100,
           userId: 1, //user.id
           testId: Number(testId),
           date: moment().format('YYYY-MM-DD'),
-          time: allTime,
+          time:total,
         }),
       );
       history.push({ pathname: '/results', state: { testId } });

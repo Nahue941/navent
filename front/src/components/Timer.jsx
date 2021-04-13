@@ -1,11 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { format } from '../utils/format';
 import { timeLogger, totalTime } from '../state/time/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import Modal from '../components/UI/Modal';
 
 const Timer = ({ handleSubmit }) => {
   const dispatch = useDispatch();
   const { countDown, total } = useSelector((state) => state.time);
+
+  const [modal, setModal] = useState(true);
+
+  const hideModal = () => {
+    setModal(false);
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -13,15 +20,22 @@ const Timer = ({ handleSubmit }) => {
       dispatch(timeLogger(countDown - 100));
     }, 1000);
 
-    if (countDown == 0) {
-      handleSubmit();
-      clearTimeout(timer);
-    }
+    !countDown && clearTimeout(timer);
     return () => {
       clearTimeout(timer);
     };
   }, [countDown]);
 
+  if (!countDown) {
+    return (
+      <Modal
+        show={modal}
+        onHide={hideModal}
+        handleSubmit={handleSubmit}
+        modalType="timeModal"
+      />
+    );
+  }
   return (
     <div>
       <div className="clock">

@@ -1,23 +1,29 @@
 import React, { useEffect } from 'react';
-import Spinner from './UI/Spinner';
-import styles from '../styles/results.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
-import { singleTest } from '../state/test/actions';
+import { useLocation } from 'react-router-dom';
+
+import Spinner from './UI/Spinner';
+
 import { format } from '../utils/format';
-import { useLocation } from "react-router-dom";
+import { singleTest } from '../state/test/actions';
+import styles from '../styles/results.module.scss';
 
 const Results = () => {
-  
-  const {state:{testId}} = useLocation();
-  const numQuestions = useSelector((state) => state.answer.selectedAnswers)
-    .length;
+  const {
+    state: { testId },
+  } = useLocation();
+
+  const numQuestions = useSelector((state) => state.question.all).length;
+
   const results = useSelector((state) => state.user.results);
   const wrongAnswers = useSelector((state) => state.answer.wronglyAnsQuestions);
   const dispatch = useDispatch();
   const singleTests = useSelector((state) => state.test.singleTest);
-console.log(testId);
+  console.log(testId);
   useEffect(() => {
     testId && dispatch(singleTest(testId));
+
+
   }, [testId]);
 
   return (
