@@ -30,7 +30,7 @@ const allTestsContainer = () => {
   }, [dispatch]);
 
 
-  console.log(results.result, "soy result")
+  console.log(results?.result, "soy result")
   return (
     <>
       <div className={styles.bcImage}>
@@ -49,7 +49,9 @@ const allTestsContainer = () => {
         <h1 className={styles.title}>Skills</h1>
         <div className={styles.container}>
           {tests?.map((test) => {
+            console.log(test, "soy test")
             return (
+              
               <div  key={test.id}>
                 <div
                   onClick={() => getModal(test.id)}
@@ -62,11 +64,12 @@ const allTestsContainer = () => {
                 <Modal
                   show={modal === test.id}
                   onHide={hideModal}
-                  info={results.result}
+                  info={test.description}
                   time={test.timeToComplete}
                   name={test.name}
                   id={test.id}
-                  lastResult={test.lastResult}
+                  lastResult={test.testResult}
+                  lastTime={test.testResultTime/100}
                   daysRemaining={test.daysRemaining}
                 />
               </div>

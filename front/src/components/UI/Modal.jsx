@@ -8,8 +8,9 @@ import CloseIcon from '../UI/CloseIcon';
 //poner los exitos en %
 //traer el resultado más reciente
 //crear una key en el modal que diga ultimo intento y de ahi lo mando al axios
-const Modal = ({ info, time, name, id, onHide, show, daysRemaining, lastResult, times }) => {
+const Modal = ({ info, time, name, id, onHide, show, daysRemaining, lastResult, lastTime, times }) => {
   const timeMin = time / 60;
+
   return (
     <>
       <div className={`${styles.modalBg} ${show && styles.active}`}>
@@ -23,7 +24,7 @@ const Modal = ({ info, time, name, id, onHide, show, daysRemaining, lastResult, 
           <h3>Tiempo por pregunta: {timeMin} min</h3>
           {daysRemaining > 0 ?
             <>
-            <h3>Tu última calificación fue {lastResult} </h3>
+            <h3>Tu última calificación fue de {lastResult} %  de preguntas correctas en {lastTime} segundos.</h3>
             <h3>Intentos: {times}</h3>
             <p className={styles.error}>Ya intentaste realizar esta prueba. Debes esperar {daysRemaining} días para volver a intentarlo.</p>
             </>
