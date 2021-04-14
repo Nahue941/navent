@@ -22,9 +22,9 @@ export const getEditTest = createAsyncThunk('GET_EDIT_TEST', (skillId) => {
     .catch(err => console.log(err))
 });
 //post para actualizar el test
-export const setEditTest = createAsyncThunk('SET_EDIT_TEST', (skillId) => {
+export const setEditTest = createAsyncThunk('SET_EDIT_TEST', (testId) => {
     return axios
-    .post(`http://localhost:3001/api/test/edit/${skillId}`)
+    .put(`http://localhost:3001/api/test/${testId}`)
     .then((test) => test.data)
     .catch(err => console.log(err))
 });
