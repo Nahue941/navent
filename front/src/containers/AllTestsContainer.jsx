@@ -7,7 +7,6 @@ import { timeLogger, totalTimeReset } from '../state/time/actions';
 import { resetQuestions } from '../state/questions/actions';
 import { resetAnswers } from '../state/answers/actions';
 
-
 import ModalContainer from './ModalContainer';
 import Background from '../components/UI/Background';
 import styles from '../styles/skillsView.module.scss';
@@ -17,13 +16,13 @@ const allTestsContainer = () => {
 
   useEffect(() => {
     dispatch(clear());
-    dispatch(allTests()); 
+    dispatch(allTests());
 
-      dispatch(resetAnswers());
-      dispatch(resetQuestions());
-      dispatch(timeLogger(1000));
-      dispatch(totalTimeReset());
-    ;//aca habria que mandar el userId
+    dispatch(resetAnswers());
+    dispatch(resetQuestions());
+    dispatch(timeLogger(1000));
+    dispatch(totalTimeReset());
+    //aca habria que mandar el userId
   }, [dispatch]);
 
   return (
