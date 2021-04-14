@@ -6,13 +6,15 @@ import thunk from 'redux-thunk';
 import question from './questions/reducers';
 import answer from './answers/reducers';
 import user from './user/reducers';
-import test from './test/reducers'
+import test from './test/reducers';
+import skill from './skills/reducers';
 
 const reducers = combineReducers({
   question,
   answer,
   user,
-  test
+  test,
+  skill
 });
 
 const persistConfig = {

@@ -14,4 +14,17 @@ export const singleTest = createAsyncThunk('GET_SINGLE_TEST', (testId) => {
     .then((test) => test.data)
     .catch(err => console.log(err))
 });
-
+//traer el test que quiero actualizar
+export const getEditTest = createAsyncThunk('GET_EDIT_TEST', (skillId) => {
+    return axios
+    .get(`http://localhost:3001/api/test/edit/${skillId}`)
+    .then((test) => test.data)
+    .catch(err => console.log(err))
+});
+//post para actualizar el test
+export const setEditTest = createAsyncThunk('SET_EDIT_TEST', (skillId) => {
+    return axios
+    .post(`http://localhost:3001/api/test/edit/${skillId}`)
+    .then((test) => test.data)
+    .catch(err => console.log(err))
+});

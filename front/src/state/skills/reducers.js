@@ -1,14 +1,19 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { allSkills } from "./actions";
-
+import { allSkills, singleSkill } from "./actions";
 const initialState = {
-    allSkills: [] //agregado para panel admin
+    allSkills: [], //agregado para panel admin
+    singleSkill: {}
 };
 
 const skillsReducer = createReducer(initialState, {
     [allSkills.fulfilled] : (state, action) => { 
         const payload = action.payload
         state.allSkills = payload
+    },
+
+    [singleSkill.fulfilled] : (state, action) => { 
+        const payload = action.payload
+        state.singleSkill = payload
     }//agregado para panel admin
 });
 
@@ -20,4 +25,6 @@ export default skillsReducer
 
 
 // cuando me logue con admin que me lleve a admin/skills
+
+//renderizar un nuevo componente que sea edit test, edit test trae todas las preguntas y todas las respuestas de un determinado test, cuando yo este en edit test no necesito single 
 

@@ -4,14 +4,13 @@ import axios from 'axios';
 export const allSkills = createAsyncThunk('GET_ALL_SKILLS', () => {
     return axios
     .get(`http://localhost:3001/api/skill`)
-    .then((test) => test.data)
+    .then((skills) => skills.data)
     .catch(err => console.log(err))
 });
 
-// [
-//     {
-//       name: "nombre del Skill",//string
-//       hasTest: false //boolean, si hay test renderizo un botón para editar test, en false no hay test, si hay test que el botón cambie a crear test
-// componente ediar y crear test
-//     }
-//   ]
+export const singleSkill = createAsyncThunk('GET_SINGLE_SKILL', (skillId) => {
+    return axios
+    .get(`http://localhost:3001/api/skill/${skillId}`)
+    .then((skill) => skill.data)
+    .catch(err => console.log(err))
+});

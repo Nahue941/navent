@@ -1,9 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit';
-import {allTests, singleTest} from "./actions";
+import {allTests, singleTest, getEditTest, setEditTest} from "./actions";
 
 const initialState = {
     all:[],
     singleTest: {},
+    editTest: {},
 };
 
 const testReducer = createReducer(initialState, {
@@ -14,6 +15,14 @@ const testReducer = createReducer(initialState, {
     [singleTest.fulfilled] : (state, action) => {
         const payload = action.payload
         state.singleTest = payload
+    },
+    [getEditTest.fulfilled] : (state, action) => {
+        const payload = action.payload
+        state.editTest = payload
+    },
+    [setEditTest.fulfilled] : (state, action) => {
+        const payload = action.payload
+        state.editTest = payload
     },
 });
 
