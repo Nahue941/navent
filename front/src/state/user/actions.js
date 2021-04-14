@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const login = createAsyncThunk('LOGIN', async (user) => {
   try {
-    const logged = await axios.post(`http://localhost:3001/api/login/`, user);
+    const logged = await axios.post(`http://localhost:3001/api/login`, user);
     return logged.data;
   } catch (err) {
     return console.log(err);
@@ -39,7 +39,4 @@ export const results = createAsyncThunk(
 
 export const clear = createAction("RESET")
 
-export const setAuth = createAction("SET_AUTH")
-
-export const logout = createAction("LOOGOUT")
-
+export const logOut = createAction("LOG_OUT")

@@ -1,20 +1,27 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { logOut } from '../state/user/actions'
 import styles from '../styles/navbar.module.scss';
 import Button from '../components/UI/Button';
-import { useDispatch } from 'react-redux';
-import {useHistory} from "react-router-dom"
-import {logout} from "../state/user/actions"
+
 const Navbar = () => {
-  const logged = useSelector((state) => state.user.isAuth);
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const user = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch(logOut());
+    history.push('/');
+  }
+
+
   return (
     <>
       <div className={styles.navbar}>
         <div className={styles.container}>
-          <Link to="/test">
+          <Link to="/">
             <img
               className={styles.logo}
               src={
@@ -23,11 +30,14 @@ const Navbar = () => {
               alt="logo"
             />
           </Link>
-          {logged && (
-            <Button type="button" value="Logout" color="rgb(233, 0, 102)" onClick={() => {
-              dispatch(logout())
-              history.push("/")
-            }}/>
+          {! (user?.id) ? (
+            <Link to="/login" className={styles.link}>
+              <input type="button" value="Login" className={styles.link} />
+            </Link>
+          ) : (
+            <Link to="/" className={styles.link}>
+              <button onClick={handleClick} className={styles.link}>Log Out</button>
+            </Link>
           )}
         </div>
       </div>

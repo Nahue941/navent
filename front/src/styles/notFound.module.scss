@@ -1,48 +1,48 @@
 @font-face {
-    font-family: 'Hind Vadodara';
-    src: url("https://fonts.googleapis.com/css2?family=Hind+Vadodara&display=swap");
-    font-weight: 400;
+  font-family: 'Hind Vadodara';
+  src: url("https://fonts.googleapis.com/css2?family=Hind+Vadodara&display=swap");
+  font-weight: 400;
 }
 @font-face {
-    font-family: 'Hind Vadodara';
-    src: url("https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@600&display=swap");
-    font-weight: 600;
+  font-family: 'Hind Vadodara';
+  src: url("https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@600&display=swap");
+  font-weight: 600;
 }
 
 
 
 /* // estilo global */
 .container {
-    display: flex ;
-    background-color: rgb(255, 255, 255);
-    margin: 10%;
-    justify-content: center;
+  display: flex ;
+  background-color: rgb(255, 255, 255);
+  margin: 10%;
+  justify-content: center;
 }
 
 .box1{
-    flex-direction: row;
-    
+  flex-direction: row;
+  
 }
 
 .box2{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
 }
 
 .title {
-    font-size: 3em;
-    color: rgb(10, 38, 238);
-    font-weight: 600;
-    text-align:left;
-    line-height: 1.2em;
-    
+  font-size: 3em;
+  color: rgb(10, 38, 238);
+  font-weight: 600;
+  text-align:left;
+  line-height: 1.2em;
+  
 }
 
 .subtitle {
-    font-size: 1.5em;
-    color: rgba(0, 0, 24, 0.84);
-    
+  font-size: 1.5em;
+  color: rgba(0, 0, 24, 0.84);
+  
 }
 
 .font{
