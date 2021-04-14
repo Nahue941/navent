@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { login } from '../state/user/actions';
 import styles from '../styles/form.module.css';
 import Button from '../components/UI/Button'
+
 const Login = () => {
+
   const { register, handleSubmit, watch, errors } = useForm();
   const dispatch = useDispatch();
   const history = useHistory();

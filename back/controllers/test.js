@@ -18,7 +18,7 @@ const testController = {
             const test = await Test.findByPk(req.params.id, {
                 include: {
                     model: Question,
-                    limit: testToFind.qtyQuestions,
+                    limit: testToFind.qtyQuestions - 1, //trae una menos porque más adelante agrega la correcta
                     order: S.literal('random()'),
                     where: { active: true },
                     include: [

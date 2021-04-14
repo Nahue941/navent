@@ -16,7 +16,7 @@ const Results = () => {
 
   useEffect(() => {
     dispatch(singleTest(results.testId, user.id))
-  }, [])
+  }, [dispatch])
 
   return (
     <div className={styles.main}>
@@ -34,7 +34,7 @@ const Results = () => {
           })}{' '}
         </div>
         <h3 className={styles.h3}>{`Tiempo: ${format(results.time)}`}</h3>
-        <h3 className={styles.h3}>{`Puede volver a intentarlo en ${singleTests[0] && singleTests[0].daysRemaining} días`}</h3>
+        <h3 className={styles.h3}>{`Puede volver a intentarlo en ${singleTests && singleTests[0] && singleTests[0].daysRemaining} días`}</h3>
       </div>
     </div>
   );

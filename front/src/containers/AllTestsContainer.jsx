@@ -9,7 +9,8 @@ import {clear} from "../state/user/actions"
 
 const allTestsContainer = () => {
   const [modal, setModal] = useState(false);
-
+  const results = useSelector((state) => state.user.results);
+  
   const getModal = (value) => {
     setModal(value);
   };
@@ -29,6 +30,8 @@ const allTestsContainer = () => {
     dispatch(allTests(user.id));
   }, [dispatch]);
 
+
+  console.log(results?.result, "soy result")
   return (
     <>
       <div className={styles.bcImage}>
@@ -47,7 +50,9 @@ const allTestsContainer = () => {
         <h1 className={styles.title}>Skills</h1>
         <div className={styles.container}>
           {tests?.map((test) => {
+            console.log(test, "soy test")
             return (
+              
               <div  key={test.id}>
                 <div
                   onClick={() => getModal(test.id)}
@@ -64,6 +69,8 @@ const allTestsContainer = () => {
                   time={test.timeToComplete}
                   name={test.name}
                   id={test.id}
+                  lastResult={test.testResult}
+                  lastTime={test.testResultTime/100}
                   daysRemaining={test.daysRemaining}
                 />
               </div>
