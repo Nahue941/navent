@@ -71,3 +71,8 @@
     color: #EC0000;
 }
 
+@media (max-width: 750px) {
+    .modal{
+        width: 125%;
+    }
+}

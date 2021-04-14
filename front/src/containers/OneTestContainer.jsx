@@ -9,7 +9,7 @@ import {
   setIndexQuestion,
 } from '../state/questions/actions';
 import { results } from '../state/user/actions';
-import { wrongAnswered } from '../state/answers/actions';
+import { wrongAnswered, correctAnswers } from '../state/answers/actions';
 
 import Button from '../components/UI/Button';
 import Timer from '../components/Timer';
@@ -30,7 +30,6 @@ const TestContainer = ({ testId }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLastedTime((timer) => timer + 100);
-      console.log("lastedTime", lastedTime)
     }, 1000);
 
     return () => {
@@ -71,6 +70,9 @@ const TestContainer = ({ testId }) => {
       !selectedAnswers[indexQuestion].correct
     ) {
       dispatch(wrongAnswered(questions[indexQuestion]));
+    }
+    else {
+      dispatch(correctAnswers(questions[indexQuestion]))
     }
 
     if (nextQuestion < questions.length) {
@@ -124,7 +126,7 @@ const TestContainer = ({ testId }) => {
               }
               type="submit"
               color="blue"
-              marginLeft="38%"
+              marginLeft="35%"
               marginTop="-5%"
             />
           </form>

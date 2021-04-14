@@ -68,11 +68,18 @@
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
   .bcImage{
   width: 15px;
   height: 100%;
   }
+  .img {
+    width: 210px;
+    height: 700px;
+    margin-top: 600%;
+    object-fit: cover;
+  }
+
 }
 
 .divSkills {
