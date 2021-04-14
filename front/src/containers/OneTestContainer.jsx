@@ -10,7 +10,7 @@ import {
 } from '../state/questions/actions';
 import { results } from '../state/user/actions';
 import { wrongAnswered } from '../state/answers/actions';
-import { timeReset, stop, start } from '../state/time/actions';
+import { timeReset } from '../state/time/actions';
 
 import Question from '../components/Question';
 import Button from '../components/UI/Button';
@@ -28,7 +28,7 @@ const TestContainer = ({ testId }) => {
   const selectedAnswers = useSelector((state) => state.answer.selectedAnswers);
   const disabled = useSelector((state) => state.question.disabled);
   const indexQuestion = useSelector((state) => state.question.indexQuestion);
-  const {total,countDown} = useSelector((state) => state.time);
+  const {total} = useSelector((state) => state.time);
 
   const [loading, setLoading] = useState(true);
 
@@ -46,12 +46,12 @@ const TestContainer = ({ testId }) => {
     }
 
     setLoading(false);
-    dispatch(setDisabled(true));
+  
   }, [dispatch]);
 
   const countCorrectAnswers = () => {
     return selectedAnswers.reduce(
-      (trueAnswers = 0, answer) => (trueAnswers += answer.correct ? 1 : 0),
+      (trueAnswers = 0, answer) => (trueAnswers += answer?.correct ? 1 : 0),
       0,
     );
   };
@@ -108,6 +108,8 @@ const TestContainer = ({ testId }) => {
             <Timer
               countCorrectAnswers={countCorrectAnswers}
               handleSubmit={handleSubmit}
+              setAnswerIndex={selectedAnswers[indexQuestion]}
+
             />
             <br />
             <Button

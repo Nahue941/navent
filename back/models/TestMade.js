@@ -23,7 +23,11 @@ TestMade.init(
     time: {
       type: S.INTEGER,
       allowNull:false
-    }
+    },
+    // times: {//agregada columna para contabilizar los intentos de cada test, con un post desde el front que sume 1?
+    //   type:S.INTEGER,
+    //   allowNull:false
+    // }
   },
   { sequelize: db, modelName: 'testMade' },
 );

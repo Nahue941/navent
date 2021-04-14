@@ -4,17 +4,17 @@ import RaddioButton from './UI/RadioButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDisabled } from '../state/questions/actions';
 import { addAnswer } from '../state/answers/actions';
-import { timeLogger } from '../state/time/actions';
 
 const Question = ({ question }) => {
   const dispatch = useDispatch();
   const indexQuestion = useSelector((state) => state.question.indexQuestion);
-
-  const handleRadioButtonValue = (e, answer) => {
+  const selectedAnswers = useSelector((state) => state.answer.selectedAnswers);
+  const selectedAnswer =
+    selectedAnswers[indexQuestion] && selectedAnswers[indexQuestion].id;
+    const handleRadioButtonValue = (e, answer) => {
     dispatch(setDisabled(false));
     dispatch(addAnswer({ index: indexQuestion, answer }));
   };
-
   return (
     <div className={styles.questionContainer}>
       {question && (
@@ -27,6 +27,7 @@ const Question = ({ question }) => {
                 questionId={question.id}
                 onClick={handleRadioButtonValue}
                 key={answer.id}
+                selectedId={selectedAnswer}
               />
             ))}
           </div>

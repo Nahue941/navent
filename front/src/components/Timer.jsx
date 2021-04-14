@@ -4,10 +4,9 @@ import { timeLogger, totalTime } from '../state/time/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from '../components/UI/Modal';
 
-const Timer = ({ handleSubmit }) => {
+const Timer = ({ handleSubmit, setAnswerIndex }) => {
   const dispatch = useDispatch();
   const { countDown, total } = useSelector((state) => state.time);
-
   const [modal, setModal] = useState(true);
 
   const hideModal = () => {
@@ -27,6 +26,7 @@ const Timer = ({ handleSubmit }) => {
   }, [countDown]);
 
   if (!countDown) {
+    if (setAnswerIndex) return handleSubmit();
     return (
       <Modal
         show={modal}
@@ -36,6 +36,7 @@ const Timer = ({ handleSubmit }) => {
       />
     );
   }
+
   return (
     <div>
       <div className="clock">

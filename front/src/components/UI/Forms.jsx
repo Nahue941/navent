@@ -1,13 +1,10 @@
 /*
 import React from 'react';
 import { useForm } from 'react-hook-form';
-
 const Forms = () => {
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = (data) => console.log(data);
-
   console.log(watch('example')); // watch input value by passing the name of it
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input
@@ -36,6 +33,5 @@ const Forms = () => {
     </form>
   );
 };
-
 export default Forms;
 */

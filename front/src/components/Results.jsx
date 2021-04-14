@@ -39,8 +39,8 @@ const Results = () => {
               Preguntas incorrectas: {wrongAnswers.length} de {numQuestions}
             </h2>
             <div className={styles.incorrect}>
-              {wrongAnswers.map((question) => {
-                return <h4 key={question.id}>{question.question}</h4>;
+              {wrongAnswers.map((question,i) => {
+                return <h4 key={i}>{question.question}</h4>;
               })}{' '}
             </div>
             <h3 className={styles.h3}>{`Tiempo: ${format(results.time)}`}</h3>
