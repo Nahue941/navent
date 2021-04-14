@@ -92,10 +92,13 @@ const testController = {
     },
     async getTestToEdit(req, res, next) {
         try {
-            const test = await Test.findByPk(req.params.id, {
+            const test = await Test.findOne({
+                where: {
+                    skillId: req.params.skillId
+                },
                 include: {
                     model: Question,
-                    include:{
+                    include: {
                         model: Answer,
                     },
                 },
