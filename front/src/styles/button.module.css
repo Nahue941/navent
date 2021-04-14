@@ -13,3 +13,11 @@
     background-color: grey;
     cursor: not-allowed;
 }
+
+@media (max-width: 750px) {
+    .input{
+      width: 120px;
+  
+    }
+  }
+  

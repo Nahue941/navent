@@ -49,3 +49,18 @@
     font-family: 'Hind Vadodara', sans-serif;
 }
 
+@media (max-width: 750px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .box1{
+        img{
+            width: 100%;
+        }
+    }
+    .title{
+        font-size:2em
+    }
+}

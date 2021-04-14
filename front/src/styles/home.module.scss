@@ -62,3 +62,16 @@
 
 }
 
+@media (max-width: 750px) {
+    .items{
+    width: 80%;
+    height: 10%;
+    margin-left: -15px;
+
+    }
+    .h1 {
+        font-size: 2em;
+        margin-left: -20px;
+    
+    }
+}

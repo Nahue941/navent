@@ -46,3 +46,12 @@
     height: 63.3vh;   
 }
 
+
+@media (max-width: 750px) {
+    .answers{
+        width: 130%;
+        height: auto;
+        margin-left: -15%;
+
+    }
+}

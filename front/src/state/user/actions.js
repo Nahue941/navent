@@ -30,7 +30,6 @@ export const results = createAsyncThunk(
       const testResults = await axios.post('http://localhost:3001/api/result', 
        body
       );
-      console.log("data",testResults.data)
       return testResults.data;
     } catch (error) {
       return console.error(error);

@@ -43,7 +43,7 @@
   height: auto;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
   .text {
     padding-right: 1.9em;
   }
