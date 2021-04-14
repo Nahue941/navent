@@ -12,7 +12,6 @@ Question.init(
     },
     active: {
       type: S.BOOLEAN,
-      allowNull: false,
       defaultValue: true,
     },
   },

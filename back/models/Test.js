@@ -35,7 +35,11 @@ Test.init(
     skillId: {
       type: S.INTEGER,
       allowNull: false,
-    }
+    },
+    active: {
+      type: S.BOOLEAN,
+      defaultValue: true,
+    },
   },
   { sequelize: db, modelName: 'test' },
 );
