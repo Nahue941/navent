@@ -6,6 +6,9 @@ const AdminRoute = () => {
     return (
         <div>
             <h3>Admin</h3>
+            <Switch>
+            <Redirect exact from="/" to="admin/skills" />
+            </Switch>
         </div>
     )
 }
