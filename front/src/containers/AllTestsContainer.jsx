@@ -31,7 +31,7 @@ const allTestsContainer = () => {
   }, [dispatch]);
 
 
-  console.log(results?.result, "soy result")
+
   return (
     <>
       <div className={styles.bcImage}>
