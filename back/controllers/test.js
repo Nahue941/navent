@@ -89,6 +89,21 @@ const testController = {
         } catch (error) {
             next(error);
         }
+    },
+    async getTestToEdit(req, res, next) {
+        try {
+            const test = await Test.findByPk(req.params.id, {
+                include: {
+                    model: Question,
+                    include:{
+                        model: Answer,
+                    },
+                },
+            });
+            res.send(test);
+        } catch (error) {
+            next(error);
+        }
     }
 }
 
