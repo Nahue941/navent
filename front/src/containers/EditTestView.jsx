@@ -11,13 +11,13 @@ const EditTestView = ({ skillId }) => {
     <div>
 
         <div>
-        <h1>Edit Test</h1>
-        <h3>Title</h3>
-        <h3>Description</h3>
-        <h3>Answer</h3>
-        <h3>Answer</h3>
-        <h3>Answer</h3>
-        <h3>Answer</h3>
+        <div><h1>Edit Test</h1></div>
+        <div><h3>Title</h3>        <Button color="blue" value="edit" /></div>
+        <div><h3>Description</h3>        <Button color="blue" value="edit" /></div>
+        <div><h3>Answer</h3>        <Button color="blue" value="edit" /> <Button color="blue" value="delete" /></div>
+        <div><h3>Answer</h3>        <Button color="blue" value="edit" /></div>
+        <div><h3>Answer</h3>        <Button color="blue" value="edit" /></div>
+        <div><h3>Answer</h3>        <Button color="blue" value="edit" /></div>
 
         </div>
 
