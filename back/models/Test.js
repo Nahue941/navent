@@ -31,6 +31,10 @@ Test.init(
     daysToReMade: {
       type: S.INTEGER,
       allowNull: false,
+    },
+    skillId: {
+      type: S.INTEGER,
+      allowNull: false,
     }
   },
   { sequelize: db, modelName: 'test' },

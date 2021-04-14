@@ -4,7 +4,8 @@ module.exports = [
     timeToComplete: 20000,//milseg
     description: 'Descripcion del test 1',
     daysToReMade: 10,
-    qtyQuestions: 8
+    qtyQuestions: 8,
+    skillId: 3,
   },
   {
     name:'Capitales-Paises',
@@ -12,19 +13,22 @@ module.exports = [
     description: 'Descripcion del test 2',
     daysToReMade: 5,
     qtyQuestions : 11,
-    qtyAnswers: 5
+    qtyAnswers: 5,
+    skillId: 4,
   },
   {
     name:'Matemáticas',
     timeToComplete: 10000,//seg
     description: 'Un test de preguntas matemáticas para saber cuanto te apasiona esta materia. No te preocupes no va a ser difícil.',
     daysToReMade: 3,
-    qtyQuestions: 7
+    qtyQuestions: 7,
+    skillId: 6,
   },
   {
     name:'Carácteres ASCII',
     timeToComplete: 30000,//seg
     description: 'En este test deberas demostrar cuánto conoces la tabla ASCII.',
-    daysToReMade: 4
+    daysToReMade: 4,
+    skillId: 7,
   },
 ]
