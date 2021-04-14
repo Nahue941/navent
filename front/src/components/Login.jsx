@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import { login } from '../state/user/actions';
 import styles from '../styles/form.module.css';
 import Button from '../components/UI/Button'
+
 const Login = () => {
+
+  const { register, handleSubmit, watch, errors } = useForm();
   const dispatch = useDispatch();
-  const [mail, setMail] = useState('');
-  const [password, setPassword] = useState('');
-  const logged = useSelector((state) => state.user.isAuth);
+  const history = useHistory();
 
   const onSubmit = (data) => {
-    //dispatch(login(data));
+    dispatch(login(data))
+      .then(() => history.push('/'))
   };
-  
+
   return (
     <div className={styles.container}>
       <h2 className={styles.h2}>Ingresa tus datos</h2>
@@ -39,12 +43,20 @@ const Login = () => {
         <span>{errors?.password?.message}</span>
         <hr className={styles.hr} />
         <Button
-              value="Login"
-              type="submit"
-              color="#eb0064"
-              marginLeft="25%"
-              marginTop="10%"
-            />
+          value="Login"
+          type="submit"
+          color="#eb0064"
+          marginLeft="25%"
+          marginTop="10%"
+        />
+        <Link to='/register'>
+          <Button
+            value="Register"
+            color="gray"
+            marginLeft="25%"
+            marginTop="10%"
+          />
+        </Link>
       </form>
     </div>
   );

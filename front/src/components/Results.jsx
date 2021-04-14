@@ -12,16 +12,17 @@ const Results = () => {
   const wrongAnswers = useSelector((state) => state.answer.wronglyAnsQuestions);
   const dispatch = useDispatch()
   const singleTests = useSelector((state) => state.test.singleTest)
+  const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
-    dispatch(singleTest(results?.testId))
-  }, [])
+    dispatch(singleTest(results.testId, user.id))
+  }, [dispatch])
 
   return (
     <div className={styles.main}>
       <div className={styles.container1}>
         <h1 className={styles.h1}>Calificación</h1>
-        <Spinner percentage={results?.result} />
+        <Spinner percentage={results.result} />
       </div>
       <div className={styles.container2}>
         <h2 className={`${styles.h2} ${styles.left}`}>
@@ -29,11 +30,10 @@ const Results = () => {
         </h2>
         <div className={styles.incorrect}>
           {wrongAnswers.map((question) => {
-            console.log(question);
             return <h4 key={question.id}>{question.question}</h4> ;
           })}{' '}
         </div>
-        <h3 className={styles.h3}>{`Tiempo: ${format(results?.time)}`}</h3>
+        <h3 className={styles.h3}>{`Tiempo: ${format(results.time)}`}</h3>
         <h3 className={styles.h3}>{`Puede volver a intentarlo en ${singleTests && singleTests[0] && singleTests[0].daysRemaining} días`}</h3>
       </div>
     </div>

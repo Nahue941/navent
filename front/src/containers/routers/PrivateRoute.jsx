@@ -13,7 +13,7 @@ const PrivateRoute = () => {
           render={({ match }) => <TestContainer testId={match.params.id} />}
         />
         <Route
-          exact path="/test/:id" 
+          exact path="/test/:id"
           render={() => <Redirect from="/test/:id" to="/404" />}
         />
 

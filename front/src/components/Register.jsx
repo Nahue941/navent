@@ -1,16 +1,19 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { registerUser } from '../state/user/actions';
 import styles from '../styles/form.module.css';
 import Button from '../components/UI/Button'
 const Register = () => {
   const { register, handleSubmit, watch, errors } = useForm();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const onSubmit = (data) => {
-    console.log(data, '<-----Este es el body');
-    dispatch(registerUser(data));
+    dispatch(registerUser(data))
+      .then(() => history.push(`/`));
+
   };
   return (
 

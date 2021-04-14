@@ -14,10 +14,11 @@ const testController = {
     },
     async getOne(req, res, next) {
         try {
+            const testToFind = await Test.findByPk(req.params.id);
             const test = await Test.findByPk(req.params.id, {
                 include: {
                     model: Question,
-                    limit: 10,
+                    limit: testToFind.qtyQuestions - 1, //trae una menos porque más adelante agrega la correcta
                     order: S.literal('random()'),
                     where: { active: true },
                     include: [
@@ -25,7 +26,7 @@ const testController = {
                             model: Answer,
                             where: { correct: false },
                             order: S.literal('random()'),
-                            limit: 3
+                            limit: testToFind.qtyAnswers
                         }
                     ],
                 },
@@ -63,18 +64,27 @@ const testController = {
     },
     async editTest(req, res, next) {
         try {
-            const test = await Test.findByPk(req.params.id);
-            const updatedTest = await test.update(req.body);
+            const updatedTest = await Test.update(
+                req.body,
+                {
+                    where: {
+                        id: req.params.id
+                    }
+                });
             res.send(updatedTest);
         } catch (error) {
             next(error);
         }
     },
-    //revisar la forma en que se borraran los test
     async deleteTest(req, res, next) {
         try {
-            const test = await Test.findByPk(req.params.id);
-            const updatedTest = await test.update({ active: false })
+            const test = await Test.update(
+                { active: false },
+                {
+                    where: {
+                        id: req.params.id
+                    }
+                });
             res.sendStatus(200);
         } catch (error) {
             next(error);

@@ -11,8 +11,7 @@ const AuthRoutes = () => {
         <Route exact path="/" render={() => <Home />} />
         <Route path="/login" render={() => <Login />} />
         <Route path="/register" render={() => <Register />} />
-        <Redirect to="/404"/>
-
+        <Redirect to="/404" />
       </Switch>
     </div>
   );
