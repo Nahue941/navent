@@ -1,7 +1,8 @@
-const { Test, Question, Answer } = require('../models');
+const { Test, Question, Answer, User } = require('../models');
 const testArray = require('./testSeed');
 const questionArray = require('./questionSeed');
 const answerArray = require('./answerSeed');
+const userArray = require('./userSeed');
 
 /** Al crear una tabla que contiene un FK. El método bulkCreate revisa que 
  *  dicho id exista en la tabla a la cual quiero relacionar. Por ende se debe
@@ -20,29 +21,36 @@ const answerArray = require('./answerSeed');
 
 
 let testPromise = () => Test.bulkCreate(testArray)
-.then(res => {
-  console.log(`\n-->Test creados`);
-  return res;
-});
+  .then(res => {
+    console.log(`\n-->Test creados`);
+    return res;
+  });
 
 let questionPromise = () => Question.bulkCreate(questionArray)
-.then(res => {
-  console.log(`-->Questions creadas`);
-  return res;
-});
+  .then(res => {
+    console.log(`-->Questions creadas`);
+    return res;
+  });
 
 let answerPromise = () => Answer.bulkCreate(answerArray)
-.then(res => {
-  console.log(`-->Answers creadas`);
-  return res;
-});
+  .then(res => {
+    console.log(`-->Answers creadas`);
+    return res;
+  });
+
+let userPromise = () => User.bulkCreate(userArray)
+  .then(res => {
+    console.log(`-->Usuario/s creado/s`);
+    return res;
+  });
 
 
 
 console.log('inciando seed...');
 testPromise()
-  .then(() => questionPromise() )
-  .then(() => answerPromise() )
+  .then(() => questionPromise())
+  .then(() => answerPromise())
+  .then(() => userPromise())
   .then(() => console.log('\n----Seed terminado----'))
   .then(() => process.exit())
   .catch(e => console.error(e))
