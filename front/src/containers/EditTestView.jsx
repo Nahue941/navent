@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ModalEdit from '../components/UI/ModalEdit';
 import { getEditTest, setEditTest } from '../state/test/actions';
+import RadioButton from '../components/UI/RadioButton';
+
 const EditTestView = ({ skill, skillId }) => {
 
     const dispatch = useDispatch();
@@ -59,16 +61,18 @@ const handleForm = (() => {
     return (
         <div>
             <div>
+
+
                 <div><h1>Editar Test</h1></div>
                 <div  onClick={() => changeState()}><ButtonEdit color="blue" value="editar" /></div>
                 <div > <label>Título: {showInput=='true'? <h3>{title}</h3>:<input placeholder={title} key={skillId}></input>} </label></div>
-                <label>Descripción: {showInput=='true'? <h3>{description}</h3>: <input placeholder={description} key="1" ></input>}</label>
-                <label>Tiempo: {showInput=='true'? <h3>{time}</h3>: <input placeholder={time} key="7" ></input>}</label>
+                <label>Descripción: {showInput=='true'? <h3>{description}</h3>: <input placeholder={description} key={skillId} ></input>}</label>
+                <label>Tiempo: {showInput=='true'? <h3>{time}</h3>: <input placeholder={time} key={skillId} ></input>}</label>
                 <div ><h3>{questions?.map(x => {
                     return (
                         <div key={x.id}>
-                            <label>Pregunta:{ <div><input placeholder={x.question }></input></div>}</label>
-                          <br/>  <label>Respuestas:<div>{x.answers?.map(answer => <div key={answer.id} >{showInput=='true'? <h3>{answer.answer} <span>{answer.correct.toString()}</span></h3>:<input placeholder={answer.answer} key={answer.id}></input>} </div>)}</div></label>
+                            <label>Pregunta:{ showInput=='true'? <h3>{x.question}</h3>: <div><input placeholder={x.question }></input></div>}</label>
+                          <br/>  <label>Respuestas:<div>{x.answers?.map(answer => <div key={answer.id} >{showInput=='true'? <h3>{answer.answer} <span>{<input type="radio" id={answer.id} name="gender" value={answer.correct.toString()}/>}</span></h3>:<input placeholder={answer.answer} key={answer.id}></input>} </div>)}</div></label>
                             
                             
                         </div>)
