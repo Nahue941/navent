@@ -36,6 +36,10 @@ const EditTestView = ({ skill, skillId }) => {
     dispatch(getEditTest(skillId));
   }, [dispatch]);
 
+  const handleChangeRadio = (e) => {
+    console.log(e.target.value)
+  }
+
   const handleClick = () => {
     if (showInput == 'true') setShowInput('false');
     if (showInput == 'false') setShowInput('true');
@@ -142,12 +146,12 @@ const EditTestView = ({ skill, skillId }) => {
                                     required
                                     type="radio"
                                     name={answer.questionId}
-                                    value="true"
-                                    
+                                    value={answer.id}
+                                    onClick={handleChangeRadio}
                                     
                                   />
                                   <span className={styles.checkmark}></span>
-                                  <p>Correcta</p>
+                                  <p>{answer.correct? "correcta" : "incorrecta"}</p>
                                 </label>
                               </div>
                             </span>
