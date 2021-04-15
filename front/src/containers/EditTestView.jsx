@@ -11,11 +11,12 @@ const EditTestView = ({ skill, jijo }) => {
     const dispatch = useDispatch();
     const tests = useSelector((state) => state.test.editTest);
     const title = tests.name
-    const questions = tests.questions// es un array de las preguntas, renderizo con un map
     const description = tests.description
-
-    console.log(title, "soy name")
+    const questions = tests.questions// es un array de las preguntas, renderizo con un map
+    const answers = tests.questions
+    console.log(answers,"soy answers")
     console.log(tests, "soy tests")
+    console.log(questions?.map(x=> x), "soy questions")
     useEffect(() => {
         dispatch(getEditTest(jijo));
     }, [dispatch]);
@@ -29,18 +30,12 @@ const EditTestView = ({ skill, jijo }) => {
 
         <div>
         <div><h1>Edit Test</h1></div>
-        <div><h3>Title</h3>        <Button color="blue" value="edit" /></div>
-        <div><h3>Description</h3>        <Button color="blue" value="edit" /></div>
-        <div><h3>Question 1</h3>        <Button color="blue" value="edit"/> <Button color="blue" value="delete" /></div>
-        <h5>Answer 1</h5> <Button color="red" value="edit" height="30px" width="30px"/>
-        <h5>Answer 2</h5> <ButtonEdit  color="blue" value="edit"/>
-        <h5>Answer 3</h5> <Button color="blue" value="edit" />
-        <div><h3>Question 2</h3>        <Button color="blue" value="edit" /></div>
-        <div><h3>Question 3</h3>        <Button color="blue" value="edit" /></div>
-        <div><h3>Question 4</h3>        <Button color="blue" value="edit" /></div>
-        
+        <div><h3>{title}</h3>        <ButtonEdit  color="blue" value="edit" /></div>
+        <div><h3>{description}</h3>        <ButtonEdit  color="blue" value="edit" /></div>
+        <div><h3>{questions?.map(x=> <div key="1">{x.question}</div> )}</h3>        
+        <ButtonEdit color="blue" value="edit"/>
         </div>
-        
+        </div>
         <div>
         <Link to="/admin/skill" >
         <Button color="blue" value="save" />
