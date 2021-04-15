@@ -20,10 +20,12 @@
     background-color: rgb(221, 217, 217);
     border-radius:16px ;
     width: 40vw;
-    display: flex;
+   display: flex;
+    position:relative;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    min-height: 250px;
     h3 {
         margin: 6px;
     }
@@ -33,7 +35,7 @@
 
 .active {
     visibility: visible;
-    opacity: 1;   
+    opacity:1;   
 }
 
 .icon {
@@ -53,9 +55,12 @@
 }
 
 .containerClose {
+    position:absolute;
     display: flex; 
     justify-content: flex-end;
     margin:3px;
+
+    
 }
 
 .cursor{
@@ -75,4 +80,12 @@
     .modal{
         width: 125%;
     }
+.buttons {
+    width: 50%;
+    min-width: 350px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px;
+}
 }

@@ -7,6 +7,8 @@ import Button from '../components/UI/Button';
 
 const Navbar = () => {
   const user = useSelector((state) => state.user.user);
+  const logged = useSelector((state) => state.user.isAuth);
+
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -21,7 +23,7 @@ const Navbar = () => {
     <>
       <div className={styles.navbar}>
         <div className={styles.container}>
-          <Link to="/">
+          <Link to={logged ? "/test" : "/"}>
             <img
               className={styles.logo}
               src={

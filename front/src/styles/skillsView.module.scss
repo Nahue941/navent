@@ -92,13 +92,16 @@
 }
 
 .disabled{
-  background-color: rgb(201, 201, 201);
+  background-color: rgba(204, 206, 206, 0.705);
 }
 
 .link {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.64);
   font-weight: 300;
+
 }
 
-
+.trophy {
+  width: 30px;
+}
