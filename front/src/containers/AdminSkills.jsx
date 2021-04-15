@@ -7,14 +7,14 @@ const AdminSkills = () => {
   const dispatch = useDispatch();
 
   const skills = useSelector((state) => state.skill.allSkills);
-
+  
   useEffect(() => {
     dispatch(allSkills());
   }, [dispatch]);
 
   return (
     <div>
-      <h3>Admin</h3>
+      <h3>Admin jijo</h3>
       {skills?.map((skill) => (
         <Skill key={skill.id} skill={skill} />
       ))}

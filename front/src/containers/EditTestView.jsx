@@ -3,12 +3,24 @@ import Button from '../components/UI/Button';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ModalEdit from '../components/UI/ModalEdit';
-const EditTestView = ({ skillId }) => {
+import { getEditTest } from '../state/test/actions';
+import Skill from '../components/Skill';
+const EditTestView = ({ skill }) => {
 
-    
+    const dispatch = useDispatch();
+    console.log(skill, "soy skill 2")
+    const skills = useSelector((state) => state);
+    console.log(skills)
+    useEffect(() => {
+        dispatch(getEditTest());
+    }, [dispatch]);
 
+    // {skills?.map((skill) => (
+    //     <Skill key={skill.id} skill={skill} />
+    //   ))}
   return (
     <div>
+
 
         <div>
         <div><h1>Edit Test</h1></div>

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Button from './UI/Button';
 import { Link } from 'react-router-dom';
 const Skill = ({ skill }) => {
+  console.log(skill,"soy skill")
   return (
     <div>
       <h3>{skill.name}</h3>
