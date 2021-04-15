@@ -23,6 +23,7 @@ const TestContainer = ({ testId }) => {
   const selectedAnswers = useSelector((state) => state.answer.selectedAnswers);
   const disabled = useSelector((state) => state.question.disabled);
   const indexQuestion = useSelector((state) => state.question.indexQuestion);
+  const user = useSelector((state) => state.user.user);
   const [loading, setLoading] = useState(true);
   const [time, setTime] = useState(1000);
   const [lastedTime, setLastedTime] = useState(0)
@@ -82,7 +83,7 @@ const TestContainer = ({ testId }) => {
       const res = await dispatch(
         results({
           result: (countCorrectAnswers() / questions.length) * 100,
-          userId: 1, //user.id
+          userId: user.id,
           testId: Number(testId),
           date: moment().format('YYYY-MM-DD'),
           time: lastedTime
