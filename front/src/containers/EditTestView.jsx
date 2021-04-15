@@ -13,10 +13,10 @@ const EditTestView = ({ skill, jijo }) => {
     const title = tests.name
     const description = tests.description
     const questions = tests.questions// es un array de las preguntas, renderizo con un map
-    const answers = tests.questions
-    console.log(answers,"soy answers")
+    const answers = questions.map((x,i, a) => x.answers[4]?.answer)
     console.log(tests, "soy tests")
     console.log(questions?.map(x=> x), "soy questions")
+    console.log(questions.map((x,i, a) => x.answers[i]?.answer), "soy answers")
     useEffect(() => {
         dispatch(getEditTest(jijo));
     }, [dispatch]);
@@ -32,7 +32,8 @@ const EditTestView = ({ skill, jijo }) => {
         <div><h1>Edit Test</h1></div>
         <div><h3>{title}</h3>        <ButtonEdit  color="blue" value="edit" /></div>
         <div><h3>{description}</h3>        <ButtonEdit  color="blue" value="edit" /></div>
-        <div><h3>{questions?.map(x=> <div key="1">{x.question}</div> )}</h3>        
+        <div><h3>{questions?.map(x=> <div key="1">{x.question}</div> )}</h3>
+        <div>{answers?.map(x=> <div key="2">{x}</div> )}</div>
         <ButtonEdit color="blue" value="edit"/>
         </div>
         </div>
