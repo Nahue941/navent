@@ -14,7 +14,7 @@ const AdminSkills = () => {
 
   return (
     <div>
-      <h3>Admin jijo</h3>
+      <h3>Admin</h3>
       {skills?.map((skill) => (
         <Skill key={skill.id} skill={skill} />
       ))}
