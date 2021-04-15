@@ -19,7 +19,7 @@ const CreateForm = ({ skillId }) => {
      {/*  //si newTest.questions.length === 0 */}
       <form onSubmit={handleSubmit}>
         <h3>Descripcion del test</h3>
-        <input value={}></input>
+        <input></input>
         <h3>Tiempo para contestar una pregunta en segundos</h3>
         <input></input>
         <h3>Dias necesarios a esperar para poder volver a intertar el test</h3>
