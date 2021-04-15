@@ -23,7 +23,6 @@ User.init(
     },
     admin: {
       type: S.BOOLEAN,
-      allowNull: false,
       defaultValue: false,
     },
   },

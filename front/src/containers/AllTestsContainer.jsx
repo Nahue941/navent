@@ -15,10 +15,10 @@ const allTestsContainer = () => {
   const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
+    dispatch(allTests(user.id));
     dispatch(clear());
     dispatch(resetAnswers());
     dispatch(resetQuestions());
-    dispatch(allTests(user.id));
     dispatch(timeLogger(1000));
     dispatch(totalTimeReset());
   }, [dispatch]);

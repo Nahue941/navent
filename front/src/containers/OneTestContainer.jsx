@@ -31,6 +31,10 @@ const TestContainer = ({ testId }) => {
   const disabled = useSelector((state) => state.question.disabled);
   const indexQuestion = useSelector((state) => state.question.indexQuestion);
   const {total} = useSelector((state) => state.time);
+  const user = useSelector((state) => state.user.user);
+  const [loading, setLoading] = useState(true);
+
+ 
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -41,9 +45,8 @@ const TestContainer = ({ testId }) => {
       clearTimeout(timer);
     }
   }, [lastedTime]);
-  const [loading, setLoading] = useState(true);
 
-  
+
   useEffect(() => {
     if (questions) {
       if (!questions.length) {
@@ -92,7 +95,7 @@ const TestContainer = ({ testId }) => {
       const res = await dispatch(
         results({
           result: (countCorrectAnswers() / questions.length) * 100,
-          userId: 1, //user.id
+          userId: user.id,
           testId: Number(testId),
           date: moment().format('YYYY-MM-DD'),
           time:total,
