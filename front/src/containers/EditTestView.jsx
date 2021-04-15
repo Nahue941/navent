@@ -106,16 +106,16 @@ const EditTestView = ({ skill, skillId }) => {
         </Link>
         <div>
           <h3>
-            {questions?.map((x) => {
+            {questions?.map((question) => {
               return (
-                <div key={x.id}>
+                <div key={question.id}>
                   <label>
                     Pregunta:
                     {showInput == 'true' ? (
-                      <h3>{x.question}</h3>
+                      <h3>{question.question}</h3>
                     ) : (
                       <div>
-                        <input placeholder={x.question}></input>
+                        <input placeholder={question.question}></input>
                       </div>
                     )}
                   </label>
@@ -123,7 +123,7 @@ const EditTestView = ({ skill, skillId }) => {
                   <label>
                     Respuestas:
                     <div>
-                      {x.answers?.map((answer) => (
+                      {question.answers?.map((answer) => (
                         <div key={answer.id}>
                           {showInput == 'true' ? (
                             <p>{answer.answer} </p>
