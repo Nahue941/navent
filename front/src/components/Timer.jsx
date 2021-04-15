@@ -3,6 +3,7 @@ import { format } from '../utils/format';
 import { timeLogger, totalTime } from '../state/time/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from '../components/UI/Modal';
+import styles from '../styles/timer.modules.scss'
 
 const Timer = ({ handleSubmit, setAnswerIndex }) => {
   const dispatch = useDispatch();
@@ -38,9 +39,9 @@ const Timer = ({ handleSubmit, setAnswerIndex }) => {
   }
 
   return (
-    <div>
-      <div className="clock">
-        <p>{format(countDown)}</p>
+    <div >
+      <div className={styles.timer}>
+        <p  >{format(countDown)}</p>
       </div>
     </div>
   );

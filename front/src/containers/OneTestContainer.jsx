@@ -103,14 +103,16 @@ const TestContainer = ({ testId }) => {
       <div className={styles.header}>
         {questions && (
           <form onSubmit={handleSubmit}>
-            <Question question={questions[indexQuestion]} />
-            <br />
+            <div className={styles.timerDiv}>
             <Timer
               countCorrectAnswers={countCorrectAnswers}
               handleSubmit={handleSubmit}
               setAnswerIndex={selectedAnswers[indexQuestion]}
-
+              className={styles.timer}
             />
+            </div>
+            <Question question={questions[indexQuestion]} />
+            <br />
             <br />
             <Button
               disabled={disabled}

@@ -6,6 +6,7 @@ import CloseIcon from '../UI/CloseIcon';
 import Button from "../UI/Button"
 import styles from '../../styles/modal.module.scss';
 
+
 const Modal = ({
   info,
   time,
@@ -15,10 +16,12 @@ const Modal = ({
   show,
   daysRemaining,
   modalType,
-  handleSubmit
+  handleSubmit,
+  results
 }) => {
   const timeMin = time / 60;
-  const history = useHistory()
+  const history = useHistory();
+
   return (
     <>
       <div className={`${styles.modalBg} ${show && styles.active}`}>
@@ -34,10 +37,15 @@ const Modal = ({
             <h3> {info}</h3>
             <h3>Tiempo por pregunta: {timeMin} min</h3>
             {daysRemaining > 0 ? (
+              <>
+              <h3>
+                Último resultado: {results}%
+              </h3>
               <p className={styles.error}>
                 Ya intentaste realizar esta prueba. Debes esperar{' '}
                 {daysRemaining} días para volver a intentarlo.
               </p>
+              </>
             ) : (
               <Link to={`/test/${id}`} className={styles.container}>
                 <PlayIcon />
