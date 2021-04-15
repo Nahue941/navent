@@ -3,6 +3,7 @@ import Button from './UI/Button';
 import { Link } from 'react-router-dom';
 import style from '../styles/skills.module.scss';
 
+
 const Skill = ({ skill }) => {
 
   return (
@@ -10,11 +11,11 @@ const Skill = ({ skill }) => {
       {skill.name}
       {skill.hasTest ? (
         <Link to={`/admin/skill/edit/${skill.id}`}>
-          <Button color="blue" value="editar test" />
+          <button>Editar Test</button>
         </Link>
       ) : (
         <Link to={`/admin/skill/create/${skill.id}`}>
-          <Button color="blue" value="crear test" />
+        <button>Crear Test</button>
         </Link>
       )}
     </div>
