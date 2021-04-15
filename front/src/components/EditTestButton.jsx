@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 //
 
-const EditTest = ({ skillId }) => {
+const EditTestButton = ({ skillId }) => {
 
     const dispatch = useDispatch()
 
@@ -28,4 +28,4 @@ const EditTest = ({ skillId }) => {
   );
 };
 
-export default EditTest;
+export default EditTestButton;

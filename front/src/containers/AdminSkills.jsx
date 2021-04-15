@@ -7,7 +7,7 @@ const AdminSkills = () => {
   const dispatch = useDispatch();
 
   const skills = useSelector((state) => state.skill.allSkills);
-
+  
   useEffect(() => {
     dispatch(allSkills());
   }, [dispatch]);
