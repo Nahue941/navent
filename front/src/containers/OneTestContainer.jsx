@@ -16,6 +16,7 @@ import Question from '../components/Question';
 import Button from '../components/UI/Button';
 import Timer from '../components/Timer';
 import ProgressBar from '../components/UI/ProgressBar';
+import Background from '../components/UI/BackgroundTest'
 
 import styles from '../styles/oneTestContainer.module.css';
 
@@ -105,6 +106,7 @@ const TestContainer = ({ testId }) => {
   if (loading) return <div className={styles.loading}>loading</div>;
   return (
     <div className={styles.container}>
+      <Background/>
       <div className={styles.header}>
         <h2 className={styles.h2}>
           {indexQuestion + 1} de{' '}

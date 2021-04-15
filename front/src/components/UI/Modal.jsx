@@ -13,7 +13,7 @@ import styles from '../../styles/modal.module.scss'
 //crear una key en el modal que diga ultimo intento y de ahi lo mando al axios
 const Modal = ({ info, time, name, id, onHide, show, daysRemaining, lastResult, lastTime ,modalType, handleSubmit}) => {
   const timeMin = time / 60;
-
+  const history = useHistory()
   return (
     <>
       <div className={`${styles.modalBg} ${show && styles.active}`}>

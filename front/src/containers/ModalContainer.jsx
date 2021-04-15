@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import trophy from '../assets/ribbon.png';
 import Modal from '../components/UI/Modal';
 import styles from '../styles/skillsView.module.scss';
+import clock from '../assets/Clock.jpg';
 
 import { resultTests } from '../utils/test';
 
@@ -32,7 +33,9 @@ const ModalContainer = () => {
                 }`}
               >
                 <h2>{test.name}</h2>
-
+                {results[i] && (
+                  <img src={clock} alt="clockLogo" className={styles.trophy} />
+                )}
                 {results[i] >= 70 && (
                   <div className={styles.trophyDiv}>
                     <img

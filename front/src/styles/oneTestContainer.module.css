@@ -5,7 +5,7 @@
   justify-content: center;
   flex-direction: column;
   font-family: 'Raleway';
-  margin: 30px;
+  /* margin: 30px; */
   align-content: center;
 }
 
@@ -44,6 +44,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top:20px ;
 }
 
 .loading {
