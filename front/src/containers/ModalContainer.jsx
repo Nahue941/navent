@@ -5,7 +5,6 @@ import trophy from '../assets/ribbon.png';
 import Modal from '../components/UI/Modal';
 import styles from '../styles/skillsView.module.scss';
 import clock from '../assets/Clock.jpg';
-
 import { resultTests } from '../utils/test';
 
 const ModalContainer = () => {
@@ -56,7 +55,8 @@ const ModalContainer = () => {
               id={test.id}
               daysRemaining={test.daysRemaining}
               modalType="testModal"
-              results={results[i]}
+              lastResult={Math.round(results[i])}
+              lastTime={tests[i].testResultTime}
             />
           </div>
         );
