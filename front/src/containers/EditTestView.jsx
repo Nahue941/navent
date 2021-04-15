@@ -10,10 +10,10 @@ const EditTestView = ({ skill, jijo }) => {
     
     const dispatch = useDispatch();
     const tests = useSelector((state) => state.test.editTest);
-    const title = tests.name
-    const description = tests.description
-    const questions = tests.questions// es un array de las preguntas, renderizo con un map
-    const answers = questions.map((x,i, a) => x.answers[i]?.answer)
+    const title = tests?.name
+    const description = tests?.description
+    const questions = tests?.questions// es un array de las preguntas, renderizo con un map
+    const answers = questions?.map((x,i, a) => x.answers[i]?.answer)
     console.log(tests, "soy tests")
     console.log(questions?.map(x=> x), "soy questions")
     console.log(questions.map((x,i, a) => x.answers[i]?.answer), "soy answers")
