@@ -70,9 +70,9 @@ Test.getRemainingDays = async function (testsArray, userId) {
     });
     //los dias estan harcodeados pero tendrian que ser test.days o algo asi
     const today = moment().format('YYYY-MM-DD');
-    const testResult = testMade?.result//agregado para tener el resultado del test en el front
-    const testResultTime = testMade?.time//mando el tiempo del test resuelto al front
-    const dateTestMaded = testMade?.date;
+    const testResult = testMade && testMade.result//agregado para tener el resultado del test en el front
+    const testResultTime = testMade && testMade.time//mando el tiempo del test resuelto al front
+    const dateTestMaded = testMade && testMade.date;
     const daysToMade = test.daysToReMade;
     const daysRemaining = differenceBetweenDates(today, dateTestMaded, daysToMade);
     return { ...test.dataValues, daysRemaining, testResult, testResultTime }
