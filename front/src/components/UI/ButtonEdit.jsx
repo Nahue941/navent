@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from '../../styles/button.module.css';
 
-const Button = ({marginLeft='marginLeft', marginTop='marginTop',color='color', type='button', value='Value', height='height', width='width', onClick, disabled=false}) => {
+const ButtonEdit = ({marginLeft='marginLeft', marginTop='marginTop',color='color', type='button', value='Value', height='height', width='width', onClick, disabled=false}) => {
     return (
         <div>
             <input 
-            className={styles.input}
+            className={`${styles.input} ${styles.edit}`}
             type={`${type}`}
             value={`${value}`}
             onClick={(e) => {if(onClick) onClick(e)} }
@@ -15,4 +15,4 @@ const Button = ({marginLeft='marginLeft', marginTop='marginTop',color='color', t
     );
 };
 
-export default Button;
+export default ButtonEdit;

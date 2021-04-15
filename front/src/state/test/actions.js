@@ -16,10 +16,9 @@ export const singleTest = createAsyncThunk('GET_SINGLE_TEST', (testId) => {
 });
 //traer el test que quiero actualizar
 export const getEditTest = createAsyncThunk('GET_EDIT_TEST', (skillId) => {
-    console.log(skillId, "soy skillid")
     return axios
-    .get(`http://localhost:3001/api/test/edit/${skillId}`, console.log(skillId, "soy id 2"))
-    .then((test) => console.log(test.data, "soy data"))
+    .get(`http://localhost:3001/api/test/edit/${skillId}`)
+    .then((test) => test.data)
     .catch(err => console.log(err))
 });
 //post para actualizar el test
