@@ -11,9 +11,11 @@ const questionController = {
     },
     async createQuestion(req, res, next) {
         try {
+            console.log(req.params.id);
+            console.log(typeof req.params.id)
             const question = await Question.create({
                 ...req.body,
-                testId: req.params.id
+                testId: Number(req.params.id)
             });
             res.sendStatus(200);
         } catch (error) {
