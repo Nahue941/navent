@@ -17,6 +17,44 @@ const EditTestView = ({ skill, skillId }) => {
 
   const questions = test?.questions; // es un array de las preguntas, renderizo con un map
   const [showInput, setShowInput] = useState('true');
+  const [OnClickTrue, setOnClickTrue] = useState(null);
+  const [OnClickTrueIndex, setOnClickTrueIndex] = useState(Number());
+
+    console.log([OnClickTrue, OnClickTrueIndex, "valores antes" ])
+
+
+
+      //Nueva data para el form
+    const [newTest, setNewTest] = useState({}); 
+      const [newTitle, setNewTitle] = useState([]);
+      const [newDescription, setNewDescription] = useState(null);
+      const [newTime, setNewTime] = useState(null);
+      const [newQuestion, setNewQuestion] = useState(null);
+      const [newAnswer, setNewAnswer] = useState(null);
+        const newValues = {
+            
+            
+            
+        };
+        console.log(newTitle);
+
+
+
+    const handleChangeTitle =  (e) => {
+        
+        setNewQuestion(e.target.value)
+        console.log(newTitle,"soy title")
+    }
+
+    console.log(newTitle,"soy title2222222222")
+    const handleChangeDescription = (e) => {console.log(e.target.value,"soy description")}
+    const handleChangeTime = (e) => {console.log(e.target.value,"soy time")}
+    const handleChangeQuestion = (e) => {console.log(e.target.value,"soy question")}
+    const handleChangeAnswer = (e) => {console.log(e.target.value,"soy answer")}
+    const handleInputTest = (e) => {
+        setNewTest({...newTest, [e.target.name]: e.target.value})
+        console.log(newTest)
+    }
 
   const changeState = () => {
     if (showInput == 'true') setShowInput('false');
@@ -24,20 +62,26 @@ const EditTestView = ({ skill, skillId }) => {
   };
   console.log(showInput);
 
-  //Nueva data para el form
-  const newValues = {
-    title: title,
-    description: description,
-    questions: questions,
-  };
-  console.log(newValues);
+
 
   useEffect(() => {
     dispatch(getEditTest(skillId));
+    setNewTest(test)
   }, [dispatch]);
 
   const handleChangeRadio = (e) => {
-    console.log(e.target.value)
+    let correct = [e.target.value.split(",")][0][0]=='false'? false : true
+    let answerId = Number([e.target.value.split(",")][0][1])
+    console.log(correct, answerId, "consola")
+    if (correct==true) {
+        setOnClickTrue(false)
+        setOnClickTrueIndex(answerId)
+    }
+    if (correct==false) {
+        setOnClickTrue(true)
+        setOnClickTrueIndex(answerId)
+    }
+    console.log([OnClickTrue, OnClickTrueIndex, "valore después" ])
   }
 
   const handleClick = () => {
@@ -53,13 +97,13 @@ const EditTestView = ({ skill, skillId }) => {
     dispatch(getEditTest(newValues));
   };
 
-  const handleRadioChange = (e) => {
-    setNewQuestion({
-      ...newQuestion,
-      [e.target.name]: e.target.value === 'true',
-    });
-    console.log(newQuestion);
-  };
+//   const handleRadioChange = (e) => {
+//     setNewQuestion({
+//       ...newQuestion,
+//       [e.target.name]: e.target.value === 'true',
+//     });
+//     console.log(newQuestion);
+//   };
 
   // {skills?.map((skill) => (
   //     <Skill key={skill.id} skill={skill} />
@@ -69,12 +113,12 @@ const EditTestView = ({ skill, skillId }) => {
     <div>
       <div>
         <div></div>
-
+        
         <div>
           <h1>Editar Test</h1>
         </div>
         <div onClick={() => changeState()}>
-          <ButtonEdit color="blue" value="editar" />
+           <ButtonEdit color="blue" width="80px" value={showInput=='true'? "editar" : "cancelar"} />
         </div>
         <div>
           {' '}
@@ -83,7 +127,7 @@ const EditTestView = ({ skill, skillId }) => {
             {showInput == 'true' ? (
               <h3>{title}</h3>
             ) : (
-              <input placeholder={title} key={skillId}></input>
+              <input key={skillId} placeholder={newTest?.title} defaultValue={newTest?.title} name="name" onChange={handleInputTest}></input>
             )}{' '}
           </label>
         </div>
@@ -92,7 +136,7 @@ const EditTestView = ({ skill, skillId }) => {
           {showInput == 'true' ? (
             <h3>{description}</h3>
           ) : (
-            <input placeholder={description} key={skillId}></input>
+            <input placeholder={description} key={skillId} onChange={handleChangeDescription}></input>
           )}
         </label>
         <br />
@@ -101,7 +145,7 @@ const EditTestView = ({ skill, skillId }) => {
           {showInput == 'true' ? (
             <h3>{time}</h3>
           ) : (
-            <input placeholder={time} key={skillId}></input>
+            <input placeholder={time} key={skillId} onChange={handleChangeTime}></input>
           )}
         </label>
         <h1>PREGUNTAS:</h1>
@@ -119,7 +163,7 @@ const EditTestView = ({ skill, skillId }) => {
                       <h3>{question.question}</h3>
                     ) : (
                       <div>
-                        <input placeholder={question.question}></input>
+                        <input placeholder={question.question} onChange={handleChangeQuestion}></input>
                       </div>
                     )}
                   </label>
@@ -128,16 +172,19 @@ const EditTestView = ({ skill, skillId }) => {
                     Respuestas:
                     <div>
                       {question.answers?.map((answer) => (
+                        
                         <div key={answer.id}>
                           {showInput == 'true' ? (
-                            <p>{answer.answer} </p>
+                            <p>{answer.id} </p>
+                            
                           ) : (
                             <input
                               placeholder={answer.answer}
                               key={answer.id}
+                              onChange={handleChangeAnswer}
                             ></input>
                           )}
-                          {answer.correct.toString()}
+                          {OnClickTrue}
                           {showInput == 'true' ? null : (
                             <span>
                               <div className={styles.body}>
@@ -146,12 +193,12 @@ const EditTestView = ({ skill, skillId }) => {
                                     required
                                     type="radio"
                                     name={answer.questionId}
-                                    value={answer.id}
+                                    value={[answer.correct, answer.id]}
                                     onClick={handleChangeRadio}
                                     
                                   />
                                   <span className={styles.checkmark}></span>
-                                  <p>{answer.correct? "correcta" : "incorrecta"}</p>
+                                  <p>{answer.correct==true ? "correcta" : "incorrecta"}</p>
                                 </label>
                               </div>
                             </span>
