@@ -5,7 +5,6 @@ import { useLocation } from 'react-router-dom';
 import Spinner from './UI/Spinner';
 
 import { format } from '../utils/format';
-import { singleTest } from '../state/test/actions';
 import styles from '../styles/results.module.scss';
 import * as IconName from 'react-icons/fc';
 import * as HappyIcon from "react-icons/bi";
@@ -21,12 +20,8 @@ const Results = () => {
   const results = useSelector((state) => state.user.results);
   const wrongAnswers = useSelector((state) => state.answer.wronglyAnsQuestions);
   const correctAnswers = useSelector((state) => state.answer.correctlyAnswered);
-  const dispatch = useDispatch();
   const singleTests = useSelector((state) => state.test.singleTest);
 
-  useEffect(() => {
-    dispatch(singleTest(results.testId));
-  }, []);
 
   return (
     <div className={styles.main}>
@@ -67,8 +62,8 @@ const Results = () => {
           <h2 className={`${styles.h2} ${styles.left}`}>Todas las respuestas fueron acertadas</h2>
         )}
         <br/>
-        <h3 className={styles.h3}><IconName.FcClock/>{`Tiempo: ${format(results.time)}`}<br/>{`Puede volver a intentarlo en ${
-          singleTests[0] && singleTests[0].daysRemaining
+        <h3 className={styles.h3}><IconName.FcClock/>{`Tu tiempo fue de: ${format(results.time)}`}<br/>{`Puedes volver a intentarlo en ${
+          singleTests.daysToReMade
         } días`}</h3>
       </div>
     </div>

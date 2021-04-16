@@ -10,7 +10,7 @@ export const allTests = createAsyncThunk('GET_TESTS', (userId) => {
 
 export const singleTest = createAsyncThunk('GET_SINGLE_TEST', (testId) => {
     return axios
-    .get(`http://localhost:3001/api/test/${testId}/${userId}`)
+    .get(`http://localhost:3001/api/test/data/${testId}`)
     .then((test) => test.data)
     .catch(err => console.log(err))
 });
