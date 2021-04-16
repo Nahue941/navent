@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import AdminSkills from '../AdminSkills';
-import EditTestView from '../EditTestView1.jsx';
+import EditTestView from '../EditTestView.jsx';
 import CreateQuestion from '../../components/CreateQuestion';
 
 const AdminRoute = () => {
