@@ -1,5 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
-import {allTests, singleTest, getEditTest, setEditTest} from "./actions";
+
+import {allTests, singleTest, getEditTest, setEditTest ,addAdminAnswer} from "./actions";
 
 const initialState = {
     all:[],
@@ -24,6 +25,9 @@ const testReducer = createReducer(initialState, {
         const payload = action.payload
         state.editTest = payload
     },
+    [addAdminAnswer.fulfilled] : (state,action) => {
+        editTest.question.answer = [...editTest.question.answer,action.payload]
+    }
 });
 
 export default testReducer

@@ -13,7 +13,7 @@ const EditTestView = ({ skill, skillId }) => {
     const tests = useSelector((state) => state.test.editTest);
     const title = tests?.name
     const description = tests?.description
-    const time = tests?.timeToComplete
+    const time = tests?.timeToCompleteimport;
     // const answerBoolean = correct hacerlo con un checkbox
     
     const questions = tests?.questions// es un array de las preguntas, renderizo con un map

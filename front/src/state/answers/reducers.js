@@ -5,6 +5,7 @@ const initialState = {
   selectedAnswers: [],
   wronglyAnsQuestions: [],
   correctlyAnswered: [],
+  
 };
 
 const answersReducer = createReducer(initialState, {

@@ -28,3 +28,14 @@ export const setEditTest = createAsyncThunk('SET_EDIT_TEST', (testId) => {
     .then((test) => test.data)
     .catch(err => console.log(err))
 });
+
+export const addAdminAnswer = createAsyncThunk(
+    'ADD_ADMIN_ANSWER',
+    ({ testId, answer }) => {
+      axios
+        .post(`http://localhost:3001/api/answer/:${testId}`, answer)
+        .then((answer) => answer.data)
+        .catch((err) => console.log(err));
+    },
+  );
+  
