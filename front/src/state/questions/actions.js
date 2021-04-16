@@ -16,6 +16,15 @@ export const allTests = createAsyncThunk('GET_TESTS', (userId) => {
     .catch((err) => console.log(err));
 });
 
+export const createQuestion = createAsyncThunk('CREATE_QUESTION', (body) => {
+  let {testId, newQuestion} = body;
+  return axios({
+    method: 'post',
+    data: newQuestion,
+    url: `http://localhost:3001/api/question/${testId}`
+  })
+})
+
 export const setDisabled = createAction('SET_DISABLED');
 
 export const setIndexQuestion = createAction('SET_INDEX_QUESTION')
