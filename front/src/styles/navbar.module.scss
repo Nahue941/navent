@@ -56,3 +56,10 @@
   outline-color: rgba(61, 229, 223, 1);
   outline-width: 1px;
 }
+
+@media (max-width: 750px) {
+  .navbar{
+    width: 100%;
+
+  }
+}

@@ -14,6 +14,13 @@
     cursor: not-allowed;
 }
 
+@media (max-width: 750px) {
+    .input{
+      width: 120px;
+  
+    }
+  }
+  
 .edit {
     width: 60px;
     height: 30px;

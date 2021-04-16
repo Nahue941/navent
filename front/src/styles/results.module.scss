@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@300;400;500&display=swap');
+
 .container1 {
   display: flex;
   justify-content: flex-start;
@@ -12,12 +14,13 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
-  width: 50vw;
-  height: 80vh;
+  // width: 50vw;
+  // height: 80vh;
 }
 
 .left {
-  text-align: left;
+  text-align: center;
+    font-family: 'Hind Vadodara', sans-serif;
 }
 
 .main {
@@ -34,11 +37,43 @@
 
 .h2 {
   font-size: 2em;
-  margin: 50px 0px 50px 0px ;
+  margin: 0px 0px 50px 0px ;
+  font-family: 'Hind Vadodara', sans-serif;
 
 }
 
 
 .incorrect {
-  min-height: 200px;
+ background-color: rgba(196, 196, 196, 0.164);
+
+ min-width: 450px;
+  margin-bottom: 10%;
+  margin-top: -5%;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+
+  // border: 1px solid #000;
+
+  height: auto;
+}
+
+@media (max-width: 750px) {
+  .main{
+    flex-direction: column;
+
+  }
+  .incorrect{
+    min-width: 140%;
+    // margin-bottom: 20%;
+    // margin-top: -5%;
+    margin-left: -18%;
+  }
+  .h2{
+    font-size: 1.5em;
+    margin-top:10px;
+    margin-bottom: 32px;
+  }
+  .h3{
+    text-align: center;
+  }
 }

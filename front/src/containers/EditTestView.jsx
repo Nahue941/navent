@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import Button from '../components/UI/Button';
 import ButtonEdit from '../components/UI/ButtonEdit';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { getEditTest } from '../state/test/actions';
 import ModalEdit from '../components/UI/ModalEdit';
-import { getEditTest, setEditTest } from '../state/test/actions';
+// import styles from '../styles/editView.module.scss';
 import RadioButton from '../components/UI/RadioButton';
 import styles from '../styles/radioButton.module.css';
 import styles2 from '../styles/editTestView.module.scss';
+
+import editLogo from '../assets/Edit.png';
+import addLogo from '../assets/add.png';
+
 
 const EditTestView = ({ skill, skillId }) => {
   const dispatch = useDispatch();
@@ -17,7 +21,10 @@ const EditTestView = ({ skill, skillId }) => {
   const time = test?.timeToComplete;
   // const answerBoolean = correct hacerlo con un checkbox
 
-  const questions = test?.questions; // es un array de las preguntas, renderizo con un map
+  const tests = useSelector((state) => state.test.editTest);
+  // const answerBoolean = correct hacerlo con un checkbox
+
+  const questions = tests?.questions; // es un array de las preguntas, renderizo con un map
   const [showInput, setShowInput] = useState('true');
   const [OnClickTrue, setOnClickTrue] = useState(null);
   const [OnClickTrueIndex, setOnClickTrueIndex] = useState(Number());
@@ -46,7 +53,6 @@ const EditTestView = ({ skill, skillId }) => {
     if (showInput == 'true') setShowInput('false');
     if (showInput == 'false') setShowInput('true');
   };
-  console.log(showInput);
 
   useEffect(() => {
     dispatch(getEditTest(skillId));
@@ -77,6 +83,7 @@ const EditTestView = ({ skill, skillId }) => {
 
   return (
     <div>
+
       <div>
         <div className={styles2.container}>
           <h1>Editar Test</h1>
@@ -219,9 +226,11 @@ const EditTestView = ({ skill, skillId }) => {
             <ButtonEdit color="blue" value="cancelar" width="80px" />
           </Link>
         </div>
+
       </div>
     </div>
   );
 };
+
 
 export default EditTestView;

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import AdminSkills from '../AdminSkills';
-import EditTestView from '../EditTestView';
-import CreateTestForm from '../CreateTest';
+import EditTestView from '../EditTestView.jsx';
 import CreateQuestion from '../../components/CreateQuestion';
+import CreateTestForm from '../CreateTest';
 
 const AdminRoute = () => {
   return (
@@ -12,6 +12,10 @@ const AdminRoute = () => {
         <Route path="/admin/skill/create/question/:testId" 
           render={({ match }) => 
             <CreateQuestion testId={match.params.testId} />} 
+        />
+        <Route path="/admin/skill/create/answer/:questionId" 
+          render={({ match }) => 
+            {/* <CreateAnswer questionId={match.params.questionId} /> */}} 
         />
         <Route path="/admin/skill/edit/:skillId" 
           render={({ match }) => 

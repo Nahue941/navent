@@ -15,7 +15,8 @@ const CreateQuestion = ({ testId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createQuestion({testId, newQuestion }))
-    history.goBack();
+    .then(()=> history.goBack());
+
   }
 
   const handleInputChange = (e) => {

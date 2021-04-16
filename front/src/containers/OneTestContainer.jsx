@@ -1,37 +1,44 @@
 import React, { useEffect, useState } from 'react';
-import Question from '../components/Question';
-import styles from '../styles/oneTestContainer.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import moment from 'moment';
+
 import {
   allQuestions,
   setDisabled,
   setIndexQuestion,
 } from '../state/questions/actions';
 import { results } from '../state/user/actions';
-import { wrongAnswered } from '../state/answers/actions';
+import { wrongAnswered, correctAnswers } from '../state/answers/actions';
+import { timeReset } from '../state/time/actions';
 
+import Question from '../components/Question';
 import Button from '../components/UI/Button';
 import Timer from '../components/Timer';
 import ProgressBar from '../components/UI/ProgressBar';
-import moment from 'moment';
+import Background from '../components/UI/BackgroundTest'
+
+import styles from '../styles/oneTestContainer.module.css';
 
 const TestContainer = ({ testId }) => {
+
   const history = useHistory();
   const dispatch = useDispatch();
+  
+  const [lastedTime, setLastedTime] = useState(0)
   const questions = useSelector((state) => state.question.all);
   const selectedAnswers = useSelector((state) => state.answer.selectedAnswers);
   const disabled = useSelector((state) => state.question.disabled);
   const indexQuestion = useSelector((state) => state.question.indexQuestion);
+  const {total} = useSelector((state) => state.time);
   const user = useSelector((state) => state.user.user);
   const [loading, setLoading] = useState(true);
-  const [time, setTime] = useState(1000);
-  const [lastedTime, setLastedTime] = useState(0)
+
+ 
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLastedTime((timer) => timer + 100);
-      console.log("lastedTime", lastedTime)
     }, 1000);
 
     return () => {
@@ -39,31 +46,34 @@ const TestContainer = ({ testId }) => {
     }
   }, [lastedTime]);
 
+
   useEffect(() => {
-
-    if(questions){
-
+    if (questions) {
       if (!questions.length) {
-        dispatch(allQuestions(testId)).then(() => setLoading(false)).catch(()=> history.push(`/404`));
+        dispatch(allQuestions(testId))
+          .then(() =>setTimeout(()=> setLoading(false),1500))
+          .catch(() => history.push(`/404`));
         dispatch(setIndexQuestion(0));
       } 
     } 
       else {
         history.push(`/404`)
       }
+    
 
     setLoading(false);
-    dispatch(setDisabled(true));
+  
   }, [dispatch]);
 
   const countCorrectAnswers = () => {
     return selectedAnswers.reduce(
-      (trueAnswers = 0, answer) => (trueAnswers += answer.correct ? 1 : 0),
+      (trueAnswers = 0, answer) => (trueAnswers += answer?.correct ? 1 : 0),
       0,
     );
   };
 
   const handleSubmit = async (e) => {
+   
     if (e) e.preventDefault();
     const nextQuestion = indexQuestion + 1;
 
@@ -73,23 +83,25 @@ const TestContainer = ({ testId }) => {
     ) {
       dispatch(wrongAnswered(questions[indexQuestion]));
     }
+    else {
+      dispatch(correctAnswers(questions[indexQuestion]))
+    }
 
     if (nextQuestion < questions.length) {
       dispatch(setIndexQuestion(nextQuestion));
       dispatch(setDisabled(true));
-      setTime(1000);
+      dispatch(timeReset(1000));
     } else {
-      // hacer el dispatch por un lado con info desde el front y hacer el post por otro.
       const res = await dispatch(
         results({
           result: (countCorrectAnswers() / questions.length) * 100,
           userId: user.id,
           testId: Number(testId),
           date: moment().format('YYYY-MM-DD'),
-          time: lastedTime
+          time:total,
         }),
       );
-      history.push(`/results`);
+      history.push({ pathname: '/results', state: { testId } });
     }
   };
 
@@ -97,9 +109,11 @@ const TestContainer = ({ testId }) => {
   if (loading) return <div className={styles.loading}>loading</div>;
   return (
     <div className={styles.container}>
+      <Background/>
       <div className={styles.header}>
         <h2 className={styles.h2}>
-          {indexQuestion + 1} de {questions ? questions.length : history.push(`/404`)}
+          {indexQuestion + 1} de{' '}
+          {questions ? questions.length : history.push(`/404`)}
         </h2>
         <ProgressBar
           questionNum={indexQuestion + 1}
@@ -109,14 +123,16 @@ const TestContainer = ({ testId }) => {
       <div className={styles.header}>
         {questions && (
           <form onSubmit={handleSubmit}>
-            <Question question={questions[indexQuestion]} />
-            <br />
+            <div className={styles.timerDiv}>
             <Timer
-              time={time}
-              setTime={setTime}
               countCorrectAnswers={countCorrectAnswers}
               handleSubmit={handleSubmit}
+              setAnswerIndex={selectedAnswers[indexQuestion]}
+              className={styles.timer}
             />
+            </div>
+            <Question question={questions[indexQuestion]} />
+            <br />
             <br />
             <Button
               disabled={disabled}
@@ -125,7 +141,7 @@ const TestContainer = ({ testId }) => {
               }
               type="submit"
               color="blue"
-              marginLeft="38%"
+              marginLeft="35%"
               marginTop="-5%"
             />
           </form>
