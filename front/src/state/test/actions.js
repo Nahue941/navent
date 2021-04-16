@@ -28,3 +28,10 @@ export const setEditTest = createAsyncThunk('SET_EDIT_TEST', (testId) => {
     .then((test) => test.data)
     .catch(err => console.log(err))
 });
+
+export const createTest = createAsyncThunk('CREATE_NEW_TEST', (newTest) => {
+    return axios
+    .post('http://localhost:3001/api/test/', newTest)
+    .then((test) => test.data)
+    .catch(err => console.log(err))
+})
