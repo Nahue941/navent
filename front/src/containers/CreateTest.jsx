@@ -26,7 +26,7 @@ const CreateForm = ({ skillId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createTest(newTest))
-    .then(() => history.push('/admin/skill'))
+    .then(() => history.push(`/admin/skill/edit/${skillId}`))
   }
 
   const handleChange = (e) => {
