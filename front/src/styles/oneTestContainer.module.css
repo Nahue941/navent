@@ -1,49 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&family=Raleway:wght@200&display=swap');
 
 .container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    font-family: 'Raleway';
-    margin: 30px;
-    align-content: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Raleway';
+  /* margin: 30px; */
+  align-content: center;
 }
 
 .questionContainer {
-    margin: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
 }
 
 .answers {
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Montserrat';
-    border-radius: 15px;
-    background-color: rgba(219, 219, 219, 0.678);
-    border-radius: 15px;
-    box-shadow: -2px 7px 9px 1px rgba(34, 35, 75, 0.254);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat';
+  border-radius: 15px;
+  background-color: rgba(219, 219, 219, 0.678);
+  border-radius: 15px;
+  box-shadow: -2px 7px 9px 1px rgba(34, 35, 75, 0.254);
+  width: 500px;
+  @media (max-width:500px) {
+      width:200px
+  }
 }
 
 .h2 {
-    color: #0A26EE ;
-    font-weight: 400;
-    text-align: center;
-    margin: 12px;
+  color: #0a26ee;
+  font-weight: 400;
+  text-align: center;
+  margin: 12px;
 }
 
 .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top:20px ;
 }
 
-.loading{
-    height: 63.3vh;   
+.loading {
+  height: 63.3vh;
+}
+
+.timerDiv {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center ;
 }
 
 

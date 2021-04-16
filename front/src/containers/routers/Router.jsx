@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PrivateRoute from './PrivateRoute';
 import AuthRoute from './AuthRoute';
 import NotFound from '../../components/NotFound'; // ruta publica
+import AdminRoute from './AdminRoute';
 
 
 //falta la lógica del estado del user para manejar lo que se ve y lo que no, está hardcodeado
@@ -16,7 +17,7 @@ const Router = () => {
     return (
         <div>
             
-            {user?.id ? <PrivateRoute/> : <AuthRoute/>}
+            {user?.id ? (user.admin ? <AdminRoute/> : <PrivateRoute/>) : <AuthRoute/>}
             
             <Route path="/404" render={() => <NotFound />} />
             

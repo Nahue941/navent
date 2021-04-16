@@ -13,7 +13,7 @@ const questionController = {
         try {
             const question = await Question.create({
                 ...req.body,
-                testId: req.params.id
+                testId: Number(req.params.id)
             });
             res.sendStatus(200);
         } catch (error) {
