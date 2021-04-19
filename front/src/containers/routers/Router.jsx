@@ -6,7 +6,7 @@ import AuthRoute from './AuthRoute';
 import NotFound from '../../components/NotFound'; // ruta publica
 import AdminRoute from './AdminRoute';
 
-
+import LoadingSpinner from '../../components/UI/LoadingSpinner';
 //falta la lógica del estado del user para manejar lo que se ve y lo que no, está hardcodeado
 const Router = () => {
     
@@ -19,7 +19,7 @@ const Router = () => {
             
             {user?.id ? (user.admin ? <AdminRoute/> : <PrivateRoute/>) : <AuthRoute/>}
             
-            <Route path="/404" render={() => <NotFound />} />
+            <Route path="/404" render={() => <LoadingSpinner />} />
             
             
         </div>

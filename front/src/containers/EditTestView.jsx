@@ -199,24 +199,10 @@ const EditTestView = ({ skill, skillId }) => {
                     <div key={question.id}>
                       <label>
                         Pregunta:
-                        {showInput == 'true' ? (
+                        {
                           <h4>{question.question}</h4>
-                        ) : (
-                          <div>
-                            <input
-                              placeholder={question.question}
-                              name="question"
-                              defaultValue={question.question}
-                              onChange={handleInputTest}
-                            ></input>
-                            <ButtonEdit
-
-                              color="blue"
-                              value="Guardar Pregunta"
-                              width="150px"
-                            />
-                          </div>
-                        )}
+                          
+                        }
                       </label>
                       <br />{' '}
                    
