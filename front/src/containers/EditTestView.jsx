@@ -57,6 +57,7 @@ const EditTestView = ({ skillId }) => {
 
   useEffect(() => {
     dispatch(getEditTest(skillId));
+    // dispatch(getEditTest(skillId)); a una funcion getEditQuestions , llena un array en questions
     setNewTest(test);
   }, [dispatch]);
 
