@@ -11,6 +11,7 @@ import {
 import { results } from '../state/user/actions';
 import { wrongAnswered, correctAnswers } from '../state/answers/actions';
 import { timeReset } from '../state/time/actions';
+import { singleTest } from '../state/test/actions';
 
 import Question from '../components/Question';
 import Button from '../components/UI/Button';
@@ -24,17 +25,19 @@ const TestContainer = ({ testId }) => {
 
   const history = useHistory();
   const dispatch = useDispatch();
-  
+
   const [lastedTime, setLastedTime] = useState(0)
   const questions = useSelector((state) => state.question.all);
   const selectedAnswers = useSelector((state) => state.answer.selectedAnswers);
   const disabled = useSelector((state) => state.question.disabled);
   const indexQuestion = useSelector((state) => state.question.indexQuestion);
-  const {total} = useSelector((state) => state.time);
+  const { total } = useSelector((state) => state.time);
   const user = useSelector((state) => state.user.user);
   const [loading, setLoading] = useState(true);
 
- 
+  useEffect(() => {
+    dispatch(singleTest(testId));
+  }, [dispatch]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -51,18 +54,18 @@ const TestContainer = ({ testId }) => {
     if (questions) {
       if (!questions.length) {
         dispatch(allQuestions(testId))
-          .then(() =>setTimeout(()=> setLoading(false),1500))
+          .then(() => setTimeout(() => setLoading(false), 1500))
           .catch(() => history.push(`/404`));
         dispatch(setIndexQuestion(0));
-      } 
-    } 
-      else {
-        history.push(`/404`)
       }
-    
+    }
+    else {
+      history.push(`/404`)
+    }
+
 
     setLoading(false);
-  
+
   }, [dispatch]);
 
   const countCorrectAnswers = () => {
@@ -73,7 +76,7 @@ const TestContainer = ({ testId }) => {
   };
 
   const handleSubmit = async (e) => {
-   
+
     if (e) e.preventDefault();
     const nextQuestion = indexQuestion + 1;
 
@@ -98,7 +101,7 @@ const TestContainer = ({ testId }) => {
           userId: user.id,
           testId: Number(testId),
           date: moment().format('YYYY-MM-DD'),
-          time:total,
+          time: total,
         }),
       );
       history.push({ pathname: '/results', state: { testId } });
@@ -109,7 +112,7 @@ const TestContainer = ({ testId }) => {
   if (loading) return <div className={styles.loading}>loading</div>;
   return (
     <div className={styles.container}>
-      <Background/>
+      <Background />
       <div className={styles.header}>
         <h2 className={styles.h2}>
           {indexQuestion + 1} de{' '}
@@ -124,12 +127,12 @@ const TestContainer = ({ testId }) => {
         {questions && (
           <form onSubmit={handleSubmit}>
             <div className={styles.timerDiv}>
-            <Timer
-              countCorrectAnswers={countCorrectAnswers}
-              handleSubmit={handleSubmit}
-              setAnswerIndex={selectedAnswers[indexQuestion]}
-              className={styles.timer}
-            />
+              <Timer
+                countCorrectAnswers={countCorrectAnswers}
+                handleSubmit={handleSubmit}
+                setAnswerIndex={selectedAnswers[indexQuestion]}
+                className={styles.timer}
+              />
             </div>
             <Question question={questions[indexQuestion]} />
             <br />
