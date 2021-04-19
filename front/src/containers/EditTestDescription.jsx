@@ -13,9 +13,6 @@ const EditTestDescription = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    setNewTest(test);
-  },[]);
 
   const handleInputTest = (e) => {
       setNewTest({ ...newTest, [e.target.name]: e.target.value });
@@ -29,8 +26,11 @@ const EditTestDescription = () => {
 
   const handleFormTest = () => {
     dispatch(setEditTest(newTest)).then(() => history.push(`/admin/skill`));
-
   };
+
+  const setNewTestEditButton = () => {
+    setNewTest(test);
+  }
   
   return (
     <div>
@@ -44,6 +44,7 @@ const EditTestDescription = () => {
               color="blue"
               width="80px"
               value={showInput == 'true' ? 'editar' : 'cancelar'}
+              onClick={setNewTestEditButton}
             />
           </div>
           <div className={styles2.container}>
