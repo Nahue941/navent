@@ -3,20 +3,13 @@ import ButtonEdit from '../components/UI/ButtonEdit';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getEditTest, actualIndexQuestion } from '../state/test/actions';
-import Button from '../components/UI/Button';
-import { setEditTest } from '../state/test/actions';
-import ModalEdit from '../components/UI/ModalEdit';
-import styles from '../styles/skills.module.scss';
 import styles2 from '../styles/editTestView.module.scss';
-
-import editLogo from '../assets/Edit.png';
-import addLogo from '../assets/add.png';
-
 import EditTestDescription from './EditTestDescription';
+import QuestionAdminView from '../components/QuestionAdminView';
+
 
 const EditTestView = ({ skillId }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const test = useSelector((state) => state.test.editTest);
   const questions = test?.questions; // es un array de las preguntas, renderizo con un map
 
@@ -30,10 +23,7 @@ const EditTestView = ({ skillId }) => {
         <EditTestDescription />
       </div>
       <div>
-        <div className={styles2.container}>
-          <h3>PREGUNTAS:</h3>
-
-        </div>
+       
 
         <div className={styles2.container}>
           <Link to={`/admin/skill/create/question/${test?.id}`}>
@@ -41,27 +31,11 @@ const EditTestView = ({ skillId }) => {
           </Link>
         </div>
 
+            <h3>PREGUNTAS:</h3>
         <div className={styles2.container}>
-          <div>
-            <h3>
-              {questions?.map((question, index) => {
-                return (
-                  <div key={question.id} className={index % 2 ? styles.skills2 : styles.skills}>
-
-                    {
-                      <div>
-                        <span>{question.question} </span><span>{question.active ? "activa" : "inactiva"}</span>
-
-                      </div>
-                    }
-
-                    <br />{' '}
-
-                  </div>
-                );
-              })}
-            </h3>
-          </div>
+         
+            <QuestionAdminView /> 
+          
         </div>
       </div>
       <div className={styles2.container}>
@@ -75,7 +49,6 @@ const EditTestView = ({ skillId }) => {
           </Link>
         </div>
       </div>
-
     </div>
   );
 };
