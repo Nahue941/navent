@@ -23,7 +23,7 @@ export const createQuestion = createAsyncThunk('CREATE_QUESTION', (body) => {
     data: newQuestion,
     url: `http://localhost:3001/api/question/${testId}`
   })
-})
+});
 
 export const setDisabled = createAction('SET_DISABLED');
 

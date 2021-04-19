@@ -98,6 +98,9 @@ const testController = {
                 },
                 include: {
                     model: Question,
+                    include: {
+                        model: Answer,
+                    },
                 },
             });
             res.send(test);
