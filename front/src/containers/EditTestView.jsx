@@ -1,26 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import ButtonEdit from '../components/UI/ButtonEdit';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getEditTest } from '../state/test/actions';
-import ModalEdit from '../components/UI/ModalEdit';
+import { getEditTest, actualIndexQuestion } from '../state/test/actions';
+import Button from '../components/UI/Button';
 // import styles from '../styles/editView.module.scss';
-import RadioButton from '../components/UI/RadioButton';
 import styles from '../styles/radioButton.module.css';
 import styles2 from '../styles/editTestView.module.scss';
 
-import editLogo from '../assets/Edit.png';
-import addLogo from '../assets/add.png';
-
-
-const EditTestView = ({ skill, skillId }) => {
+const EditTestView = ({ skillId }) => {
   const dispatch = useDispatch();
   const test = useSelector((state) => state.test.editTest);
   const title = test?.name;
   const description = test?.description;
   const time = test?.timeToComplete;
   // const answerBoolean = correct hacerlo con un checkbox
-
+  const history = useHistory();
   const tests = useSelector((state) => state.test.editTest);
   // const answerBoolean = correct hacerlo con un checkbox
 
@@ -29,20 +24,11 @@ const EditTestView = ({ skill, skillId }) => {
   const [OnClickTrue, setOnClickTrue] = useState(null);
   const [OnClickTrueIndex, setOnClickTrueIndex] = useState(Number());
   console.log(test);
-//   console.log([OnClickTrue, OnClickTrueIndex, 'valores antes']);
+  //   console.log([OnClickTrue, OnClickTrueIndex, 'valores antes']);
 
   //Nueva data para el form
   const [newTest, setNewTest] = useState({});
 
-//   const handleChangeTime = (e) => {
-//     console.log(e.target.value, 'soy time');
-//   };
-//   const handleChangeQuestion = (e) => {
-//     console.log(e.target.value, 'soy question');
-//   };
-//   const handleChangeAnswer = (e) => {
-//     console.log(e.target.value, 'soy answer');
-//   };
   //para cambiar la descripcion
   const handleInputTest = (e) => {
     setNewTest({ ...newTest, [e.target.name]: e.target.value });
@@ -77,13 +63,11 @@ const EditTestView = ({ skill, skillId }) => {
 
   //manda los nuevos valores al back
   const handleForm = () => {
-      console.log("soy handleform",newTest)
-    
+    console.log('soy handleform', newTest);
   };
 
   return (
     <div>
-
       <div>
         <div className={styles2.container}>
           <h1>Editar Test</h1>
@@ -205,6 +189,23 @@ const EditTestView = ({ skill, skillId }) => {
                             )}
                           </div>
                         ))}
+                        {console.log("---------",questions.indexOf(question))}
+                        <ButtonEdit
+                          color="blue"
+                          width="150px"
+                          value={'Nueva Respuesta'}
+                          onClick={() => {
+                            
+                            history.push({
+                              pathname: `/admin/skill/create/answer/${question.id}`,
+                              state: {
+                                actualIndexQ: questions.indexOf(
+                                  question
+                                ),
+                              },
+                            });
+                          }}
+                        />
                       </div>
                     </label>
                   </div>
@@ -217,7 +218,12 @@ const EditTestView = ({ skill, skillId }) => {
       <div className={styles2.container}>
         <div onClick={() => handleForm()}>
           <Link to="/admin/skill">
-            <ButtonEdit onClick={handleForm} color="blue" value="guardar" width="80px" />
+            <ButtonEdit
+              onClick={handleForm}
+              color="blue"
+              value="guardar"
+              width="80px"
+            />
           </Link>
         </div>
 
@@ -226,11 +232,9 @@ const EditTestView = ({ skill, skillId }) => {
             <ButtonEdit color="blue" value="cancelar" width="80px" />
           </Link>
         </div>
-
       </div>
     </div>
   );
 };
-
 
 export default EditTestView;

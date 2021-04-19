@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const allTests = createAsyncThunk('GET_TESTS', (userId) => {
@@ -37,11 +37,15 @@ export const createTest = createAsyncThunk('CREATE_NEW_TEST', (newTest) => {
 })
 export const addAdminAnswer = createAsyncThunk(
     'ADD_ADMIN_ANSWER',
-    ({ testId, answer }) => {
+    ( testId, answer ) => {
       axios
         .post(`http://localhost:3001/api/answer/:${testId}`, answer)
-        .then((answer) => answer.data)
+        .then((answer) => {
+            console.log("Se hizo!");
+            answer.data
+        })
         .catch((err) => console.log(err));
     },
   );
   
+export const actualIndexQuestion = createAction('ACTUAL_INDEX')
