@@ -107,6 +107,14 @@ const testController = {
         } catch (error) {
             next(error);
         }
+    },
+    async getTestData(req, res, next) {
+        try {
+            const test = await Test.findByPk(req.params.id);
+            res.send(test);
+        } catch (error) {
+            next(error);
+        }
     }
 }
 

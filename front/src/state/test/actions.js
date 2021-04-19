@@ -10,7 +10,7 @@ export const allTests = createAsyncThunk('GET_TESTS', (userId) => {
 
 export const singleTest = createAsyncThunk('GET_SINGLE_TEST', (testId) => {
     return axios
-    .get(`http://localhost:3001/api/test/${testId}/${userId}`)
+    .get(`http://localhost:3001/api/test/data/${testId}`)
     .then((test) => test.data)
     .catch(err => console.log(err))
 });
@@ -22,9 +22,19 @@ export const getEditTest = createAsyncThunk('GET_EDIT_TEST', (skillId) => {
     .catch(err => console.log(err))
 });
 //post para actualizar el test
-export const setEditTest = createAsyncThunk('SET_EDIT_TEST', (testId) => {
-    return axios
-    .put(`http://localhost:3001/api/test/${testId}`)
+export const setEditTest = createAsyncThunk('SET_EDIT_TEST', (test) => {
+    const {daysToReMade, qtyQuestions, qtyAnswers, description} = test
+    const testId = test.id
+    return axios({
+        method: "put",
+        data: {
+            daysToReMade,
+            qtyQuestions,
+            qtyAnswers,
+            description
+        },
+        url: `http://localhost:3001/api/test/${testId}`
+    })
     .then((test) => test.data)
     .catch(err => console.log(err))
 });

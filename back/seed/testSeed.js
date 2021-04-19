@@ -6,6 +6,7 @@ module.exports = [
     daysToReMade: 10,
     qtyQuestions: 8,
     skillId: 3,
+    active: true,
   },
   {
     name:'Capitales-Paises',
@@ -15,6 +16,7 @@ module.exports = [
     qtyQuestions : 11,
     qtyAnswers: 5,
     skillId: 4,
+    active: true,
   },
   {
     name:'Matemáticas',
@@ -23,6 +25,7 @@ module.exports = [
     daysToReMade: 3,
     qtyQuestions: 7,
     skillId: 6,
+    active: true,
   },
   {
     name:'Carácteres ASCII',
@@ -30,5 +33,6 @@ module.exports = [
     description: 'En este test deberas demostrar cuánto conoces la tabla ASCII.',
     daysToReMade: 4,
     skillId: 7,
+    active: true,
   },
 ]

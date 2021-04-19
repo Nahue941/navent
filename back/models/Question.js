@@ -12,7 +12,7 @@ Question.init(
     },
     active: {
       type: S.BOOLEAN,
-      defaultValue: true,
+      defaultValue: false,
     },
   },
   { sequelize: db, modelName: 'question' },

@@ -1,1 +1,1 @@
-export const resultTests = (arr) => arr.map((test) => test.testResult);
+export const resultTests = (arr) => arr?.map((test) => test.testResult);
