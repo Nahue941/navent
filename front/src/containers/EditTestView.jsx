@@ -12,7 +12,7 @@ import styles2 from '../styles/editTestView.module.scss';
 import editLogo from '../assets/Edit.png';
 import addLogo from '../assets/add.png';
 
-const EditTestView = ({ skill, skillId }) => {
+const EditTestView = ({ skillId }) => {
   const dispatch = useDispatch();
   const test = useSelector((state) => state.test.editTest);
   const title = test?.name;
