@@ -4,13 +4,12 @@ import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getEditTest, setEditTest } from '../state/test/actions';
 import ModalEdit from '../components/UI/ModalEdit';
-// import styles from '../styles/editView.module.scss';
-import RadioButton from '../components/UI/RadioButton';
-import styles from '../styles/radioButton.module.css';
+import styles from '../styles/skills.module.scss';
 import styles2 from '../styles/editTestView.module.scss';
 
 import editLogo from '../assets/Edit.png';
 import addLogo from '../assets/add.png';
+
 
 const EditTestView = ({ skillId }) => {
   const dispatch = useDispatch();
@@ -98,9 +97,6 @@ const EditTestView = ({ skillId }) => {
               width="80px"
               value={showInput == 'true' ? 'editar' : 'cancelar'}
             />
-            <Link to={`/admin/skill/create/question/${test?.id}`}>
-              <ButtonEdit value="Agregar Pregunta" color="blue" width="150px" />
-            </Link>
           </div>
           <div className={styles2.container}>
             {' '}
@@ -189,21 +185,29 @@ const EditTestView = ({ skillId }) => {
           <br />
           <div className={styles2.container}>
             <h3>PREGUNTAS:</h3>
+            
+          </div>
+          
+          <div className={styles2.container}>
+          <Link to={`/admin/skill/create/question/${test?.id}`}>
+              <ButtonEdit value="Agregar Pregunta" color="blue" width="150px" />
+            </Link>
           </div>
 
           <div className={styles2.container}>
             <div>
               <h3>
-                {questions?.map((question) => {
+                {questions?.map((question, index) => {
                   return (
-                    <div key={question.id}>
-                      <label>
-                        Pregunta:
+                    <div key={question.id} className={index % 2 ? styles.skills2 : styles.skills}>
+
                         {
-                          <h4>{question.question}</h4>
+                          <div>
+                          <span>{question.question} </span><span>{question.active? "activa" : "inactiva"}</span>
                           
+                          </div>
                         }
-                      </label>
+
                       <br />{' '}
                    
                     </div>
