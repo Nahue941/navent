@@ -5,7 +5,7 @@ const answerController = {
         try {
             const newAnswer = await Answer.create({
                 ...req.body,
-                testId: req.params.id
+                questionId: req.params.questionId
             });
             res.sendStatus(200);
         } catch (error) {

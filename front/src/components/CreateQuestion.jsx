@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {useHistory} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { createQuestion } from '../state/questions/actions'
 import Button from './UI/Button';
-
+import { getEditTest, actualIndexQuestion } from '../state/test/actions';
+import { useSelector } from 'react-redux';
 
 const CreateQuestion = ({ testId }) => {
-
   const history = useHistory();
   const dispatch = useDispatch();
+  const [newQuestion, setNewQuestion] = useState("");
 
-  const [newQuestion, setNewQuestion] = useState({});
+  const answers = useSelector((state) => state.test.all.length);//numero de respuestas
+
+  useEffect(() => {
+    dispatch(getEditTest(testId));
+  }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,9 +25,10 @@ const CreateQuestion = ({ testId }) => {
   }
 
   const handleInputChange = (e) => {
-    setNewQuestion({ ...newQuestion, [e.target.name]: e.target.value })
+    setNewQuestion( e.target.value )
     console.log(newQuestion);
-    console.log(testId);
+    // setNewQuestion({ ...newQuestion, [e.target.name]: e.target.value })
+    // console.log(newQuestion);
   }
 
 
@@ -36,6 +42,22 @@ const CreateQuestion = ({ testId }) => {
           id="question"
           autoFocus
           onChange={handleInputChange} />
+      </form>
+      <form onSubmit={handleSubmit}>
+      <h3>Ingrese las respuestas:</h3>
+      <div>
+      {
+        [...Array(answers)].map((e, i) =>         <input
+        type="text"
+        name={`answer ${i+1}"`}
+        id="question"
+        autoFocus
+        onChange={handleInputChange}
+        key={i}
+      />)
+
+      }
+      </div>
       </form>
       <Button type="submit" color="blue" value="Enviar" onClick={handleSubmit}/>
     </div>
