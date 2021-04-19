@@ -219,48 +219,7 @@ const EditTestView = ({ skill, skillId }) => {
                         )}
                       </label>
                       <br />{' '}
-                      <label>
-                        Respuestas:
-                        <div>
-                          {question.answers?.map((answer) => (
-                            <div key={answer.id}>
-                              {showInput == 'true' ? (
-                                <p>{answer.id} </p>
-                              ) : (
-                                <input
-                                  placeholder={answer.answer}
-                                  key={answer.id}
-                                  onChange={handleInputTest}
-                                  name="answer"
-                                  defaultValue={answer.answer}
-                                ></input>
-                              )}
-                              {OnClickTrue}
-                              {showInput == 'true' ? null : (
-                                <span>
-                                  <div className={styles.body}>
-                                    <label className={styles.radioBtn}>
-                                      <input
-                                        required
-                                        type="radio"
-                                        name={answer.questionId}
-                                        value={[answer.correct, answer.id]}
-                                        onClick={handleChangeRadio}
-                                      />
-                                      <span className={styles.checkmark}></span>
-                                      <p>
-                                        {answer.correct == true
-                                          ? 'correcta'
-                                          : 'incorrecta'}
-                                      </p>
-                                    </label>
-                                  </div>
-                                </span>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                      </label>
+                   
                     </div>
                   );
                 })}
