@@ -12,7 +12,6 @@ const CreateQuestion = ({ testId }) => {
   const [newQuestion, setNewQuestion] = useState('');
   const [newAnswer, setNewAnswer] = useState([]);
   const [newRadio, setNewRadio] = useState(0);
-  const [addAnswer, setAddAnswer] = useState(false);
   const [answers, setAnswers] = useState(
     useSelector((state) => state.test.all.length),
   );
@@ -35,6 +34,8 @@ const CreateQuestion = ({ testId }) => {
     const auxArray = newAnswer;
     auxArray[e.target.id] = { answer: e.target.value, correct: false };
     setNewAnswer(auxArray);
+  
+    //hacer un map que cons auxarray true, sean false, y los auxarray false  sean true
 
     // e.target.name=='true'? setNewRadio(true) : setNewRadio(false)
     // setNewRadio({ ...newRadio, [e.target.name]: e.target.value
@@ -51,10 +52,11 @@ const CreateQuestion = ({ testId }) => {
     if (e.target.value === '+') setAnswers(answers + 1);
     if (e.target.value === '-') setAnswers(answers - 1);
   };
-  //que me renderice un nuevo input si se activa addnew answer
-
+  
+  //hace false a todos, y despues hace true al seleccionado con el radio
   const saveAnswer = (e) => {
     const auxArray = newAnswer;
+    auxArray.map(x => x.correct = false)
     auxArray[newRadio].correct = true;
 
     console.log(auxArray, 'save answer');
