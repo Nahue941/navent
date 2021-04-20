@@ -1,10 +1,10 @@
-import { login, registerUser, results, clear , logOut} from './actions';
+import { login, registerUser, results, clear , logOut, getUser} from './actions';
 import { createReducer } from '@reduxjs/toolkit';
 
 const initialState = { user: {}, results: {} }; //este es el estado Inicial
 
 const userReducer = createReducer(initialState, {
-  [login.fulfilled]: (state, action) => {
+  [getUser.fulfilled]: (state, action) => {
     state.user = action.payload;
   },
   [registerUser.fulfilled]: (state, action) => {

@@ -14,6 +14,7 @@ const Navbar = () => {
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(logOut());
+    localStorage.setItem("token", "")
     history.push('/');
   }
 

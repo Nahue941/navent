@@ -5,7 +5,8 @@ const testController = {
     async getAll(req, res, next) {
         try {
             const userId = req.params.userId;
-            const data = await Test.findAll();
+            //busco usuario. para preguntar access level 
+            const data = await Test.findAll();//falta validacion de active:true
             const tests = await Test.getRemainingDays(data, userId);
             res.send(tests);
         } catch (error) {

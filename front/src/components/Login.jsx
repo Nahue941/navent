@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch ,useSelector} from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 
-import { login } from '../state/user/actions';
+import { login, getUser } from '../state/user/actions';
 import styles from '../styles/form.module.css';
 import Button from '../components/UI/Button'
 
@@ -18,6 +18,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     dispatch(login(data))
+      .then(() => dispatch(getUser()))
       .then(() => history.push('/'))
   };
   return (
