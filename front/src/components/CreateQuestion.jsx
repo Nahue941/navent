@@ -16,7 +16,9 @@ const CreateQuestion = ({ testId }) => {
     useSelector((state) => state.test.all.length),
   );//largo original de preguntas segun el test
 
-
+  const [limit, setLimit] = useState(
+    useSelector((state) => state.test.all.length),
+  );//cantidad de respuestas minima que puede tener un test
   useEffect(() => {
     dispatch(getEditTest(testId));
   }, [dispatch]);
@@ -45,7 +47,7 @@ const CreateQuestion = ({ testId }) => {
   //elimina o agrega inputs de respuestas
   const handleAddAnswers = (e) => {
     if (e.target.value === '+') setAnswersNum(answersNum + 1);
-    if (e.target.value === '-') setAnswersNum(answersNum - 1);
+    if (e.target.value === '-' && answersNum>=limit+1 ) setAnswersNum(answersNum - 1);
   };
   
   //hace false a todos, y despues hace true al seleccionado con el radio
@@ -97,7 +99,9 @@ const CreateQuestion = ({ testId }) => {
       </form>
       <Button type="submit" color="blue" value="+" onClick={handleAddAnswers} />
       <Button type="submit" color="blue" value="-" onClick={handleAddAnswers} />
-      <Button type="submit" color="blue" value="Guardar" onClick={saveAnswer} />
+      {newAnswer.length>0 && newQuestion.length>0? <Button type="submit" color="blue" value="Guardar" onClick={saveAnswer} /> : <Button type="submit" color="grey" value="Guardar" />}
+      
+      
     </div>
   );
 };
