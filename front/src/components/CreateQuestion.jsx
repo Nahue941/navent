@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { createQuestion } from '../state/questions/actions'
+import { createQuestion } from '../state/questions/actions';
 import Button from './UI/Button';
 import { getEditTest, actualIndexQuestion } from '../state/test/actions';
 import { useSelector } from 'react-redux';
@@ -9,60 +9,56 @@ import { useSelector } from 'react-redux';
 const CreateQuestion = ({ testId }) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const [newQuestion, setNewQuestion] = useState("");
+  const [newQuestion, setNewQuestion] = useState('');
   const [newAnswer, setNewAnswer] = useState([]);
   const [newRadio, setNewRadio] = useState(0);
-
- 
-  let answers = useSelector((state) => state.test.all.length);//numero de respuestas
-  console.log(newAnswer, "3333333333o");
+  const [addAnswer, setAddAnswer] = useState(false);
+  const [answers, setAnswers] = useState(
+    useSelector((state) => state.test.all.length),
+  );
   useEffect(() => {
     dispatch(getEditTest(testId));
   }, [dispatch]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createQuestion({testId, newQuestion }))
-    .then(()=> history.goBack());
-
-  }
-
+    dispatch(createQuestion({ testId, newQuestion })).then(() =>
+      history.goBack(),
+    );
+  };
 
   const handleInputChangeQuestion = (e) => {
-    setNewQuestion( e.target.value )
-    console.log(newQuestion,"soy new question como string");
-  }
+    setNewQuestion(e.target.value);
+  };
 
   const handleInputChangeAnswer = (e) => {
-    
     const auxArray = newAnswer;
-    auxArray[e.target.id]={answer:e.target.value, correct: false}
-    setNewAnswer (auxArray)
-    
-    
+    auxArray[e.target.id] = { answer: e.target.value, correct: false };
+    setNewAnswer(auxArray);
+
     // e.target.name=='true'? setNewRadio(true) : setNewRadio(false)
     // setNewRadio({ ...newRadio, [e.target.name]: e.target.value
     // })
     // console.log(newRadio, "checkbox true");
-  }
-  
+  };
 
   const handleChangeRadio = (e) => {
-    console.log(e.target.value,"soy value")
-  console.log(e.target.id,"soy id radio")
-  setNewRadio(e.target.id)
-  }
-
-  const handleAddAnswer = () => {
-    answers=answers+1
-  }
+    setNewRadio(e.target.id);
+  };
+  //elimina o agrega inputs de respuestas
+  const handleAddAnswers = (e) => {
+    console.log(e.target.value);
+    if (e.target.value === '+') setAnswers(answers + 1);
+    if (e.target.value === '-') setAnswers(answers - 1);
+  };
+  //que me renderice un nuevo input si se activa addnew answer
 
   const saveAnswer = (e) => {
-    const auxArray = newAnswer
-    if(auxArray[newRadio].correct !== "true") auxArray[newRadio].correct = false
-    if(auxArray[newRadio].correct == "true") auxArray[newRadio].correct = false
-    // auxArray[newRadio].correct = true
-    console.log(auxArray, "save answer")
-  }
+    const auxArray = newAnswer;
+    auxArray[newRadio].correct = true;
+
+    console.log(auxArray, 'save answer');
+  };
 
   return (
     <div>
@@ -73,33 +69,40 @@ const CreateQuestion = ({ testId }) => {
           name="question"
           id="question"
           autoFocus
-          onChange={handleInputChangeQuestion} />
+          onChange={handleInputChangeQuestion}
+        />
       </form>
       <form onSubmit={handleSubmit}>
-      <h3>Ingrese las respuestas:</h3>
-      
-      <div>
-      {
-        [...Array(answers)].map((e, i) =>
-        <div key={i+1} >
-        <input
-        type="text"
-        name={`answer${i+1}"`}
-        id={i}
-        autoFocus
-        onChange={handleInputChangeAnswer}
-        />
-        <input onChange={handleChangeRadio} key={i+1} type="radio" id={i} name="correct" value="true"></input>
+        <h3>Ingrese las respuestas:</h3>
+
+        <div>
+          {[...Array(answers)].map((e, i) => (
+            <div key={i + 1}>
+              <input
+                type="text"
+                name={`answer${i + 1}`}
+                id={i}
+                autoFocus
+                onChange={handleInputChangeAnswer}
+              />
+              <input
+                onChange={handleChangeRadio}
+                key={i + 1}
+                type="radio"
+                id={i}
+                name="correct"
+                value="true"
+              ></input>
+            </div>
+          ))}
         </div>
-        )
-        
-      }
-      </div>
+
       </form>
-      <Button type="submit" color="blue" value="Agregar Pregunta" onClick={handleAddAnswer}/>
-      <Button type="submit" color="blue" value="Guardar" onClick={saveAnswer}/>
+      <Button type="submit" color="blue" value="+" onClick={handleAddAnswers} />
+      <Button type="submit" color="blue" value="-" onClick={handleAddAnswers} />
+      <Button type="submit" color="blue" value="Guardar" onClick={saveAnswer} />
     </div>
-  )
-}
+  );
+};
 
 export default CreateQuestion;
