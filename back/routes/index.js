@@ -7,6 +7,7 @@ const registerRoutes = require('./Register');
 const userRoutes = require('./User')
 const answerRoutes = require('./Answer');
 const meRoutes = require('./Me');
+const skillRoutes = require('./Skill')
 const tokenMiddleware = require('./tokenMiddleware');
 
 
@@ -19,6 +20,7 @@ router.use('/register', registerRoutes);
 router.use('/user' ,  userRoutes)
 router.use('/answer', answerRoutes);
 router.use('/me', tokenMiddleware, meRoutes)
+router.use('/skill', skillRoutes)
 
 //Ruta provisoria. Supuestamente nos vamos a alimentar de una API de Navent
 router.get(`/skill`, (req, res, next) => {

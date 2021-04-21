@@ -31,7 +31,7 @@ const Router = () => {
       })
         .then((res) => {
           if (res) {
-            console.log(res.data.skills);
+            console.log(res.data);
             //consulta al back si existe usuario en el back buscando por nombre
             axios
               .get(`http://localhost:3001/api/user/${res.data.nombre}`)
