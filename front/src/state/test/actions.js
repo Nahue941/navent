@@ -6,9 +6,8 @@ export const allTests = createAsyncThunk('GET_TESTS', (data) => {
     return axios
     .get(`http://localhost:3001/api/test/all/${userId}`)
     .then((tests) => {
-        if(!external){
-            console.log("tests",tests.data)
-            const userTest = tests.data.filter(test => test.skillId == skills)
+        if(external){
+            const userTest = tests.data.filter(test => skills.includes(test.skillId))
             return userTest
         }
         return tests.data

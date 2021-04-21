@@ -14,16 +14,12 @@ const allTestsContainer = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
 
-  console.log("user", user)
-
-
   useEffect(() => {
     const data = {
       userId: user.id,
       external: user.external,
       skills: user.skills
     }
-    console.log(data.skills)
     dispatch(allTests(data));
     dispatch(clear());
     dispatch(resetAnswers());
