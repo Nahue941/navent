@@ -6,8 +6,6 @@ import styles from '../styles/modal.module.scss';
 
 const ModalContainerAdmin = ({ question, show , onHide,answers }) => {
 
-
-console.log(show);
   return (
     <div className={`${styles.modalBg} ${show && styles.active}`}>
       <div className={styles.modal}>

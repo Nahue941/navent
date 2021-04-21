@@ -14,3 +14,6 @@ export const singleSkill = createAsyncThunk('GET_SINGLE_SKILL', (skillId) => {
     .then((skill) => skill.data)
     .catch(err => console.log(err))
 });
+
+// export const addTest = createAction('CHANGE_HAS_TEST_BOOLEAN')
+

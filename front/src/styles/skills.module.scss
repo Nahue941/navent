@@ -1,61 +1,80 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@300;400;500&display=swap');
 
-
-.container {
-  // background-color: grey;
-  text-align: center;
-  width: 25%;
-  margin-left: 40%;
-  font-size:1.5em;
+.container{
   display:flex;
+  flex-direction: row;
+  width: 70%;
+  height: auto;
+  margin-left: 14%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.skill{
+  box-shadow: -3px 3px 10px 5px rgba(128, 128, 128, 0.178);
+  height: 80px;
+  width: 150px;
+  border-radius: 5px;
+  margin-top: 5%;
+  margin-left: 3%;
+  text-align: center;
+  display: flex;
   flex-direction: column;
-
-  h1{
-      font-size: 60px;
-      color:blue
-  }
+  justify-content: center;
 }
+// .container {
+//   // background-color: grey;
+//   text-align: center;
+//   width: 70%;
+//   font-size:1.5em;
+//   display:flex;
+//   flex-direction: column;
 
-.skills {
-  background-color: rgba(255, 255, 255, 0.24);
-  height: 40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-left: 10px;
+//   h1{
+//       font-size: 60px;
+//       color:blue
+//   }
+// }
 
-  button{
-    background-color: blue;
-    border-radius: 4px;
-    color: white;
-    height: 35px;
+// .skills {
+//   background-color: rgba(255, 255, 255, 0.24);
+//   height: 40px;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+
+//   button{
+//     background-color: blue;
+//     border-radius: 4px;
+//     color: white;
+//     height: 35px;
  
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-    // align-content: center;
-  }
-}
+//     // display: flex;
+//     // align-items: center;
+//     // justify-content: center;
+//     // align-content: center;
+//   }
+// }
 
-.skills2 {
-  background-color: #00000012;
-  height: 40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-left: 10px;
-  button{
-    background-color: blue;
-    border-radius: 4px;
-    color: white;
-    height: 35px;
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  //   align-content: center;
+// .skills2 {
+//   background-color: #00000012;
+//   height: 40px;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+
+  // button{
+  //   background-color: blue;
+  //   border-radius: 4px;
+  //   color: white;
+  //   height: 35px;
+  // //   display: flex;
+  // //   align-items: center;
+  // //   justify-content: center;
+  // //   align-content: center;
+  // // }
   // }
-  }
-}
+
 
 .form{
   display:flex;

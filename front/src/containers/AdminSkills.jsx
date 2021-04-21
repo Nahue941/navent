@@ -14,12 +14,15 @@ const AdminSkills = () => {
   }, [dispatch]);
 
   return (
+    <>
+    <br/>
+    <h1 style={{textAlign:'center', color:'blue', fontSize:'320%'}}>Skills</h1>
     <div className={style.container}>
-      <h1>Skills</h1>
       {skills?.map((skill) => (
         <Skill key={skill.id} skill={skill} />
       ))}
     </div>
+    </>
   );
 };
 

@@ -9,7 +9,6 @@ import styles from '../styles/results.module.scss';
 import * as IconName from 'react-icons/fc';
 import * as HappyIcon from "react-icons/bi";
 
-
 const Results = () => {
   const {
     state: { testId },
@@ -30,6 +29,7 @@ const Results = () => {
         <Spinner percentage={results.result} />
       </div>
       <div className={styles.container2}> 
+      <br/>
         <h2 className={`${styles.h2} ${styles.left}`}>¡Felicidades! ¡Completaste el Test! <br/><HappyIcon.BiHappyBeaming /></h2>
         {wrongAnswers.length ? (
           <>
@@ -65,9 +65,10 @@ const Results = () => {
         <h3 className={styles.h3}><IconName.FcClock/>{`Tu tiempo fue de: ${format(results.time)}`}<br/>{`Puedes volver a intentarlo en ${
           singleTests.daysToReMade
         } días`}</h3>
+        <br/>
       </div>
     </div>
-  );
+);
 };
 
 export default Results;

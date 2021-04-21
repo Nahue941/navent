@@ -12,7 +12,6 @@ import { results } from '../state/user/actions';
 import { wrongAnswered, correctAnswers } from '../state/answers/actions';
 import { timeReset } from '../state/time/actions';
 import { singleTest } from '../state/test/actions';
-
 import Question from '../components/Question';
 import Button from '../components/UI/Button';
 import Timer from '../components/Timer';
@@ -28,8 +27,9 @@ const TestContainer = ({ testId }) => {
 
   const [lastedTime, setLastedTime] = useState(0)
   const questions = useSelector((state) => state.question.all);
+  const test = useSelector((state) => state.test.singleTest)
   const selectedAnswers = useSelector((state) => state.answer.selectedAnswers);
-  const disabled = useSelector((state) => state.question.disabled);
+  let disabled = useSelector((state) => state.question.disabled);
   const indexQuestion = useSelector((state) => state.question.indexQuestion);
   const { total } = useSelector((state) => state.time);
   const user = useSelector((state) => state.user.user);
@@ -62,8 +62,6 @@ const TestContainer = ({ testId }) => {
     else {
       history.push(`/404`)
     }
-
-
     setLoading(false);
 
   }, [dispatch]);
@@ -126,17 +124,19 @@ const TestContainer = ({ testId }) => {
       <div className={styles.header}>
         {questions && (
           <form onSubmit={handleSubmit}>
+            <Question question={questions[indexQuestion]} />
             <div className={styles.timerDiv}>
               <Timer
                 countCorrectAnswers={countCorrectAnswers}
                 handleSubmit={handleSubmit}
                 setAnswerIndex={selectedAnswers[indexQuestion]}
                 className={styles.timer}
+                test={test}
               />
             </div>
-            <Question question={questions[indexQuestion]} />
             <br />
             <br />
+            <div className={styles.timerDiv}>
             <Button
               disabled={disabled}
               value={
@@ -144,9 +144,11 @@ const TestContainer = ({ testId }) => {
               }
               type="submit"
               color="blue"
-              marginLeft="35%"
-              marginTop="-5%"
-            />
+              // marginLeft="35%"
+              // marginTop="-5%"
+              />
+              </div>
+              <br />
           </form>
         )}
       </div>

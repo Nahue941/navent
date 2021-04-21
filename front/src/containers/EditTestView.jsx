@@ -48,7 +48,6 @@ const EditTestView = ({ skill, skillId }) => {
   //para cambiar la descripcion
   const handleInputTest = (e) => {
     setNewTest({ ...newTest, [e.target.name]: e.target.value });
-    console.log(newTest);
   };
 
   const changeState = () => {
@@ -65,7 +64,6 @@ const EditTestView = ({ skill, skillId }) => {
   const handleChangeRadio = (e) => {
     let correct = [e.target.value.split(',')][0][0] == 'false' ? false : true;
     let answerId = Number([e.target.value.split(',')][0][1]);
-    console.log(correct, answerId, 'consola');
     if (correct == true) {
       setOnClickTrue(false);
       setOnClickTrueIndex(answerId);
@@ -74,7 +72,6 @@ const EditTestView = ({ skill, skillId }) => {
       setOnClickTrue(true);
       setOnClickTrueIndex(answerId);
     }
-    console.log([OnClickTrue, OnClickTrueIndex, 'valore después']);
   };
 
   //manda los nuevos valores al back

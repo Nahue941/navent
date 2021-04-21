@@ -21,8 +21,6 @@ const CreateQuestion = ({ testId }) => {
 
   const handleInputChange = (e) => {
     setNewQuestion({ ...newQuestion, [e.target.name]: e.target.value })
-    console.log(newQuestion);
-    console.log(testId);
   }
 
 

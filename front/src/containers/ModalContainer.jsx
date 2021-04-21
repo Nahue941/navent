@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
 import trophy from '../assets/ribbon.png';
 import Modal from '../components/UI/Modal';
 import styles from '../styles/skillsView.module.scss';
 import clock from '../assets/Clock.jpg';
 import { resultTests } from '../utils/test';
+import {timeLogger} from '../state/time/actions'
 
 const ModalContainer = () => {
   const [modal, setModal] = useState(false);
   const tests = useSelector((state) => state.test.all);
   const results = resultTests(tests);
+  const dispatch = useDispatch()
 
   const getModal = (value) => {
     setModal(value);
@@ -25,7 +26,9 @@ const ModalContainer = () => {
       {tests?.map((test, i) => {
         return (
           <div key={test.id}>
-            <div onClick={() => getModal(test.id)} className={styles.link}>
+            <div onClick={() => {
+              getModal(test.id)
+              dispatch(timeLogger(test.timeToComplete/10))}} className={styles.link}>
               <div
                 className={`${styles.skills} ${
                   test.daysRemaining > 0 && styles.disabled
@@ -52,6 +55,7 @@ const ModalContainer = () => {
               info={test.description}
               time={test.timeToComplete}
               name={test.name}
+              qty={test.qtyQuestions}
               id={test.id}
               daysRemaining={test.daysRemaining}
               modalType="testModal"

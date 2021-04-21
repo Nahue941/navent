@@ -25,7 +25,6 @@ export const registerUser = createAsyncThunk('REGISTER_USER', async (body) => {
 export const results = createAsyncThunk(
   'RESULTS_TEST',
   async (body) => {
-    console.log("body",body)
     try {
       const testResults = await axios.post('http://localhost:3001/api/result', 
        body
@@ -36,6 +35,14 @@ export const results = createAsyncThunk(
     }
   },
 );
+
+export const allResults = createAsyncThunk(
+  'ALL_RESULTS', (userId) => {
+    return axios.get(`http://localhost:3001/api/result/${userId}`)
+    .then(res => res.data)
+  }
+
+)
 
 export const clear = createAction("RESET")
 

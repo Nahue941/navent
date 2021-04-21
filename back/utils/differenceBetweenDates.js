@@ -12,7 +12,6 @@
 
 const differenceBetweenDates = (date1, date2, daysToMade = 0) => {
   if (!date2) return 0;
-  console.log(typeof date1)
  return daysToMade - (Number(date1.replace(/-/g,'')) - Number(date2.replace(/-/g,'')));
 }
 
