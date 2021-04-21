@@ -13,6 +13,7 @@ const userController = {
   },
 
   login: async (req, res, next) => {
+    console.log("reqbody",req.body)
     try {
       const { mail, password } = req.body;
       const userFound = await User.findOne({
@@ -37,7 +38,8 @@ const userController = {
         (err, token) => res.json(token),
       );
     } catch (error) {
-      next(error);
+      console.log(error);
+      next(error)
     }
   },
   saveResult: async (req, res, next) => {

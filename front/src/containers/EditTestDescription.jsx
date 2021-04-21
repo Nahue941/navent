@@ -16,7 +16,6 @@ const EditTestDescription = () => {
 
   const handleInputTest = (e) => {
       setNewTest({ ...newTest, [e.target.name]: e.target.value });
-      console.log(newTest);
   };
 
   const changeState = () => {

@@ -3,7 +3,6 @@ import styles from '../styles/editTestView.module.scss';
 
 
 const AnswerAdminView = ({answer}) => {
-  {console.log(answer)}
   return(
     <div key={answer.id} className={styles}>
     <h2 key={answer.id}>{answer}</h2>

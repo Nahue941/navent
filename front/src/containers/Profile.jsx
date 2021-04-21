@@ -15,14 +15,10 @@ const Profile = ({ userId }) => {
   let resultados = [];
   let times = [];
 
-  console.log(results)
-
-
   useEffect(() => {
     dispatch(allResults(userId))
     .then((res) => res.payload)
     .then((results) => {
-      console.log(results)
       results.map((result) => {
         resultados.push(result.result)
         times.push(result.time)

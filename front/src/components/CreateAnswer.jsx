@@ -16,9 +16,7 @@ const CreateAnswer = ({ testId, questionId }) => {
   const handleSubmit = () => {
     setNewQuestion(newAnswer.questionId=questionId);
     dispatch(actualIndexQuestion(actualIndexQ));
-    console.log(newAnswer);
     dispatch(addAdminAnswer(testId, newAnswer)).then(() => {
-      console.log('Respuesta hecha!');
       history.goBack();
     });
   };

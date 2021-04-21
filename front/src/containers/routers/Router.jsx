@@ -31,7 +31,6 @@ const Router = () => {
       })
         .then((res) => {
           if (res) {
-            console.log(res.data.skills);
             const skills = res.data.skills
             //consulta al back si existe usuario en el back buscando por nombre
             axios
