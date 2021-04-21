@@ -18,7 +18,7 @@ User.findByPk(userId)
     User.update({admin: !user.admin}, {where: {id:user.id}})
     .then(()=> {
       console.log(`Se cambio el usuario:
-    email: ${user.email}
+    email: ${user.mail}
     ----------------------------------
     su nuevo rol es: ${!user.admin?`ADMIN`:`USUARIO`}
     ----------------------------------`)
