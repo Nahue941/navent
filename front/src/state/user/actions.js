@@ -35,7 +35,7 @@ export const registerUser = createAsyncThunk('REGISTER_USER', async (body) => {
 
 export const results = createAsyncThunk('RESULTS_TEST', async (body) => {
   try {
-    const testResults = await axios.post('http://localhost:3001/api/result',
+    const testResults = await axios.post('http://localhost:3001/api/user/result',
       body
     );
     return testResults.data;
@@ -45,6 +45,8 @@ export const results = createAsyncThunk('RESULTS_TEST', async (body) => {
 },
 );
 
-export const clear = createAction("RESET")
+export const clear = createAction("RESET");
 
-export const logOut = createAction("LOG_OUT")
+export const logOut = createAction("LOG_OUT");
+
+export const logExternalUser = createAction("LOG_EXTERNAL_USER")

@@ -1,57 +1,68 @@
-import React, { useEffect } from 'react'
-import { useLocation } from 'react-router'
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router';
 import { Route, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { logExternalUser } from '../../state/user/actions';
+import axios from 'axios';
 import PrivateRoute from './PrivateRoute';
 import AuthRoute from './AuthRoute';
 import NotFound from '../../components/NotFound'; // ruta publica
 import AdminRoute from './AdminRoute';
 
-import LoadingSpinner from '../../components/UI/LoadingSpinner'// loading :v
-import axios from 'axios';
-//falta la lógica del estado del user para manejar lo que se ve y lo que no, está hardcodeado
+import LoadingSpinner from '../../components/UI/LoadingSpinner'; // loading :v
+
 const Router = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
 
-    const dispatch = useDispatch();
-    const user = useSelector((state) => state.user.user);
+  function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
 
-    function useQuery() {
-        return new URLSearchParams(useLocation().search);
+  const query = useQuery();
+
+  useEffect(() => {
+    const token = query.get('token');
+    if (token) {
+      //Estamos usando la extensión "Allow Cors" de crome para poder hacer el pedido. Si no, bumeran responde que no tenemos permisos.
+      axios({
+        method: 'get',
+        url: `https://www.bumeran.com.ar/candidatos/curriculum/nameAndSkills?token_auto=${token}`,
+      })
+        .then((res) => {
+          if (res) {
+            console.log(res.data);
+            //consulta al back si existe usuario en el back buscando por nombre
+            axios
+              .get(`http://localhost:3001/api/user/${res.data.nombre}`)
+              .then((user) => {
+                console.log(user.data[0]);
+                dispatch(logExternalUser(user.data[0]));
+                //dispatch(skills)
+                //loguear usuario
+                //guardas skills
+              });
+          }
+        })
+        .catch((err) => console.log(err));
     }
+  }, []);
 
-    
-    const query = useQuery();
+  return (
+    <div>
+      {user?.id ? (
+        user.admin ? (
+          <AdminRoute />
+        ) : (
+          <PrivateRoute />
+        )
+      ) : (
+        <AuthRoute />
+      )}
 
-    useEffect(()=> {
-        const token = query.get("token");
-        if(token) {
-            axios.get(`https://www.bumeran.com.ar/candidatos/curriculum/nameAndSkills?token_auto=${token}`, { withCredentials: true })
-                .then((user) => {
-                    //consulta al back si existe usuario en el back
-                    console.log(user)
-                    //si no existe crearlo
+      <Route path="/404" render={() => <NotFound />} />
+    </div>
+  );
+};
 
-
-
-                    //cookie de user
-                    //desarmar la cookie
-                    //dispatch(cookie)
-
-                })
-        }
-    }, []);
-
-
-    return (
-        <div>
-
-            {user?.id ? (user.admin ? <AdminRoute /> : <PrivateRoute />) : <AuthRoute />}
-
-            <Route path="/404" render={() => <NotFound />} />
-
-
-        </div>
-    )
-}
-
-export default Router
+export default Router;

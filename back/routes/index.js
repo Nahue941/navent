@@ -16,7 +16,7 @@ router.use('/question', questionRoutes);
 router.use('/test', testRoutes);
 router.use('/login', loginRoutes);
 router.use('/register', registerRoutes);
-router.use('/result' ,  userRoutes)
+router.use('/user' ,  userRoutes)
 router.use('/answer', answerRoutes);
 router.use('/me', tokenMiddleware, meRoutes)
 
