@@ -1,16 +1,17 @@
-import { createReducer } from '@reduxjs/toolkit';
+import { createReducer, createAsyncThunk } from '@reduxjs/toolkit';
 import { allSkills, singleSkill } from "./actions";
+
 const initialState = {
     allSkills: [], //agregado para panel admin
     singleSkill: {}
 };
+
 
 const skillsReducer = createReducer(initialState, {
     [allSkills.fulfilled] : (state, action) => { 
         const payload = action.payload
         state.allSkills = payload
     },
-
     [singleSkill.fulfilled] : (state, action) => { 
         const payload = action.payload
         state.singleSkill = payload

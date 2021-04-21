@@ -31,16 +31,14 @@ const Router = () => {
       })
         .then((res) => {
           if (res) {
-            console.log(res.data);
+            console.log(res.data.skills);
             //consulta al back si existe usuario en el back buscando por nombre
             axios
               .get(`http://localhost:3001/api/user/${res.data.nombre}`)
               .then((user) => {
-                console.log(user.data[0]);
                 dispatch(logExternalUser(user.data[0]));
-                //dispatch(skills)
-                //loguear usuario
                 //guardas skills
+                //dispatch(skills)
               });
           }
         })

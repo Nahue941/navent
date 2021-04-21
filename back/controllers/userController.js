@@ -77,6 +77,20 @@ const userController = {
       next(error);
     }
   },
+
+  allResults: async (req, res, next) => {
+    try {
+      const results = await TestMade.findAll({
+        where: {
+          userId: req.params.id
+        }
+      });
+      res.send(results)
+    } catch(err) {
+      next(err)
+    }
+  }
+
 };
 
 module.exports = userController;

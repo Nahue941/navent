@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { logOut } from '../state/user/actions'
 import styles from '../styles/navbar.module.scss';
+import { AiOutlineUser } from 'react-icons/ai'
 
 const Navbar = () => {
   const user = useSelector((state) => state.user.user);
   const logged = useSelector((state) => state.user.isAuth);
-
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -37,9 +37,19 @@ const Navbar = () => {
               <input type="button" value="Login" className={styles.link} />
             </Link>
           ) : (
+            <>
+              <h1>Bienvenido/a, {user.name}</h1>
+            <div className={styles.logged}>
+            <Link to= {`/profile/${user.id}`}>
+              <div className={styles.profileIcon}>
+              <AiOutlineUser size={25}/>
+              </div>
+             </Link>
             <Link to="/" className={styles.link}>
               <button onClick={handleClick} className={styles.link}>Log Out</button>
             </Link>
+            </div>
+            </>
           )}
         </div>
       </div>

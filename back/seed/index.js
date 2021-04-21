@@ -38,11 +38,11 @@ let answerPromise = () => Answer.bulkCreate(answerArray)
     return res;
   });
 
-let userPromise = () => User.bulkCreate(userArray)
+/* let userPromise = () => User.bulkCreate(userArray)
   .then(res => {
     console.log(`-->Usuario/s creado/s`);
     return res;
-  });
+  }); */
 
 
 
@@ -50,7 +50,6 @@ console.log('inciando seed...');
 testPromise()
   .then(() => questionPromise())
   .then(() => answerPromise())
-  .then(() => userPromise())
   .then(() => console.log('\n----Seed terminado----'))
   .then(() => process.exit())
   .catch(e => console.error(e))

@@ -19,7 +19,6 @@ const allTestsContainer = () => {
     dispatch(clear());
     dispatch(resetAnswers());
     dispatch(resetQuestions());
-    dispatch(timeLogger(1000));
     dispatch(totalTimeReset());
   }, [dispatch]);
 

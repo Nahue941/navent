@@ -3,6 +3,7 @@ import { Switch, Route, Redirect, Link } from 'react-router-dom';
 import TestContainer from '../../containers/OneTestContainer'; //ruta privada
 import AllTestContainer from '../../containers/AllTestsContainer'; //ruta privada
 import Results from '../../components/Results'; // ruta privada
+import Profile from '../Profile'
 
 const PrivateRoute = () => {
   return (
@@ -17,7 +18,7 @@ const PrivateRoute = () => {
           exact path="/test/:id"
           render={() => <Redirect from="/test/:id" to="/404" />}
         />
-
+        <Route path="/profile/:id" render={({ match }) => <Profile userId={match.params.id}/>} />
         <Route path="/test" render={() => <AllTestContainer />} />
         <Route path="/results" render={() => <Results />} />
         <Redirect from="/" to="/test" />
