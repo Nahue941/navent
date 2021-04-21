@@ -64,7 +64,7 @@ Test.getRemainingDays = async function (testsArray, userId) {
       limit: 1,
       where: {
         testId: test.id,
-        userId: userId
+        userId: userId,
       },
       order: [['createdAt', 'DESC']] // hacerlo con date
     });

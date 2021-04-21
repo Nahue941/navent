@@ -36,7 +36,7 @@
 .active {
     visibility: visible;
     opacity:1;   
-}
+}   
 
 .icon {
     width: 10%;
@@ -88,4 +88,12 @@
     align-items: center;
     margin: 20px;
 }
+}
+
+.adminModalEdit {
+    width: 50vw;
+    height: 50vh;
+}
+.check {
+    width: 20px;
 }

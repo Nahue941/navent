@@ -37,7 +37,7 @@ const EditTestDescription = () => {
       <form>
         <div>
           <div className={styles2.container}>
-            <h1>Editar Test</h1>
+            <h1>Editar: {test.name}</h1>
           </div>
           <div className={styles2.container} onClick={() => changeState()}>
             <ButtonEdit

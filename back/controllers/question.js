@@ -27,7 +27,8 @@ const questionController = {
                 {
                     where: {
                         id: req.params.id
-                    }
+                    },
+                    returning:true
                 });
             res.send(updatedQuestion);
         } catch (error) {

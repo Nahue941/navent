@@ -10,11 +10,10 @@ const CreateAnswer = ({ testId, questionId }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const actualIndexQ = location.state.actualIndexQ;
-  const [newAnswer, setNewQuestion] = useState({});
+  const [newAnswer, setNewAnswer] = useState({});
 
-  const state = useSelector((state) => state);
   const handleSubmit = () => {
-    setNewQuestion(newAnswer.questionId=questionId);
+    setNewAnswer(newAnswer.questionId=questionId);
     dispatch(actualIndexQuestion(actualIndexQ));
     console.log(newAnswer);
     dispatch(addAdminAnswer(testId, newAnswer)).then(() => {
@@ -24,7 +23,7 @@ const CreateAnswer = ({ testId, questionId }) => {
   };
 
   const handleInputChange = (e) => {
-    setNewQuestion({ ...newAnswer, [e.target.name]: e.target.value });
+    setNewAnswer({ ...newAnswer, [e.target.name]: e.target.value });
   };
 
   return (
