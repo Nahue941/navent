@@ -32,13 +32,12 @@ const Router = () => {
         .then((res) => {
           if (res) {
             console.log(res.data.skills);
+            const skills = res.data.skills
             //consulta al back si existe usuario en el back buscando por nombre
             axios
               .get(`http://localhost:3001/api/user/${res.data.nombre}`)
               .then((user) => {
-                dispatch(logExternalUser(user.data[0]));
-                //guardas skills
-                //dispatch(skills)
+                dispatch(logExternalUser({...user.data[0], skills }));
               });
           }
         })
