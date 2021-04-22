@@ -71,19 +71,4 @@ const Navbar = () => {
 
 export default Navbar;
 
-//login : si esta logueado y es admin, mostrame logout : sino mostrame bienvenido y el icono)}
-// {movies ?
-//   movies.slice(1).map((p) => {
-//      return (
-//        <div key={p.imdbID} className="centerCar">
-//          <Link
-//            onClick={() => handleClick(p.imdbID)}
-//            to={`/movie/:${p.imdbID}`}
-//          >
-//            <h3> {p.Title} </h3>
-//            <img src={p.Poster} width="110" height="130" />
-//          </Link>
-//        </div>
-//      );
-//    })
-//  : null}
+
