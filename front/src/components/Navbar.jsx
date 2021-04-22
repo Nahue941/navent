@@ -30,11 +30,13 @@ const Navbar = () => {
                 'https://www.bumeran.com.ar/candidate/static/media/bumeran.296e6bc2.svg'
               }
               alt="logo"
-            />
-
-          <Search/>
-
+              />
           </Link>
+
+          <div>
+            <Search/>
+          </div>
+
           {! (user?.id) ? (
             <Link to="/login" className={styles.link}>
               <input type="button" value="Login" className={styles.link} />

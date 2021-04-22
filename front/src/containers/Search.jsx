@@ -31,11 +31,11 @@ const Search = () => {
       <form onSubmit={handleSubmit}>
             <button className="btn"><MdSearch/> </button>
 
-        <Link to='/search'>
+        <Link to='/test'>
         <input
         
           type="text"
-          placeholder="Search"
+          placeholder="Buscar Skills"
           value={input}
           onChange={handleChange}
         />
