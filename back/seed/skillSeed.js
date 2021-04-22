@@ -226,6 +226,7 @@ module.exports = [
   {
     pId: 217,
     name: 'HTML',
+    hasTest: true,
   },
   {
     pId: 218,
@@ -2011,6 +2012,7 @@ module.exports = [
   {
     pId: 798,
     name: 'CSS',
+    hasTest: true,
   },
   {
     pId: 799,
@@ -2183,6 +2185,7 @@ module.exports = [
   {
     pId: 841,
     name: 'Node.js',
+    hasTest: true,
   },
   {
     pId: 842,

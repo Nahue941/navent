@@ -6,8 +6,8 @@ router.get('/all/:userId', testController.getAll);
 router.get('/edit/:skillId', testController.getTestToEdit);
 router.get('/data/:id', testController.getTestData);
 router.put('/:id', testController.editTest)
-router.get('/:id', testController.getOne);
 router.get('/:id/:userId', testController.getOneByUser);
+router.get('/:id', testController.getOne);
 router.post('/', testController.createTest);
 router.delete(':id', testController.deleteTest);
 

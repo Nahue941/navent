@@ -35,4 +35,20 @@ module.exports = [
     skillId: 877,
     active: true,
   },
+  {
+    name:'HTML',
+    timeToComplete: 15000,//seg
+    description: 'En este test deberas demostrar cuánto conoces HTML.',
+    daysToReMade: 5,
+    skillId: 217,
+    active: true,
+  },
+  {
+    name:'CSS',
+    timeToComplete: 20000,//seg
+    description: 'Veamos que tan bien te llevas con los estilos.',
+    daysToReMade: 30,
+    skillId: 798,
+    active: true,
+  },
 ]
