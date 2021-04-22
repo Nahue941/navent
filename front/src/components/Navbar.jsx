@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { logOut } from '../state/user/actions'
 import styles from '../styles/navbar.module.scss';
 import { AiOutlineUser } from 'react-icons/ai'
+import Search from '../containers/Search';
 
 const Navbar = () => {
   const user = useSelector((state) => state.user.user);
@@ -30,8 +31,13 @@ const Navbar = () => {
                 'https://www.bumeran.com.ar/candidate/static/media/bumeran.296e6bc2.svg'
               }
               alt="logo"
-            />
+              />
           </Link>
+
+          <div>
+            <Search/>
+          </div>
+
           {! (user?.id) ? (
             <Link to="/login" className={styles.link}>
               <input type="button" value="Login" className={styles.link} />
@@ -58,3 +64,19 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// {movies ?
+//   movies.slice(1).map((p) => {
+//      return (
+//        <div key={p.imdbID} className="centerCar">
+//          <Link
+//            onClick={() => handleClick(p.imdbID)}
+//            to={`/movie/:${p.imdbID}`}
+//          >
+//            <h3> {p.Title} </h3>
+//            <img src={p.Poster} width="110" height="130" />
+//          </Link>
+//        </div>
+//      );
+//    })
+//  : null}

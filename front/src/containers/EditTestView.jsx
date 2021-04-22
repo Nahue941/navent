@@ -3,10 +3,11 @@ import ButtonEdit from '../components/UI/ButtonEdit';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getEditTest, actualIndexQuestion } from '../state/test/actions';
+// import styles from '../styles/editView.module.scss';
+import styles from '../styles/radioButton.module.css';
 import styles2 from '../styles/editTestView.module.scss';
 import EditTestDescription from './EditTestDescription';
 import QuestionAdminView from '../components/QuestionAdminView';
-
 
 const EditTestView = ({ skillId }) => {
   const dispatch = useDispatch();
