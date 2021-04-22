@@ -33,6 +33,7 @@ h4 {
 
 input:active {
   outline: none;
+  margin-right: 5%;
 }
 
 body {
@@ -47,7 +48,10 @@ a,
 input[type='button'],
 button {
   text-decoration: none;
-  text-decoration: none;
   border: none;
   background-color: transparent;
+}
+
+a {
+  color: blue;
 }

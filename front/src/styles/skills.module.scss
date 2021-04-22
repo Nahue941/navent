@@ -100,3 +100,15 @@
   }
 }
 
+.skillsCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+}
+
+.iconSearch {
+  color: blue;
+  font-size: 1em;
+  
+}

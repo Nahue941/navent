@@ -17,13 +17,13 @@ const AdminSkills = () => {
   return (
     <>
       <br />
-      <div>
-        <h1 style={{ textAlign: 'center', color: 'blue', fontSize: '320%' }}>
-          Skills
-        </h1>
-      </div>
-      <div style={{ textAlign: 'center' }}>
-        <Search />
+      <div className={`${style.skillsCenter}`} >
+        <div >
+          <h1 style={{ color: 'blue', fontSize: '320%' }}>Skills</h1>
+        </div>
+        <div className={`${style.iconSearch}`}>
+          <Search />
+        </div>
       </div>
       <div className={style.container}>
         {skills?.map((skill) => (
