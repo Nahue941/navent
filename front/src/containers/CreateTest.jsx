@@ -32,7 +32,6 @@ const CreateForm = ({ skillId }) => {
   const handleChange = (e) => {
     e.preventDefault()
     setNewTest({...newTest, [e.target.name]: e.target.value})
-    console.log(newTest)
   }
 
 

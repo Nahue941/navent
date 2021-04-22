@@ -1,20 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Button from '../UI/Button';
 import {format} from '../../utils/format'
 import PlayIcon from '../UI/PlayIcon';
 import CloseIcon from '../UI/CloseIcon';
-
+import {useDispatch} from 'react-redux'
 import styles from '../../styles/modal.module.scss'
+import {timeLogger} from '../../state/time/actions'
+import {setDisabled} from '../../state/questions/actions'
 //agregar ultimo resultado
 //poner lo intentaste
 //poner los exitos en %
 //traer el resultado más reciente
 //crear una key en el modal que diga ultimo intento y de ahi lo mando al axios
-const Modal = ({ info, time, name, id, onHide, show, daysRemaining, lastResult, lastTime ,modalType, handleSubmit}) => {
-  const timeMin = Math.round(time / 60);
+const Modal = ({ qty, info, time, name, id, onHide, show, daysRemaining, lastResult, lastTime ,modalType, handleSubmit }) => {
+  const timeMin = Math.round(time / 1000);
   const history = useHistory()
    lastTime = format(lastTime)
+   const dispatch = useDispatch()
+
   return (
     <>
       <div className={`${styles.modalBg} ${show && styles.active}`}>
@@ -31,18 +35,20 @@ const Modal = ({ info, time, name, id, onHide, show, daysRemaining, lastResult, 
 
           <h2 className={styles.h2}>{name}</h2>
           <h3> {info}</h3>
-          <h3>Tiempo por pregunta: {timeMin} min</h3>
+          <h3> Cantidad de preguntas: {qty}</h3>
+          <h3>Tiempo por pregunta: {timeMin} segundos</h3>
           {daysRemaining > 0 ?
             <>
-            <h3>Útima calificación :{lastResult} %  </h3>
-            <h3>Tiempo: {lastTime}</h3>
+            <h3>Útima calificación:{lastResult} %  </h3>
+            <h3>Tiempo tardado: {lastTime}</h3>
             <p className={styles.error}>Ya intentaste realizar esta prueba. Debes esperar {daysRemaining} días para volver a intentarlo.</p>
             </>
           :
           <Link to={`/test/${id}`} className={styles.container}>
-            <PlayIcon />
-          </Link>
-          
+            <PlayIcon onClick={() => {
+              dispatch(setDisabled)
+            }}/>
+          </Link>        
           }
 
         </div>

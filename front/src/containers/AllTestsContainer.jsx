@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { allTests } from '../state/questions/actions';
+import { allTests } from '../state/test/actions';
 import { clear } from '../state/user/actions';
 import { timeLogger, totalTimeReset } from '../state/time/actions';
 import { resetQuestions } from '../state/questions/actions';
@@ -15,11 +15,15 @@ const allTestsContainer = () => {
   const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
-    dispatch(allTests(user.id));
+    const data = {
+      userId: user.id,
+      external: user.external,
+      skills: user.skills
+    }
+    dispatch(allTests(data));
     dispatch(clear());
     dispatch(resetAnswers());
     dispatch(resetQuestions());
-    dispatch(timeLogger(1000));
     dispatch(totalTimeReset());
   }, [dispatch]);
 

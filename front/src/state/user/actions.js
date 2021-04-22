@@ -4,9 +4,20 @@ import axios from 'axios';
 export const login = createAsyncThunk('LOGIN', async (user) => {
   try {
     const logged = await axios.post(`http://localhost:3001/api/login`, user);
-    return logged.data;
+    localStorage.setItem("token", logged.data);
   } catch (err) {
     return console.log(err);
+  }
+});
+
+export const getUser = createAsyncThunk("GET_USER_BY_TOKEN", async () => {
+  try {
+    const user = await axios.get(`http://localhost:3001/api/me`, {
+      headers: { Authorization: `token ${localStorage.getItem("token")}` },
+    })
+    return user.data;
+  } catch (error) {
+    console.log(error);
   }
 });
 
@@ -25,9 +36,8 @@ export const registerUser = createAsyncThunk('REGISTER_USER', async (body) => {
 export const results = createAsyncThunk(
   'RESULTS_TEST',
   async (body) => {
-    console.log("body",body)
     try {
-      const testResults = await axios.post('http://localhost:3001/api/result', 
+      const testResults = await axios.post('http://localhost:3001/api/user/result', 
        body
       );
       return testResults.data;
@@ -37,6 +47,17 @@ export const results = createAsyncThunk(
   },
 );
 
-export const clear = createAction("RESET")
+export const allResults = createAsyncThunk(
+  'ALL_RESULTS', (userId) => {
+    return axios.get(`http://localhost:3001/api/user/result/${userId}`)
+    .then(res => res.data)
+  }
 
-export const logOut = createAction("LOG_OUT")
+)
+
+
+export const clear = createAction("RESET");
+
+export const logOut = createAction("LOG_OUT");
+
+export const logExternalUser = createAction("LOG_EXTERNAL_USER")

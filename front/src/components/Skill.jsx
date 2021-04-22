@@ -1,21 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from './UI/Button';
 import { Link } from 'react-router-dom';
 import style from '../styles/skills.module.scss';
-
+import { FaPencilAlt, FaPlus } from 'react-icons/fa';
 
 const Skill = ({ skill }) => {
-
   return (
-    <div className={skill.id % 2 ? style.skills2 : style.skills}>
+    <div className={style.skill}>
       {skill.name}
+      <br />
       {skill.hasTest ? (
-        <Link to={`/admin/skill/edit/${skill.id}`}>
-          <button>Editar Test</button>
+        <Link to={`/admin/skill/edit/${skill.pId}`}>
+          <FaPencilAlt />
         </Link>
       ) : (
-        <Link to={`/admin/skill/create/${skill.id}`}>
-        <button>Crear Test</button>
+        <Link to={`/admin/skill/create/${skill.pId}`}>
+          <FaPlus />
         </Link>
       )}
     </div>

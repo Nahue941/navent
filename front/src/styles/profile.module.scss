@@ -1,0 +1,28 @@
+.miniContainer {
+  background-color: rgb(255, 255, 255);
+  width: 30%;
+  border-radius: 5px;
+  box-shadow: -5px 5px 10px 3px rgba(0, 0, 0, 0.158);
+  padding-left: 3%;
+  padding-top: 2%;
+  padding-bottom: 5%;
+    h2{
+        font-weight: 300;
+        height: auto;
+        font-size: 150%;
+    }
+    h1{
+        text-align: center;
+        color: blue;
+        font-size: 220%;
+    }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+  margin-top: 2.5%;
+  height: auto;
+  margin-bottom: 1%;
+}
