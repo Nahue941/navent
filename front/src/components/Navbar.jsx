@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { logOut } from '../state/user/actions'
 import styles from '../styles/navbar.module.scss';
+import Search from '../containers/Search';
 
 const Navbar = () => {
   const user = useSelector((state) => state.user.user);
@@ -30,6 +31,9 @@ const Navbar = () => {
               }
               alt="logo"
             />
+
+          <Search/>
+
           </Link>
           {! (user?.id) ? (
             <Link to="/login" className={styles.link}>
@@ -47,3 +51,19 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// {movies ?
+//   movies.slice(1).map((p) => {
+//      return (
+//        <div key={p.imdbID} className="centerCar">
+//          <Link
+//            onClick={() => handleClick(p.imdbID)}
+//            to={`/movie/:${p.imdbID}`}
+//          >
+//            <h3> {p.Title} </h3>
+//            <img src={p.Poster} width="110" height="130" />
+//          </Link>
+//        </div>
+//      );
+//    })
+//  : null}
