@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, Redirect} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../styles/search.module.scss';
 import { allSkills } from '../state/skills/actions';
@@ -10,49 +10,40 @@ import { MdSearch } from 'react-icons/md';
 const Search = () => {
   const [input, setInput] = useState('');
   const skills = useSelector((state) => state.skill.allSkills);
-  const dispatch = useDispatch();
   const skillName = [...skills.map(x => (x.name).toLowerCase())]
+  const dispatch = useDispatch();
+  const [search, setSearch] = useState('')  
   const handleChange = (e) => {
-    console.log(skillName.includes((e.target.value).toLowerCase())? (skillName, "SOY EL SKILL") : null)
-    setInput(e.target.value);
-    console.log(e.target.value);
-    dispatch(allSkills(input))
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    setInput(e.target.value)
   };
 
+  useEffect(() => {
+    setSearch(skillName.includes((input).toLowerCase())? input : null)
+  }, [skillName.includes((input).toLowerCase())? input : null, "1"]);
+
+console.log(search, "soy search")
   useEffect(() => {
     dispatch(allSkills());
   }, [dispatch]);
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form >
         <div className={styles.centerRow}>
           <h1 className={styles.colorIcon}>
             <MdSearch />
           </h1>
 
-          <Link to="/admin/skill/search">
             <input
               type="text"
               placeholder="Buscar Skills"
               value={input}
               onChange={handleChange}
             />
-          </Link>
 
-          <Route path="/admin/skill/search">
-          <div className={style.container}>
-            {skills?.map((skill) => (
-              <Skill key={skill.id} skill={skill} />
-            ))}
-          </div>
-
-          </Route>
 
         </div>
+
       </form>
     </>
   );
