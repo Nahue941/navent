@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { logOut } from '../state/user/actions'
 import styles from '../styles/navbar.module.scss';
-import { AiOutlineUser } from 'react-icons/ai'
-import Search from '../containers/Search';
+import { AiOutlineUser } from 'react-icons/ai';
 
 const Navbar = () => {
   const user = useSelector((state) => state.user.user);
@@ -34,9 +33,7 @@ const Navbar = () => {
               />
           </Link>
 
-          <div>
-            <Search/>
-          </div>
+
 
           {! (user?.id) ? (
             <Link to="/login" className={styles.link}>
