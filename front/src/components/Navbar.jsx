@@ -32,14 +32,18 @@ const Navbar = () => {
               alt="logo"
               />
           </Link>
-
-
-
-          {! (user?.id) ? (
+          {!user?.id?
             <Link to="/login" className={styles.link}>
-              <input type="button" value="Login" className={styles.link} />
-            </Link>
-          ) : (
+            <input type="button" value="Login" className={styles.link} />
+          </Link>
+          :
+            ( user?.admin? 
+              
+              <Link to="/" className={styles.link}>
+              <button onClick={handleClick} className={styles.link}>Log Out</button>
+            </Link>  
+            :
+
             <>
               <h1>Bienvenido/a, {user.name}</h1>
             <div className={styles.logged}>
@@ -52,8 +56,13 @@ const Navbar = () => {
               <button onClick={handleClick} className={styles.link}>Log Out</button>
             </Link>
             </div>
-            </>
-          )}
+            </>    
+
+
+              )
+            }
+          
+          
         </div>
       </div>
     </>
@@ -62,6 +71,7 @@ const Navbar = () => {
 
 export default Navbar;
 
+//login : si esta logueado y es admin, mostrame logout : sino mostrame bienvenido y el icono)}
 // {movies ?
 //   movies.slice(1).map((p) => {
 //      return (
