@@ -4,9 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from '../styles/search.module.scss';
 import { allSkills } from '../state/skills/actions';
 import Skill from '../components/Skill';
-import style from '../styles/skills.module.scss';
 import { MdSearch } from 'react-icons/md';
-
+import style from '../styles/skills.module.scss';
 const Search = () => {
   const [input, setInput] = useState('');
   const skills = useSelector((state) => state.skill.allSkills);
@@ -30,19 +29,25 @@ const Search = () => {
     <>
       <form>
         <div className={styles.centerRow}>
+        <div>
           <h1 className={styles.colorIcon}>
             <MdSearch />
           </h1>
-
+          </div>
+          <div>
           <input
             type="text"
             placeholder="Buscar Skills"
             value={input}
             onChange={handleChange}
           />
+          </div>
+          
+          <div className={style.container} >
           {search? 
-          skills?.map((skill) => skill.name.toLowerCase()==[search]? <Skill key={skill.id} skill={skill} />:null)
+          skills?.map((skill) => skill.name.toLowerCase()==[search]? <><div className={styles.skillBox}><Skill key={skill.id} skill={skill} /></div></>:null)
             : null}
+          </div>
         </div>
       </form>
     </>

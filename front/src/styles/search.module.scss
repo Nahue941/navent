@@ -6,11 +6,18 @@
 
 .centerRow {
   display: flex;
-  
-  
   flex-flow: row;
+  flex-wrap: wrap;
+  justify-content:center;
+  align-items: center;
 }
 
 .input {
     border-color: blue;
+}
+
+.skillBox {
+  position: relative;
+  padding-top: 10%;
+  margin-left: 13%;
 }

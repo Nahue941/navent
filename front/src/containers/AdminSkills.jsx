@@ -25,7 +25,11 @@ const AdminSkills = () => {
           <Search />
         </div>
       </div>
-
+      <div className={style.container}>
+        {skills?.map((skill) => (
+          <Skill key={skill.id} skill={skill} />
+        ))}
+      </div>
     </>
   );
 };
