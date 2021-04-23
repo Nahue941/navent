@@ -99,7 +99,9 @@ const testController = {
           include: {
             model: Answer,
           },
+          order: [[Answer, 'id', 'ASC']],
         },
+        order: [[Question, 'id', 'ASC']],
       });
       res.send(test);
     } catch (error) {

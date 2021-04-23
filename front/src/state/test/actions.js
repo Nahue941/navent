@@ -14,13 +14,18 @@ export const singleTest = createAsyncThunk('GET_SINGLE_TEST', (testId) => {
     .then((test) => test.data)
     .catch((err) => console.log(err));
 });
+
 //traer el test que quiero actualizar
-export const getEditTest = createAsyncThunk('GET_EDIT_TEST', (skillId) => {
-  return axios
-    .get(`http://localhost:3001/api/test/edit/${skillId}`)
-    .then((test) => test.data)
-    .catch((err) => console.log(err));
-});
+export const getEditTest = createAsyncThunk(
+  'GET_EDIT_TEST',
+  (skillId, thunkAPI) => {
+    return axios
+      .get(`http://localhost:3001/api/test/edit/${skillId}`)
+      .then((test) => test.data)
+      .catch((err) => console.log(err));
+  },
+);
+
 //post para actualizar el test
 export const setEditTest = createAsyncThunk('SET_EDIT_TEST', (test) => {
   const { daysToReMade, qtyQuestions, qtyAnswers, description } = test;
@@ -46,15 +51,18 @@ export const createTest = createAsyncThunk('CREATE_NEW_TEST', (newTest) => {
     .catch((err) => console.log(err));
 });
 
+export const actualQuestion = createAction('ACTUAL_QUESTION');
+
 export const addAdminAnswer = createAsyncThunk(
   'ADD_ADMIN_ANSWER',
-  (testId, answer) => {
+  ({ testId, newAnswer, skillId, questionIndex }, thunkAPI) => {
     axios
-      .post(`http://localhost:3001/api/answer/:${testId}`, answer)
+      .post(`http://localhost:3001/api/answer/${testId}`, newAnswer)
       .then((answer) => {
-        console.log('Se hizo!');
-        answer.data;
+        return answer.data;
       })
+      .then(() => thunkAPI.dispatch(getEditTest(skillId)))
+      .then(() => thunkAPI.dispatch(actualQuestion(questionIndex)))
       .catch((err) => console.log(err));
   },
 );
@@ -63,7 +71,7 @@ export const editQuestion = createAsyncThunk(
   'EDIT_QUESTION',
   (questionID, newQuestion) => {
     axios
-      .put(`http://localhost:3001/api/question/:${questionID}`, newQuestion)
+      .put(`http://localhost:3001/api/question/${questionID}`, newQuestion)
       .then((answer) => {
         console.log('Se hizo!');
         answer.data;
@@ -74,19 +82,28 @@ export const editQuestion = createAsyncThunk(
 
 export const toggleActiveTest = createAsyncThunk(
   'TOGGLE_ACTIVE',
-  ({testId, active}) => {
-      console.log(`http://localhost:3001/api/test/${testId}`);
-   return  axios
-      .put(`http://localhost:3001/api/test/${testId}`, {active:!active})
-      .then((data) => console.log(data))
+  ({ testId, active }) => {
+    return axios
+      .put(`http://localhost:3001/api/test/${testId}`, { active: !active })
+      .then((data) => data)
       .catch((err) => console.log(err));
   },
 );
 
 export const actualIndexQuestion = createAction('ACTUAL_INDEX');
 
-export const actualQuestion = createAction('ACTUAL_QUESTION');
-
-export const modifyAnswerState = createAction('MODIFY_ANSWER_STATE');
+export const modifyAnswerState = createAsyncThunk(
+  'MODIFY_ANSWER_STATE',
+  ({ answerId, skillId,index, questionId }, thunkAPI) => {
+    axios
+      .put(`http://localhost:3001/api/answer/${answerId}`, {questionId})
+      .then((data) =>{ 
+          return data
+      })
+      .then(() => thunkAPI.dispatch(getEditTest(skillId)))
+      .then(() => thunkAPI.dispatch(actualQuestion(index)))
+      .catch((err) => console.log(err));
+  },
+);
 
 export const updateAnswerState = createAction('UPDATE_ANSWER_STATE');

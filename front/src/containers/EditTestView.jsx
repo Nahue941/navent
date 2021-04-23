@@ -32,8 +32,8 @@ const EditTestView = ({ skillId }) => {
           </Link>
         </div>
 
-        <h3>PREGUNTAS:</h3>
-        <div>
+        <div className={styles2.questionBox}>
+        <h1>PREGUNTAS</h1>
           <QuestionAdminView />
         </div>
       </div>

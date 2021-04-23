@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import styles from '../styles/editTestView.module.scss';
 import dropDown from '../assets/dropdown.png';
 import AnswerAdminView from './AnswerAdminView';
 import trash from '../assets/Trash.png';
 import edit from '../assets/Edit.png';
-import ModalContainer from '../containers/ModalContainerAdmin';
+import ModalEdit from '../components/ModalAdmin';
 import { deleteQuestion } from '../state/questions/actions';
-import { getEditTest } from '../state/test/actions';
+import {getIndexOf} from '../utils/test'
 
 function QuestionAdminView() {
   const [modal, setModal] = useState(false);
   const skillId = useSelector((state) => state.test.editTest.skillId);
-
   const getModal = (value) => {
     setModal(value);
   };
@@ -43,13 +43,15 @@ function QuestionAdminView() {
               <img src={dropDown} alt="dropDown" className={styles.dropDown} />
             </div>
 
-            {showAnswer &&
-              id === question.id &&
-              question.answers?.map((answer) => (
-                <div key={answer.id} className={styles.answers}>
-                  <AnswerAdminView answer={answer} />
-                </div>
-              ))}
+            <div className={styles.answersContainer}>
+              {showAnswer &&
+                id === question.id &&
+                question.answers?.map((answer) => (
+                  <div key={answer?.id} className={styles.answers}>
+                    <AnswerAdminView answer={answer} />
+                  </div>
+                ))}
+            </div>
             {showAnswer && id === question.id && (
               <div className={styles.footerSkill}>
                 {' '}
@@ -70,17 +72,18 @@ function QuestionAdminView() {
                     dispatch(
                       deleteQuestion({
                         questionId: question.id,
-                        skillId
+                        skillId,
                       }),
                     );
                   }}
                 />
-                <ModalContainer
-                  index={i}
-                  question={question.question}
+                <ModalEdit
+                  index={getIndexOf(questions,question.id)}
+                  question={question}
                   answers={question.answers}
                   show={modal}
                   onHide={hideModal}
+                  setModal={setModal}
                 />
               </div>
             )}

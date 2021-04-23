@@ -45,9 +45,6 @@ p {
   display: none;
 }
 
-.radioBtn input:checked + .checkmark {
-  border: 6px solid #3D47F5;
-}
 
 @media (max-width: 750px) {
   .radioBtn .checkmark {

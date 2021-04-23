@@ -1,4 +1,5 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
+import {getEditTest} from '../test/actions'
 import axios from 'axios';
 
 export const addAnswer = createAction('ADD_ANSWER');
@@ -11,3 +12,20 @@ export const correctAnswers = createAction('CORRECT_ANSWER');
 
 export const clear = createAction('CLEAR');
 
+export const editAnswer = createAsyncThunk('EDIT_ANSWER', async ({answers,skillId, questionIndex} ,thunkAPI) => {
+  const promises = answers.map(({ answerId, correct, answer, questionId}) => {
+    return axios.put(`http://localhost:3001/api/answer/${answerId}`, {
+      answer,
+      questionId,
+      correct,
+    });
+  });
+  try {
+    const res = await Promise.all(promises);
+    thunkAPI.dispatch(getEditTest(skillId))
+    thunkAPI.dispatch(actualQuestion(questionIndex))    
+    console.log(res);
+  } catch (err) {
+    console.error(err);
+  }
+});

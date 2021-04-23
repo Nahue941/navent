@@ -1,80 +1,184 @@
-import React, { useEffect, useState  } from 'react';
-import { useDispatch, useSelector} from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Button from './UI/Button';
 import CloseIcon from './UI/CloseIcon';
-import styles from '../styles/modal.module.scss';
-import check from '../assets/Check.png';
-import styles2 from '../styles/editTestView.module.scss';
-import add from '../assets/add.png';
 import RadioButton from '../components/UI/RadioButton';
-import { addAdminAnswer, actualQuestion , modifyAnswerState , updateAnswerState} from '../state/test/actions';
 
+import add from '../assets/add.png';
+import check from '../assets/Check.png';
+import newLogo from '../assets/new.svg';
+import edit from '../assets/Edit.png';
 
-import {correctAnswer} from '../utils/test'
+import { filterAnswer } from '../utils/test';
 
-const ModalEdit = ({ question, show, onHide, answers, index }) => {
+import styles from '../styles/modal.module.scss';
+import styles2 from '../styles/editTestView.module.scss';
+
+import {
+  addAdminAnswer,
+  actualQuestion,
+  modifyAnswerState,
+  updateAnswerState,
+  getEditTest,
+} from '../state/test/actions';
+import { editAnswer } from '../state/answers/actions';
+import { correctAnswer } from '../utils/test';
+
+const ModalEdit = ({ question, show, onHide, answers, index, setModal }) => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(actualQuestion(index));
-  }, []);
-
-  const actual = useSelector((state) => state.test.actualQuestion.answers)
-  
-  // const  answerQuestion = useSelector((state) => state.test.actualQuestion).answers[index].correct
-  const oldIndex = correctAnswer(actual)
-  const newInput = () => {
-    return <input type="text" name="answer" />;
-  };
-
-  const addNewAnswer = () => {
-      
-  };
-
-  const ModifiyCorrectAnswer = (index,state, oldIndex) => {
-    dispatch(modifyAnswerState({index,state, oldIndex}))
-    // dispatch(updateAnswerState(index))
-
-  }
+  const actual = useSelector((state) => state.test.actualQuestion?.answers);
+  const skillId = useSelector((state) => state.test.editTest.skillId);
 
   const [input, showInput] = useState(false);
+  const [title, showTitle] = useState(false);
+  const [editAnswers, seteditAnswers] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const testId = question.testId;
+
+  const newAnswer = {
+    correct: false,
+    answer: 'Prueba de respuesta JULI',
+    questionId: question.id,
+  };
+
+  
+
+  useEffect(() => {
+    dispatch(actualQuestion(index));
+  }, [actual]);
+
+  const oldIndex = correctAnswer(actual);
+
+  const newInput = () => {
+    return (
+      <div className={styles2.newAnswer}>
+        <img src={newLogo} alt="newLogo" className={styles2.icons} />
+        <input
+          type="text"
+          name="answer"
+          defaultValue=""
+          onKeyDown={(e) => {
+            if (e.code === 'Enter' && e.target.value) {
+              addNewAnswer(testId, newAnswer, skillId);
+              showInput(false);
+            }
+          }}
+        />
+      </div>
+    );
+  };
+
+  const titleInput = () => {
+    return (
+      <input type="text" name="title" id="" defaultValue={question.question} />
+    );
+  };
+
+  const handleChange = (e, correct, answerId) => {
+    const updatedAnswers = filterAnswer(editAnswers, answerId);
+    seteditAnswers([
+      ...updatedAnswers,
+      {
+        answer: e.target.value,
+        correct,
+        questionId: question.id,
+        answerId: e.target.name,
+      },
+    ]);
+  };
+
+  const handleSubmit = () => {
+    !loading &&
+      editAnswers.length &&
+      dispatch(editAnswer({ answers: editAnswers, skillId })).then(() => {
+        setModal(false);
+      });
+  };
+
+
+  const addNewAnswer = (testId, newAnswer, skillId) => {
+    console.log(testId, newAnswer);
+    dispatch(
+      addAdminAnswer({ testId, newAnswer, skillId, questionIndex: index }),
+    );
+  };
+
+  const ModifiyCorrectAnswer = async (index, state, oldIndex, answer) => {
+    // dispatch(modifyAnswerState({ index, state, oldIndex }));
+    dispatch(
+      modifyAnswerState({
+        answerId: answer.id,
+        skillId,
+        index,
+        questionId: question.id,
+      }),
+    )
+    
+  };
 
   return (
     <div
       className={`${styles.modalBg} ${show && styles.active} `}
-      key={question}
+      key={question.id}
     >
-      <div className={`${styles.modal} ${styles.adminModalEdit}`}>
+      <div className={`${styles.modal} ${styles.modalEdit} `}>
         <div onClick={() => onHide()} className={styles.containerClose}>
           <CloseIcon />
         </div>
-        <h1>{question}</h1>
-        {actual?.map((answer,i) => {
-          return (
-            <div className={`${styles2.answerContainer}`} key={answer.id}>
-              <RadioButton
-                answer={answer}
-                questionId={question.id}
-                selectedId={answer.correct && answer.id}
-                adminEdit={true}
-                onClick={ModifiyCorrectAnswer}
-                index={i}
-                oldIndex={oldIndex}
-                state={answer.correct}
-                isAdmin={true}
-              />
-              <input type="text" defaultValue={answer.answer} />
-              {answer.correct ? (
-                <img src={check} alt="" className={styles2.icons} />
-              ) : (
-                ''
-              )}
-            </div>
-          );
-        })}
+        <div className={styles.headerEditModal}>
+          {title ? (
+            titleInput()
+          ) : (
+            <h1 className={styles.h1}>{question.question}</h1>
+          )}
+          <img
+            src={edit}
+            alt="editLogo"
+            className={styles.pencil}
+            onClick={() => {
+              showTitle(!title);
+            }}
+          />
+        </div>
+        <div className={styles.answerContainer}>
+          {actual?.map((answer, i) => {
+            return (
+              <div className={`${styles2.answerContainer}`} key={answer.id}>
+                <RadioButton
+                  answer={answer}
+                  adminEdit={true}
+                  onClick={ModifiyCorrectAnswer}
+                  index={i}
+                  oldIndex={oldIndex}
+                  isAdmin={true}
+                />
+                <input
+                  type="text"
+                  defaultValue={answer.answer}
+                  onBlur={(e) => handleChange(e, answer.correct, answer.id)}
+                  name={answer.id}
+                />
+                {answer.correct ? (
+                  <img src={check} alt="" className={styles2.icons} />
+                ) : (
+                  ''
+                )}
+              </div>
+            );
+          })}
+        </div>
         {input && newInput()}
-        <img src={add} alt="" onClick={() => showInput(!input)} />
-        <Button color={'rgb(233, 0, 102)'} value={'Guardar'} />
+        <div className={styles.answerContainerFooter}>
+          <img src={add} alt="" onClick={() => showInput(!input)} />
+          <Button
+            color={'rgb(233, 0, 102)'}
+            value={'Guardar'}
+            onClick={handleSubmit}
+            disabled={loading}
+          />
+        </div>
       </div>
     </div>
   );

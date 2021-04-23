@@ -17,7 +17,7 @@
 }
 
 .modal {
-    background-color: rgb(221, 217, 217);
+    background-color: rgba(255, 255, 255, 0.83);
     border-radius:16px ;
     width: 40vw;
    display: flex;
@@ -29,9 +29,14 @@
     h3 {
         margin: 6px;
     }
+    position: relative
 }
 
-
+.modalEdit {
+    width: 90%;
+    height: 90%;
+    
+} 
 
 .active {
     visibility: visible;
@@ -51,15 +56,16 @@
 }
 
 .closeIcon {
-    width: 6%;
+    width: 3%;
 }
 
 .containerClose {
     position:absolute;
     display: flex; 
     justify-content: flex-end;
-    margin:3px;
-
+    // width: 1;
+    margin-bottom: 20px;
+    position:relative
     
 }
 
@@ -95,5 +101,36 @@
     height: 50vh;
 }
 .check {
-    width: 20px;
+    width: 15px;
+    background-color: green;
+}
+
+
+.answerContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    margin: 50px;
+}
+
+.answerContainerFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+}
+
+.headerEditModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pencil {
+    width:25px;
+    cursor: pointer;
+}
+
+.h1 {
+    margin-right: 15px;
 }

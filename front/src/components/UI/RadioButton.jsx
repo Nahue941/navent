@@ -9,8 +9,8 @@ const RaddioButton = ({
   adminEdit,
   isAdmin,
   index,
-  state, 
-  oldIndex
+  oldIndex,
+  
 }) => {
   return (
     <div className={styles.body} key={answer.id}>
@@ -21,14 +21,15 @@ const RaddioButton = ({
           name={questionId}
           onClick={(e) => {
             if (onClick && !isAdmin) onClick(e, answer);
-            isAdmin && onClick(index,state, oldIndex)
+            isAdmin && onClick(index, answer.correct, oldIndex, answer);
           }}
         />
 
         <span
-          className={`${styles.checkmark} ${
-            selectedId === answer.id && styles.selected
-          }`}
+          className={`${styles.checkmark} 
+          ${adminEdit && answer.correct && styles.selected}
+          ${!adminEdit && selectedId === answer.id && styles.selected}
+          `}
         ></span>
         {!adminEdit && <p>{answer.answer}</p>}
       </label>

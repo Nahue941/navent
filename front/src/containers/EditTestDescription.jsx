@@ -33,12 +33,11 @@ const EditTestDescription = () => {
   }
   
   return (
-    <div>
+    <div className={styles2.questionBox}>
       <form>
-        <div>
-          <div className={styles2.container}>
             <h1>Editar: {test.name}</h1>
-          </div>
+        <div className={styles2.items}>
+          
           <div className={styles2.container} onClick={() => changeState()}>
             <ButtonEdit
               color="blue"
@@ -46,6 +45,7 @@ const EditTestDescription = () => {
               value={showInput == 'true' ? 'editar' : 'cancelar'}
               onClick={setNewTestEditButton}
             />
+
           </div>
           <div className={styles2.container}>
 
@@ -60,6 +60,7 @@ const EditTestDescription = () => {
                 <input
                   placeholder={test?.description}
                   defaultValue={test?.description}
+                  className={styles2.input}
                   name="description"
                   onChange={handleInputTest}
                 ></input>
@@ -75,7 +76,7 @@ const EditTestDescription = () => {
               ) : (
                 <input
                   placeholder={test?.timeToComplete}
-
+                  className={styles2.input}
                   defaultValue={test?.timeToComplete}
                   name="timeToComplete"
                   onChange={handleInputTest}
@@ -92,7 +93,7 @@ const EditTestDescription = () => {
               ) : (
                 <input
                   placeholder={test?.qtyQuestions}
-
+                  className={styles2.input}
                   defaultValue={test?.qtyQuestions}
                   name="qtyQuestions"
                   onChange={handleInputTest}
@@ -110,7 +111,7 @@ const EditTestDescription = () => {
                 <>
                   <input
                     placeholder={test?.qtyAnswers}
-
+                  className={styles2.input}
                     defaultValue={test?.qtyAnswers}
                     name="qtyAnswers"
                     onChange={handleInputTest}
