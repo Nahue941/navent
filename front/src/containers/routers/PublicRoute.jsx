@@ -8,6 +8,7 @@ import NotFound from '../../components/NotFound'; // ruta publica
 const PublicRoute = () => {
     return (
         <div>
+            
             <Switch>
             <Route exact path="/" render={() => <div>Inicio</div>} />
             <Route path="/login" render={() => <Login />} />            

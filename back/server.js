@@ -32,7 +32,7 @@ app.use(function (err, req, res, next) {
   res.status(status).send('Something broke!');
 });
 
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: false}).then(() => {
   app.listen(port, () => {
     console.log(`Server listening at port ${port}`);
   });
