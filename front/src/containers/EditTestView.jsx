@@ -13,9 +13,10 @@ import ActiveTogglerButton from '../components/ActiveTogglerTest'
 const EditTestView = ({ skillId }) => {
   const dispatch = useDispatch();
   const test = useSelector((state) => state.test.editTest);
-  const testId = useSelector(state => state.test.editTest.questions?.[0].testId)
+
 
   useEffect(() => {
+    console.log(`skillid`,skillId)
     dispatch(getEditTest(skillId));
   }, [dispatch]);
 
@@ -45,7 +46,7 @@ const EditTestView = ({ skillId }) => {
     <div>
       <div>
         <EditTestDescription />
-        <ActiveTogglerButton testId={testId}/>
+        <ActiveTogglerButton testId={test?.id}/>
       </div>
       <div>
         <div className={styles2.container}>

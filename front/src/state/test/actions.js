@@ -28,6 +28,7 @@ export const singleTest = createAsyncThunk('GET_SINGLE_TEST', (testId) => {
 export const getEditTest = createAsyncThunk(
   'GET_EDIT_TEST',
   (skillId, thunkAPI) => {
+    console.log(`holis`)
     return axios
       .get(`http://localhost:3001/api/test/edit/${skillId}`)
       .then((test) => test.data)

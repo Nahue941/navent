@@ -24,7 +24,7 @@ export const createQuestion = createAsyncThunk('CREATE_QUESTION', (body) => {
   let { testId, newQuestion } = body;
   return axios({
     method: 'post',
-    data: newQuestion,
+    data: {question: newQuestion},
     url: `http://localhost:3001/api/question/${testId}`,
   });
 });
@@ -42,8 +42,7 @@ export const deleteQuestion = createAsyncThunk(
 export const editQuestion = createAsyncThunk(
   'EDIT_QUESTION',
   ({ editQuestion, skillId, index, questionId }, thunkAPI) => {
-    console.log(questionId);
-    axios
+      axios
       .put(`http://localhost:3001/api/question/${questionId}`,editQuestion)
       .then((data) => {
         return data;
@@ -52,6 +51,14 @@ export const editQuestion = createAsyncThunk(
       .catch((err) => console.log(err));
   },
 );
+
+export const enableAnswer = createAsyncThunk('ENEABLE_ANSWER', (questionId) => {
+  return axios({
+    method: 'put',
+    url: `http://localhost:3001/api/question/activate/${questionId}`
+  })
+})
+
 
 export const setDisabled = createAction('SET_DISABLED');
 

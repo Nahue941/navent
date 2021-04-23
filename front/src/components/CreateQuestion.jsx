@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { createQuestion } from '../state/questions/actions';
+import { createQuestion, enableAnswer } from '../state/questions/actions';
+import { createAnswerBulk } from '../state/answers/actions';
 import ButtonEdit from './UI/ButtonEdit';
 import { getEditTest, actualIndexQuestion } from '../state/test/actions';
 import { useSelector } from 'react-redux';
 import styles from '../styles/createQuestion.module.scss';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 
-const CreateQuestion = ({testId}) => {
+const CreateQuestion = ({ testId }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [newQuestion, setNewQuestion] = useState('');
@@ -22,12 +23,6 @@ const CreateQuestion = ({testId}) => {
     useSelector((state) => state.test.editTest.qtyAnswers),
   ); //cantidad de respuestas minima que puede tener un test
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(createQuestion({ testId, newQuestion })).then(() =>
-      history.goBack(),
-    );
-  };
 
   const handleInputChangeQuestion = (e) => {
     setNewQuestion(e.target.value);
@@ -56,14 +51,31 @@ const CreateQuestion = ({testId}) => {
     auxArray.map((x) => (x.correct = false)); //primero hago false a todas
     auxArray[newRadio].correct = true; //a la seleccionada la hago true
     setNewAnswer(newAnswer);
-    console.log({answers:newAnswer,question:newQuestion,testId});
+    const newCompleteQuestion = {
+      answers: newAnswer,
+      newQuestion: newQuestion,
+      testId,
+    };
+
+    dispatch(createQuestion(newCompleteQuestion))
+      .then(res => {
+        const questionId = res.payload.data.id;
+        newCompleteQuestion.answers.map((answer) => 
+          answer[`questionId`] = questionId
+        )
+        dispatch(createAnswerBulk(newCompleteQuestion.answers))
+          .then(() => {
+            dispatch(enableAnswer(questionId))
+              .then(() => history.goBack())
+          })
+      })
   };
 
   return (
     <div className={styles.centerItems}>
       <div className={`${styles.container} ${styles.centerItems}`}>
         <h3>Ingrese la pregunta o consigna:</h3>
-        <form onSubmit={handleSubmit}>
+        <form >
           <input
             className={styles.form__input}
             type="text"
@@ -73,7 +85,7 @@ const CreateQuestion = ({testId}) => {
             onChange={handleInputChangeQuestion}
           />
         </form>
-        <form onSubmit={handleSubmit}>
+        <form>
           <h3>Ingrese las respuestas:</h3>
 
           <div>

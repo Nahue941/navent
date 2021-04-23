@@ -2,6 +2,15 @@ const { Answer } = require('../models');
 const { Op } = require('sequelize');
 
 const answerController = {
+  async createAnswerBulk(req, res, next) {
+    try {
+      const arrayAnswers = Answer.bulkCreate(req.body);
+      res.status(201).send(arrayAnswers);
+    } catch (error) {
+      next(error);
+    }
+  },
+  
   async createAnswer(req, res, next) {
     try {
       const newAnswer = await Answer.create({

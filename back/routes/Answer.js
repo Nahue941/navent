@@ -2,6 +2,7 @@ const express = require('express');
 const answerController = require('../controllers/answer');
 const router = express.Router();
 
+router.post('/bulk', answerController.createAnswerBulk);
 router.post('/:id', answerController.createAnswer);
 router.put('/:id/updateCorrect', answerController.updateCorrect);
 router.put('/:id', answerController.editAnswer);

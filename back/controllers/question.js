@@ -1,6 +1,21 @@
 const { Question, Answer } = require('../models');
 
 const questionController = {
+    async activateQuestion(req, res, next){
+        try {
+            const questionActive = await Question.update(
+                { active: true },
+                {
+                    where: {
+                        id: req.params.id
+                    }
+                });
+            res.send(200);
+        } catch (error) {
+            next(error);
+        }
+    },
+
     async getOne(req, res, next) {
         try {
             const question = await Question.findByPk(req.params.id, { include: [Answer] });
@@ -10,6 +25,8 @@ const questionController = {
         }
     },
     async createQuestion(req, res, next) {
+        console.log(`boddyyy`)
+        console.log(req.body)
         try {
             const question = await Question.create({
                 ...req.body,

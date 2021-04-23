@@ -34,7 +34,7 @@ const EditTestDescription = () => {
   return (
     <div className={styles2.questionBox}>
       <form>
-            <h1>Editar: {test.name}</h1>
+            <h1>Editar: {test?.name}</h1>
         <div className={styles2.items}>
           
           <div className={styles2.container} onClick={() => changeState()}>

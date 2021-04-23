@@ -4,6 +4,7 @@ const questionController = require('../controllers/question');
 
 router.get('/:id', questionController.getOne)
 router.post('/:testId', questionController.createQuestion)
+router.put('/activate/:id', questionController.activateQuestion)
 router.put('/:id', questionController.editQuestion)
 router.delete('/:id', questionController.deleteQuestion)
 

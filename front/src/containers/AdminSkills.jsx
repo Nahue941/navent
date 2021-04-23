@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Skill from '../components/Skill';
 import { useDispatch, useSelector } from 'react-redux';
-import { allSkills } from '../state/skills/actions';
+import { allSkills, allSKillsSearch } from '../state/skills/actions';
 import style from '../styles/skills.module.scss';
 import Search from './Search';
 
@@ -34,6 +34,7 @@ const AdminSkills = () => {
 
   useEffect(() => {
     dispatch(allSkills(30));
+    dispatch(allSKillsSearch());
   }, []);
 
   // useEffect(() => {
