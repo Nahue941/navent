@@ -1,7 +1,8 @@
 .colorIcon {
   color: blue;
-  font-size: 1.4em;
-  padding-right: 3%;
+  font-size: 1.5em;
+  
+  cursor: position;
 }
 
 .centerRow {
@@ -10,20 +11,25 @@
   flex-wrap: wrap;
   justify-content:center;
   align-items: center;
+  cursor: position;
 }
 
 .input {
     border-color: blue;
+    cursor: position;
+    padding-left: 10%;
 }
 
 .skillBox {
   position: relative;
   padding-top: 10%;
   margin-left: 13%;
+  cursor: position;
 }
 
 .loading {
   position: relative;
   padding-top: 10%;
   margin-left: 25%;
+  cursor: position;
 }
