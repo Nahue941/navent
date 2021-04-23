@@ -306,13 +306,14 @@ module.exports = [
     testId: 6,
     active: true,
     question:
-      'There are many properties that can be used to alig…ion bar which stays fixed at the top of the page?',
+    `There are many properties that can be used to align elements and create page layouts such as float, position, flexbox and grid. Of these four properties, which one should be used to align a global navigation bar which stays fixed at the top of the page?`,
+    
   },
   {
     testId: 6,
     active: true,
     question:
-      'When elements overlap, they are ordered on the z-a…f statements about the z-index property are true?',
+    `When elements overlap, they are ordered on the z-axis (i.e., which element covers another). The z-index property can be used to specify the z-order of overlapping elements. Which set of statements about the z-index property are true?`,
   },
   {
     testId: 6,
@@ -335,7 +336,7 @@ module.exports = [
     testId: 6,
     active: true,
     question:
-      'When using media queries, media types are used to …ry. Which choice lists current valid media types?',
+    `When using media queries, media types are used to target a device category. Which choice lists current valid media types?`,
   },
   {
     testId: 5,

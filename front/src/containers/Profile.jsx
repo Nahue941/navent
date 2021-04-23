@@ -4,6 +4,8 @@ import { allResults } from '../state/user/actions';
 import ProfileResults from '../components/ProfileResults';
 import styles from '../styles/profile.module.scss';
 import Background from '../components/UI/Background';
+import {FcExpired} from 'react-icons/fc'
+import {format} from '../utils/format'
 
 const Profile = ({ userId }) => {
   const dispatch = useDispatch();
@@ -38,7 +40,7 @@ const Profile = ({ userId }) => {
   return (
     <>
       <Background />
-      {results?.length && (
+      {results?.length ? (
         <div className={styles.container}>
           <ProfileResults
             min={min}
@@ -49,7 +51,19 @@ const Profile = ({ userId }) => {
             promedio={Math.round(promedy)}
           />
         </div>
-      )}
+      )
+    :
+    (
+      <div className={styles.container}>
+      <div style={{textAlign: 'center', paddingRight: '4%', paddingTop: '5%'}} className={styles.miniContainer}>
+        ¡No has realizado ningun Test todavía!
+        <br/>
+        ¿Qué esperas para validar tus habilidades?
+        <br/>
+        <FcExpired size={50} />
+      </div>
+      </div>
+    )}
     </>
   );
 };

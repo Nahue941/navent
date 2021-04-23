@@ -45,9 +45,11 @@ const Modal = ({ qty, info, time, name, id, onHide, show, daysRemaining, lastRes
             </>
           :
           <Link to={`/test/${id}`} className={styles.container}>
-            <PlayIcon onClick={() => {
-              dispatch(setDisabled)
-            }}/>
+            <PlayIcon 
+            // onClick={() => {
+            //   dispatch(setDisabled)
+            // }}
+            />
           </Link>        
           }
 

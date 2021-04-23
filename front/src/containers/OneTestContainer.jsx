@@ -63,6 +63,7 @@ const TestContainer = ({ testId }) => {
       history.push(`/404`)
     }
     setLoading(false);
+    if(indexQuestion == 0) setDisabled(false)
 
   }, [dispatch]);
 

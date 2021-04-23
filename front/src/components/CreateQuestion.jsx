@@ -6,24 +6,21 @@ import ButtonEdit from './UI/ButtonEdit';
 import { getEditTest, actualIndexQuestion } from '../state/test/actions';
 import { useSelector } from 'react-redux';
 import styles from '../styles/createQuestion.module.scss';
-import {IoMdAddCircleOutline} from 'react-icons/io';
+import { IoMdAddCircleOutline } from 'react-icons/io';
 
-const CreateQuestion = ({ testId }) => {
+const CreateQuestion = ({testId}) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [newQuestion, setNewQuestion] = useState('');
   const [newAnswer, setNewAnswer] = useState([]);
   const [newRadio, setNewRadio] = useState(0);
   const [answersNum, setAnswersNum] = useState(
-    useSelector((state) => state.test.singleTest.qtyAnswers),
+    useSelector((state) => state.test.editTest.qtyAnswers),
   ); //largo original de preguntas segun el test
 
   const [limit, setLimit] = useState(
-    useSelector((state) => state.test.singleTest.qtyAnswers),
+    useSelector((state) => state.test.editTest.qtyAnswers),
   ); //cantidad de respuestas minima que puede tener un test
-  useEffect(() => {
-    dispatch(getEditTest(testId));
-  }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,87 +55,88 @@ const CreateQuestion = ({ testId }) => {
     const auxArray = newAnswer;
     auxArray.map((x) => (x.correct = false)); //primero hago false a todas
     auxArray[newRadio].correct = true; //a la seleccionada la hago true
-    setNewAnswer(newAnswer); //mi data actualizada, lista para mandar al back
-
+    setNewAnswer(newAnswer);
+    console.log({answers:newAnswer,question:newQuestion,testId});
   };
 
   return (
-    <div  className={styles.centerItems}>
-      <div className={`${styles.container} ${styles.centerItems}`}> 
-      <h3>Ingrese la pregunta o consigna:</h3>
-      <form onSubmit={handleSubmit}>
-        <input
-        className={styles.form__input}
-          type="text"
-          name="question"
-          id="question"
-          autoFocus
-          onChange={handleInputChangeQuestion}
-        />
-      </form>
-      <form onSubmit={handleSubmit}>
-        <h3>Ingrese las respuestas:</h3>
+    <div className={styles.centerItems}>
+      <div className={`${styles.container} ${styles.centerItems}`}>
+        <h3>Ingrese la pregunta o consigna:</h3>
+        <form onSubmit={handleSubmit}>
+          <input
+            className={styles.form__input}
+            type="text"
+            name="question"
+            id="question"
+            autoFocus
+            onChange={handleInputChangeQuestion}
+          />
+        </form>
+        <form onSubmit={handleSubmit}>
+          <h3>Ingrese las respuestas:</h3>
 
-        <div>
-          {[...Array(answersNum)].map((e, i) => (
-            <div key={i + 1}>
-              <input
-                className={styles.form__input}
-                type="text"
-                name={`answer${i + 1}`}
-                id={i}
-                autoFocus
-                onChange={handleInputChangeAnswer}
-              />
-              <input
-                onChange={handleChangeRadio}
-                key={i + 1}
-                type="radio"
-                id={i}
-                name="correct"
-                value="true"
-              ></input>
-            </div>
-          ))}
+          <div>
+            {[...Array(answersNum)].map((e, i) => (
+              <div key={i + 1}>
+                <input
+                  className={styles.form__input}
+                  type="text"
+                  name={`answer${i + 1}`}
+                  id={i}
+                  autoFocus
+                  onChange={handleInputChangeAnswer}
+                />
+                <input
+                  onChange={handleChangeRadio}
+                  key={i + 1}
+                  type="radio"
+                  id={i}
+                  name="correct"
+                  value="true"
+                ></input>
+              </div>
+            ))}
+          </div>
+        </form>
+        <div className={styles.btn_align}>
+          <ButtonEdit
+            height="30px"
+            width="30px"
+            type="submit"
+            color="blue"
+            value="+"
+            onClick={handleAddAnswers}
+          />
+          <ButtonEdit
+            height="30px"
+            width="30px"
+            type="submit"
+            color="blue"
+            value="-"
+            onClick={handleAddAnswers}
+          />
         </div>
-      </form>
-      <div className={styles.btn_align} >
-      <ButtonEdit
-        height="30px"
-        width="30px"
-        type="submit"
-        color="blue"
-        value="+"
-        onClick={handleAddAnswers}
-      />
-      <ButtonEdit
-        height="30px"
-        width="30px"
-        type="submit"
-        color="blue"
-        value="-"
-        onClick={handleAddAnswers}
-      />
+        {newAnswer.length > 0 && newQuestion.length > 0 ? (
+          <ButtonEdit
+            height="30px"
+            width="80px"
+            type="submit"
+            color="blue"
+            value="Guardar"
+            onClick={saveAnswer}
+          />
+        ) : (
+          <ButtonEdit
+            className={styles.btn}
+            type="submit"
+            color="#C3C2C8"
+            value="Guardar"
+            height="30px"
+            width="80px"
+          />
+        )}
       </div>
-      {newAnswer.length > 0 && newQuestion.length > 0 ? (
-        <ButtonEdit
-          height="30px"
-          width="80px"
-          type="submit"
-          color="blue"
-          value="Guardar"
-          onClick={saveAnswer}
-        />
-      ) : (
-        <ButtonEdit
-          className={styles.btn}
-          type="submit"
-          color="#C3C2C8"
-          value="Guardar"
-          height="30px" width="80px"
-        />
-      )}
-    </div>
     </div>
   );
 };

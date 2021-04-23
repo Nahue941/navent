@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, Route, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../styles/search.module.scss';
-import { allSkills } from '../state/skills/actions';
+import { allSKillsSearch } from '../state/skills/actions';
 import Skill from '../components/Skill';
 import { MdSearch } from 'react-icons/md';
 import style from '../styles/skills.module.scss';
@@ -11,8 +11,8 @@ import inputStyle from '../styles/form.module.css';
 
 const Search = () => {
   const [input, setInput] = useState('');
-  const skills = useSelector((state) => state.skill.allSkills);
-  const skillName = [...skills.map((x) => x.name.toLowerCase())];
+  const skills = useSelector((state) => state.skill.allSKillsSearch);
+  const skillName = [...skills?.map((x) => x.name.toLowerCase())];
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
   const [searching, setSearching] = useState(false);
@@ -26,7 +26,7 @@ const Search = () => {
   }, [skillName.includes(input.toLowerCase()) ? input.toLowerCase() : null]);
 
   useEffect(() => {
-    dispatch(allSkills());
+    dispatch(allSKillsSearch());
   }, [dispatch]);
 
   return (

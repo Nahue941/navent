@@ -1,4 +1,4 @@
-const { Test, Question, Answer } = require('../models');
+const { Test, Question, Answer, Skill } = require('../models');
 const S = require('sequelize');
 
 const testController = {
@@ -115,8 +115,53 @@ const testController = {
       res.send(test);
     } catch (error) {
       next(error);
-    }
-  },
+        }
+    },
+    async createTest(req, res, next) {
+        try {
+            const test = await Test.create(req.body);
+            const skill= await Skill.findOne({
+                where: {
+                    pId: test.skillId
+                }
+            })
+            skill.update({
+                hasTest: true
+            })        
+            res.status(201).send(test)
+        } catch (error) {
+            next(error);
+        }
+    },
+    async editTest(req, res, next) {
+        try {
+            const updatedTest = await Test.update(
+                req.body,
+                {
+                    where: {
+                        id: req.params.id
+                    }
+                });
+            res.send(updatedTest);
+        } catch (error) {
+            next(error);
+        }
+    },
+    async deleteTest(req, res, next) {
+        try {
+            const test = await Test.update(
+                { active: false },
+                {
+                    where: {
+                        id: req.params.id
+                    }
+                });
+            res.sendStatus(200);
+        } catch (error) {
+            next(error);
+        }
+    },
+  
 };
 
 module.exports = testController;
