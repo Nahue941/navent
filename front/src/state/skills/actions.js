@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const allSkills = createAsyncThunk('GET_ALL_SKILLS', (i) => {
@@ -17,6 +17,7 @@ export const singleSkill = createAsyncThunk('GET_SINGLE_SKILL', (skillId) => {
     .catch((err) => console.log(err));
 });
 
+export const resetSingleSkill = createAction("RESET_SINGLE_SKILL_STATE")
 // export const addTest = createAction('CHANGE_HAS_TEST_BOOLEAN')
 
 export const allSKillsSearch = createAsyncThunk('ALL_SKILLS_SEARCH', () => {

@@ -13,12 +13,12 @@ import ActiveTogglerButton from '../components/ActiveTogglerTest'
 const EditTestView = ({ skillId }) => {
   const dispatch = useDispatch();
   const test = useSelector((state) => state.test.editTest);
-  const testId = useSelector(state => state.test.editTest.questions?.[0].testId)
-
+  // const testId = useSelector(state => state.test.editTest.questions?.[0].testId)
+  
   useEffect(() => {
     dispatch(getEditTest(skillId));
-  }, [dispatch]);
-
+  }, []);
+  
   //manejo del radio button para la respuesta correcta y las incorrectas, sin terminar, se puede borrar porque no funciona
   const handleChangeRadio = (e) => {
     let correct = [e.target.value.split(',')][0][0] == 'false' ? false : true;

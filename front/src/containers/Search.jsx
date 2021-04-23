@@ -12,7 +12,8 @@ import inputStyle from '../styles/form.module.css';
 const Search = () => {
   const [input, setInput] = useState('');
   const skills = useSelector((state) => state.skill.allSKillsSearch);
-  const skillName = [...skills?.map((x) => x.name.toLowerCase())];
+  let skillName;
+  if (skills>0) skillName = [...skills?.map((x) => x.name.toLowerCase())];
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
   const [searching, setSearching] = useState(false);
@@ -23,10 +24,11 @@ const Search = () => {
 
   useEffect(() => {
     setSearch(skillName.includes(input.toLowerCase()) ? input.toLowerCase() : null);
-  }, [skillName.includes(input.toLowerCase()) ? input.toLowerCase() : null]);
-
+  }, [skillName?.includes(input.toLowerCase()) ? input.toLowerCase() : null]);
+  
   useEffect(() => {
     dispatch(allSKillsSearch());
+    console.log("skillName", skillName)
   }, [dispatch]);
 
   return (

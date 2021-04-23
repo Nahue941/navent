@@ -56,9 +56,9 @@ const AdminSkills = () => {
         <div>
           <h1 style={{ color: 'blue', fontSize: '320%' }}>Skills</h1>
         </div>
-        <div className={`${style.iconSearch}`}>
+        {/* <div className={`${style.iconSearch}`}>
           <Search />
-        </div>
+        </div> */}
       </div>
       <div className={style.container}>
         {skills?.map((skill) => (
