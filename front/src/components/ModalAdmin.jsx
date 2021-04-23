@@ -22,6 +22,7 @@ import {
   updateAnswerState,
   getEditTest,
 } from '../state/test/actions';
+import { editQuestion } from '../state/questions/actions';
 import { editAnswer } from '../state/answers/actions';
 import { correctAnswer } from '../utils/test';
 
@@ -42,6 +43,14 @@ const ModalEdit = ({ question, show, onHide, answers, index, setModal }) => {
       correct: false,
       answer,
       questionId: question.id,
+    };
+  };
+
+  const newQuestion = (question) => {
+    return {
+      question,
+      testId,
+      active: true,
     };
   };
 
@@ -72,7 +81,13 @@ const ModalEdit = ({ question, show, onHide, answers, index, setModal }) => {
 
   const titleInput = () => {
     return (
-      <input type="text" name="title" id="" defaultValue={question.question} />
+      <input
+        type="text"
+        name="title"
+        id=""
+        defaultValue={question.question}
+        onBlur={handleSubmitTitle}
+      />
     );
   };
 
@@ -97,6 +112,14 @@ const ModalEdit = ({ question, show, onHide, answers, index, setModal }) => {
     } else {
       setModal(false);
     }
+  };
+
+  const handleSubmitTitle = (e) => {
+    const { value } = e.target;
+    console.log(question.id);
+    dispatch(
+      editQuestion({ editQuestion: newQuestion(value), skillId, index, questionId:question.id }),
+    );
   };
 
   const addNewAnswer = (testId, newAnswer, skillId) => {
