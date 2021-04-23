@@ -48,7 +48,7 @@ const Navbar = () => {
             <div className={styles.logged}>
             <Link to= {`/profile/${user.id}`}>
               <div className={styles.profileIcon}>
-              <AiOutlineUser size={25}/>
+              <AiOutlineUser color={'blue'} size={25}/>
               </div>
              </Link>
             <Link to="/" className={styles.link}>

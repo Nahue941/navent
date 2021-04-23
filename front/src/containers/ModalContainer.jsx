@@ -35,18 +35,20 @@ const ModalContainer = () => {
                 }`}
               >
                 <h2>{test.name}</h2>
+                <div className={styles.logos}>
                 {results[i] && (
                   <img src={clock} alt="clockLogo" className={styles.trophy} />
-                )}
+                  )}
                 {results[i] >= 70 && (
                   <div className={styles.trophyDiv}>
                     <img
                       src={trophy}
                       alt="trophyLogo"
                       className={styles.trophy}
-                    />
+                      />
                   </div>
                 )}
+                </div>
               </div>
             </div>
             <Modal

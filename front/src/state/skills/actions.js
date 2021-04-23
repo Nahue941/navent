@@ -1,9 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const allSkills = createAsyncThunk('GET_ALL_SKILLS', () => {
-    return axios
-    .get(`http://localhost:3001/api/skill`)
+export const allSkills = createAsyncThunk('GET_ALL_SKILLS', (i) => {
+    console.log(i,"limit")
+    return axios({
+        method: "get",
+        url: `http://localhost:3001/api/skill/${i}`
+    })
     .then((skills) => skills.data)
     .catch(err => console.log(err))
 });

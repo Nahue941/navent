@@ -41,12 +41,13 @@
   opacity: 0.85;
   margin: 30px;
   height: 100px;
-  width: 200px;
+  width: 210px;
   border-radius: 16px;
   font-size: small;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   transition: 0.5s;
   opacity: 1;
   box-shadow: -2px 4px 9px 1px #ddd5d598;
@@ -58,6 +59,12 @@
     cursor: pointer;
   }  
 }  
+
+.logos{
+  display: flex;
+  flex-direction: row;
+}
+
 .bcImage {
   width: 100%;
   opacity: 0.8;
@@ -120,4 +127,5 @@
 
 .trophy {
   width: 30px;
+  height: 30px;
 }

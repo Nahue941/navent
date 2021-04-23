@@ -1,4 +1,4 @@
-const { Test, Question, Answer } = require('../models');
+const { Test, Question, Answer, Skill } = require('../models');
 const S = require('sequelize');
 
 const testController = {
@@ -58,6 +58,14 @@ const testController = {
     async createTest(req, res, next) {
         try {
             const test = await Test.create(req.body);
+            const skill= await Skill.findOne({
+                where: {
+                    pId: test.skillId
+                }
+            })
+            skill.update({
+                hasTest: true
+            })        
             res.status(201).send(test)
         } catch (error) {
             next(error);

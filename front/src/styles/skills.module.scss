@@ -1,79 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@300;400;500&display=swap');
 
+
 .container{
   display:flex;
   flex-direction: row;
-  width: 70%;
+  width: 98%;
   height: auto;
-  margin-left: 14%;
+  margin-left: 1%;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-bottom: 5%;
 }
 
 .skill{
   box-shadow: -3px 3px 10px 5px rgba(128, 128, 128, 0.178);
-  height: 80px;
-  width: 150px;
+  height: 100px;
+  width: 215px;
   border-radius: 5px;
-  margin-top: 5%;
-  margin-left: 3%;
+  margin-top: 0%;
+  // margin-left: 3%;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 2%;
 }
-// .container {
-//   // background-color: grey;
-//   text-align: center;
-//   width: 70%;
-//   font-size:1.5em;
-//   display:flex;
-//   flex-direction: column;
 
-//   h1{
-//       font-size: 60px;
-//       color:blue
-//   }
-// }
+.pagination {
+  width: 70%;
+  height: 30px;
+  border: 1px solid rgba(128, 128, 128, 0.336);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 1%;
+  padding-left: 1%;
+  align-items: center;
+  margin-left: 15%;
+  margin-bottom: 5%;
+  
 
-// .skills {
-//   background-color: rgba(255, 255, 255, 0.24);
-//   height: 40px;
+  h4{
+    width: 3%;
+    text-align: center;
+    border-radius: 15px;
+    cursor: pointer
+  }
+}
+
+// .paginationChild {
 //   display: flex;
-//   flex-direction: row;
+//   flex-direction: wrap;
 //   justify-content: space-between;
-
-//   button{
-//     background-color: blue;
-//     border-radius: 4px;
-//     color: white;
-//     height: 35px;
- 
-//     // display: flex;
-//     // align-items: center;
-//     // justify-content: center;
-//     // align-content: center;
-//   }
 // }
-
-// .skills2 {
-//   background-color: #00000012;
-//   height: 40px;
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-
-  // button{
-  //   background-color: blue;
-  //   border-radius: 4px;
-  //   color: white;
-  //   height: 35px;
-  // //   display: flex;
-  // //   align-items: center;
-  // //   justify-content: center;
-  // //   align-content: center;
-  // // }
-  // }
 
 
 .form{

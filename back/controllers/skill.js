@@ -1,11 +1,21 @@
 const { Skill } = require('../models');
+const { Op } = require('sequelize')
 
 const skillController = {
   async getAll(req, res, next) {
     try {
-      const skills = await Skill.findAll();
+      let limit = req.params.limit;
+      let start = limit - 30
+      const skills = await Skill.findAll({
+        where: {
+          id: {
+            [Op.between]: [start, limit]
+          }
+        }
+      });
       res.send(skills);
     } catch (error) {
+      console.log(error)
       next(error);
     }
   },
