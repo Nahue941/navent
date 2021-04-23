@@ -12,6 +12,10 @@ Answer.init(
       type: S.BOOLEAN,
       allowNull: false,
     },
+    active:{
+      type:S.BOOLEAN,
+      defaultValue:true
+    }
   },
   { sequelize: db, modelName: 'answer' },
 );

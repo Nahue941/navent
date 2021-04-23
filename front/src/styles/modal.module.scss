@@ -101,8 +101,12 @@
     height: 50vh;
 }
 .check {
-    width: 15px;
-    background-color: green;
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+   
 }
 
 

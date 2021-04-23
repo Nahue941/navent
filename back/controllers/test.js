@@ -98,6 +98,7 @@ const testController = {
           where: { active: true },
           include: {
             model: Answer,
+            where: { active: true }
           },
           order: [[Answer, 'id', 'ASC']],
         },

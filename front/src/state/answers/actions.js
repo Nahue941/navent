@@ -1,7 +1,7 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { getEditTest } from '../test/actions';
 import axios from 'axios';
-
+import {actualQuestion} from '../test/actions'
 export const addAnswer = createAction('ADD_ANSWER');
 
 export const resetAnswers = createAction('RESET_ANSWER');
@@ -32,5 +32,16 @@ export const editAnswer = createAsyncThunk(
     } catch (err) {
       console.error(err);
     }
+  },
+);
+
+export const deleteAnswer = createAsyncThunk(
+  'DELETE_ANSWER',
+  ({ answerId, skillId, questionIndex }, thunkAPI) => {
+    axios
+      .put(`http://localhost:3001/api/answer/${answerId}`,{active:false})
+      .then(() => thunkAPI.dispatch(getEditTest(skillId)))
+      .then(() => thunkAPI.dispatch(actualQuestion(questionIndex)))
+      .catch((err) => console.log(err));
   },
 );

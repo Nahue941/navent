@@ -9,6 +9,7 @@ import add from '../assets/add.png';
 import check from '../assets/Check.png';
 import newLogo from '../assets/new.svg';
 import edit from '../assets/Edit.png';
+import close from '../assets/Close.png';
 
 import { filterAnswer } from '../utils/test';
 
@@ -25,6 +26,7 @@ import {
 import { editQuestion } from '../state/questions/actions';
 import { editAnswer } from '../state/answers/actions';
 import { correctAnswer } from '../utils/test';
+import { deleteAnswer } from '../state/answers/actions';
 
 const ModalEdit = ({ question, show, onHide, answers, index, setModal }) => {
   const dispatch = useDispatch();
@@ -118,7 +120,12 @@ const ModalEdit = ({ question, show, onHide, answers, index, setModal }) => {
     const { value } = e.target;
     console.log(question.id);
     dispatch(
-      editQuestion({ editQuestion: newQuestion(value), skillId, index, questionId:question.id }),
+      editQuestion({
+        editQuestion: newQuestion(value),
+        skillId,
+        index,
+        questionId: question.id,
+      }),
     );
   };
 
@@ -127,6 +134,10 @@ const ModalEdit = ({ question, show, onHide, answers, index, setModal }) => {
       addAdminAnswer({ testId, newAnswer, skillId, questionIndex: index }),
     );
   };
+
+  const handleRemove = (answerId) => {
+    dispatch(deleteAnswer({answerId,questionIndex:index,skillId}))
+  }
 
   const ModifiyCorrectAnswer = async (index, state, oldIndex, answer) => {
     // dispatch(modifyAnswerState({ index, state, oldIndex }));
@@ -182,6 +193,7 @@ const ModalEdit = ({ question, show, onHide, answers, index, setModal }) => {
                   onBlur={(e) => handleChange(e, answer.correct, answer.id)}
                   name={answer.id}
                 />
+                <img src={close} alt="closeLogo" className={styles.check} onClick={() => handleRemove(answer.id)}/>
                 {answer.correct ? (
                   <img src={check} alt="" className={styles2.icons} />
                 ) : (
