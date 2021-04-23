@@ -22,8 +22,8 @@ const Search = () => {
   };
 
   useEffect(() => {
-    setSearch(skillName.includes(input.toLowerCase()) ? input : null);
-  }, [skillName.includes(input.toLowerCase()) ? input : null]);
+    setSearch(skillName.includes(input.toLowerCase()) ? input.toLowerCase() : null);
+  }, [skillName.includes(input.toLowerCase()) ? input.toLowerCase() : null]);
 
   useEffect(() => {
     dispatch(allSkills());
