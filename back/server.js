@@ -14,7 +14,6 @@ app.use(volleyball);
 app.use(
   cors({
     origin:true,
-
     credentials: true,
   }),
 );

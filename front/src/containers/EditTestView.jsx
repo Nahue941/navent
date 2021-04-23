@@ -19,6 +19,28 @@ const EditTestView = ({ skillId }) => {
     dispatch(getEditTest(skillId));
   }, [dispatch]);
 
+  //manejo del radio button para la respuesta correcta y las incorrectas, sin terminar, se puede borrar porque no funciona
+  const handleChangeRadio = (e) => {
+    let correct = [e.target.value.split(',')][0][0] == 'false' ? false : true;
+    let answerId = Number([e.target.value.split(',')][0][1]);
+    if (correct == true) {
+      setOnClickTrue(false);
+      setOnClickTrueIndex(answerId);
+    }
+    if (correct == false) {
+      setOnClickTrue(true);
+      setOnClickTrueIndex(answerId);
+    }
+  };
+
+  //manda los nuevos valores al back
+  const handleFormTest = () => {
+    dispatch(setEditTest(newTest)).then(() => history.push(`/admin/skill`));
+  };
+  
+  const handleFormQuestion = () => {
+    dispatch(setEditQuestion(newTest)).then(() => history.push(`/admin/skill`));
+  };
   return (
     <div>
       <div>

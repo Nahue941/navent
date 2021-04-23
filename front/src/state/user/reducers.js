@@ -1,10 +1,10 @@
-import { login, registerUser, results, clear , logOut} from './actions';
+import { login, registerUser, results, clear , logOut, allResults, getUser, logExternalUser} from './actions';
 import { createReducer } from '@reduxjs/toolkit';
 
-const initialState = { user: {}, results: {} }; //este es el estado Inicial
+const initialState = { user: {}, results: {}, allResults: [] }; //este es el estado Inicial
 
 const userReducer = createReducer(initialState, {
-  [login.fulfilled]: (state, action) => {
+  [getUser.fulfilled]: (state, action) => {
     state.user = action.payload;
   },
   [registerUser.fulfilled]: (state, action) => {
@@ -13,8 +13,14 @@ const userReducer = createReducer(initialState, {
   [results.fulfilled]: (state, action) => {
     state.results = action.payload;
   },
+  [allResults.fulfilled]: (state, action) => {
+    state.allResults = action.payload;
+  },
   [clear]: (state, action) => {
     state.results = {};
+  },
+  [logExternalUser] : (state, action) => {
+    state.user = action.payload
   },
   [logOut] : (state,action) => initialState,
  });

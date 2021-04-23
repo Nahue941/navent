@@ -1,10 +1,19 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const allTests = createAsyncThunk('GET_TESTS', (userId) => {
-  return axios
+export const allTests = createAsyncThunk('GET_TESTS', (data) => {
+    const {userId, external, skills} = data
+    return axios
     .get(`http://localhost:3001/api/test/all/${userId}`)
-    .then((tests) => tests.data)
+    .then((tests) => {
+        if(external){
+            const userTest = tests.data.filter(test => skills.includes(test.skillId))
+            return userTest
+        }
+        return tests.data
+        //hacer una pre-organizacion de los test a mostrar si no se trata de un usuario local
+        
+    })
     .catch((err) => console.log(err));
 });
 

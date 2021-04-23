@@ -268,4 +268,142 @@ module.exports = [
     active: true,
     question: "¿Cúal es código ASCII del siguiente carácter? '#'",
   },
+  {
+    testId: 6,
+    active: true,
+    question:
+      'Using an attribute selector, how would you select an <a> element with a "title" attribute?',
+  },
+  {
+    testId: 6,
+    active: true,
+    question:
+      'CSS grid and flexbox are now becoming a more popul…at are two valid techniques used to clear floats?',
+  },
+  {
+    testId: 6,
+    active: true,
+    question:
+      'When adding transparency styles, what is the diffe…sus the background property with an rgba() value?',
+  },
+  {
+    testId: 6,
+    active: true,
+    question: 'What is true of block and inline elements?',
+  },
+  {
+    testId: 6,
+    active: true,
+    question: 'What is the line-height property primarily used for?',
+  },
+  {
+    testId: 6,
+    active: true,
+    question:
+      'Three of these choices are true about class selectors. Which is NOT true?',
+  },
+  {
+    testId: 6,
+    active: true,
+    question:
+      'There are many properties that can be used to alig…ion bar which stays fixed at the top of the page?',
+  },
+  {
+    testId: 6,
+    active: true,
+    question:
+      'When elements overlap, they are ordered on the z-a…f statements about the z-index property are true?',
+  },
+  {
+    testId: 6,
+    active: true,
+    question: ' Which of the following is true of the SVG image format?',
+  },
+  {
+    testId: 6,
+    active: true,
+    question:
+      'To change the color of an SVG using CSS, which property is used?',
+  },
+  {
+    testId: 6,
+    active: true,
+    question:
+      'When using position: fixed, what will the element always be positioned relative to?',
+  },
+  {
+    testId: 6,
+    active: true,
+    question:
+      'When using media queries, media types are used to …ry. Which choice lists current valid media types?',
+  },
+  {
+    testId: 5,
+    active: true,
+    question:
+      'What is the purpose of the <track> tag, and when should it be used?',
+  },
+  {
+    testId: 5,
+    active: true,
+    question: 'What are the best examples of void elements?',
+  },
+  {
+    testId: 5,
+    active: true,
+    question:
+      'In HTML5, which tag or tags embed a webpage inside of a webpage?',
+  },
+  {
+    testId: 5,
+    active: true,
+    question: 'Where do <header> and <footer> tags typically occur?',
+  },
+  {
+    testId: 5,
+    active: true,
+    question: 'What is the best way to apply bold styling to text?',
+  },
+  { testId: 5, active: true, question: 'When is the <link> tag used?' },
+  {
+    testId: 5,
+    active: true,
+    question: 'The "value" attribute is associated with which set of tags?',
+  },
+  {
+    testId: 5,
+    active: true,
+    question: ' When should you use the <aside> element?',
+  },
+  {
+    testId: 5,
+    active: true,
+    question: 'With which tags is the <source> element associated?',
+  },
+  {
+    testId: 5,
+    active: true,
+    question: 'What is NOT a valid attribute for the <textarea> element?',
+  },
+  {
+    testId: 5,
+    active: true,
+    question: 'What is the purpose of the <samp> element?',
+  },
+  {
+    testId: 5,
+    active: true,
+    question: 'When should you use <ol> and <ul> elements?',
+  },
+  {
+    testId: 5,
+    active: true,
+    question:
+      'What is the difference between the post and get methods in a form?',
+  },
+  {
+    testId: 5,
+    active: true,
+    question: 'What is the difference between the <div> and <span> tags?',
+  },
 ];

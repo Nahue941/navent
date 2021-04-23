@@ -1,8 +1,9 @@
-const { Test, Question, Answer, User } = require('../models');
+const { Test, Question, Answer, User, Skill } = require('../models');
 const testArray = require('./testSeed');
 const questionArray = require('./questionSeed');
 const answerArray = require('./answerSeed');
 const userArray = require('./userSeed');
+const skillArray = require('./skillSeed');
 
 /** Al crear una tabla que contiene un FK. El método bulkCreate revisa que 
  *  dicho id exista en la tabla a la cual quiero relacionar. Por ende se debe
@@ -14,6 +15,7 @@ const userArray = require('./userSeed');
  *  1-Test
  *  2-Questions
  *  3-Answers
+ *  4-Skill (No es necesario antes de Test ya que para la db no tienen relacion)
  * 
  *  *El orden no necesariamente debe ser este pero un orden posible.
  */
@@ -38,11 +40,18 @@ let answerPromise = () => Answer.bulkCreate(answerArray)
     return res;
   });
 
-let userPromise = () => User.bulkCreate(userArray)
+  let skillPromise = () => Skill.bulkCreate(skillArray)
+  .then(res => {
+    console.log(`-->Skills creadas`);
+    return res;
+  });
+/* let userPromise = () => User.bulkCreate(userArray)
   .then(res => {
     console.log(`-->Usuario/s creado/s`);
     return res;
-  });
+  }); */
+
+
 
 
 
@@ -50,7 +59,7 @@ console.log('inciando seed...');
 testPromise()
   .then(() => questionPromise())
   .then(() => answerPromise())
-  .then(() => userPromise())
+  .then(() => skillPromise())
   .then(() => console.log('\n----Seed terminado----'))
   .then(() => process.exit())
   .catch(e => console.error(e))

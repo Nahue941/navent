@@ -98,9 +98,9 @@ const testController = {
           where: { active: true },
           include: {
             model: Answer,
-            where: { active: true }
+            where: { active: true },
+            order: [['id', 'ASC']],
           },
-          order: [[Answer, 'id', 'ASC']],
         },
         order: [[Question, 'id', 'ASC']],
       });

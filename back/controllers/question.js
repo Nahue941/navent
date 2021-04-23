@@ -13,9 +13,9 @@ const questionController = {
         try {
             const question = await Question.create({
                 ...req.body,
-                testId: Number(req.params.id)
+                testId: Number(req.params.testId)
             });
-            res.sendStatus(200);
+            res.status(201).send(question);
         } catch (error) {
             next(error);
         }

@@ -6,7 +6,7 @@ import {
   totalTimeReset,
 } from './actions';
 
-const initialState = { countDown: 1000, total: 0 };
+const initialState = { countDown: Number, total: 0 };
 const timeReducer = createReducer(initialState, {
   [timeLogger]: (state, action) => {
     state.countDown = action.payload;

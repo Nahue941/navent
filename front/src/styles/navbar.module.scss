@@ -8,11 +8,15 @@
   padding: 0 0;
   border-radius: 0;
   box-shadow: 0 9px 20px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
   height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: blue;
+  h1{
+   font-weight: 100;
+   font-size: 170% 
+  }
 }
 
 .container {
@@ -38,13 +42,26 @@
   padding: 3px 7px;
   border-radius: 5px;
   transition: all 0.12s ease-in-out;
+  text-decoration: blue;
   &:hover {
     border-color:  #e00b67;
     background-color: rgb(238, 20, 115);
 
   }
+  cursor: pointer
 }
 
+.logged{
+  display:flex;
+  width: 20%;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: -8%;
+}
+
+.profileIcon{
+  padding-top: 5px;
+}
 
 .button:hover {
   background-color: rgba(0, 0, 24, 0.84);
@@ -61,5 +78,10 @@
   .navbar{
     width: 100%;
 
+  }
+
+  .logged{
+    width: 60%;
+    justify-content: space-around;
   }
 }

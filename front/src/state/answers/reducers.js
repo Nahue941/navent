@@ -22,7 +22,6 @@ const answersReducer = createReducer(initialState, {
   },
   [wrongAnswered]: (state, action) => {
     const wrongQ = [...state.wronglyAnsQuestions, action.payload];
-    console.log("wrong", wrongQ)
     state.wronglyAnsQuestions = wrongQ;
   },
   [correctAnswers]: (state, action) => {

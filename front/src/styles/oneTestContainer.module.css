@@ -7,6 +7,7 @@
   font-family: 'Raleway';
   /* margin: 30px; */
   align-content: center;
+
 }
 
 .questionContainer {
@@ -15,6 +16,7 @@
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  align-items: center;
 }
 
 .answers {
@@ -53,7 +55,7 @@
 
 .timerDiv {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   text-align: center ;
 }
