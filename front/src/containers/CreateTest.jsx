@@ -13,10 +13,10 @@ const CreateForm = ({ skillId }) => {
   const dispatch = useDispatch()
   const [newQuestions, setNewQuestions] = useState({});
   const [newAnswers, setNewAnswers] = useState({});
-  const skills = useSelector((state) => state.skill.allSkills)
+  const skills = useSelector((state) => state.skill?.allSkills)
   const [newTest, setNewTest] = useState({ 
     skillId,
-    name: skills[skillId-1].name
+    name: skills?.[skillId-1].name
   });
   
   useEffect(() => {
