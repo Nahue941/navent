@@ -68,6 +68,7 @@ const CreateQuestion = ({ testId }) => {
       <h3>Ingrese la pregunta o consigna:</h3>
       <form onSubmit={handleSubmit}>
         <input
+        className={styles.form__input}
           type="text"
           name="question"
           id="question"
@@ -82,6 +83,7 @@ const CreateQuestion = ({ testId }) => {
           {[...Array(answersNum)].map((e, i) => (
             <div key={i + 1}>
               <input
+                className={styles.form__input}
                 type="text"
                 name={`answer${i + 1}`}
                 id={i}
