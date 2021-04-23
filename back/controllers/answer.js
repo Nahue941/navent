@@ -13,8 +13,7 @@ const answerController = {
       next(error);
     }
   },
-  async editAnswer(req, res, next) {
-    console.log(req.body);
+  async updateCorrect(req, res, next) {
     try {
       await Answer.update(
         { correct: false },
@@ -36,6 +35,22 @@ const answerController = {
       next(error);
     }
   },
+
+
+  async editAnswer (req,res,next){
+    try {
+      const updatedAnswer = await Answer.update(req.body, {
+        where: {
+          id: req.params.id,
+        },
+        returning: true,
+      });
+      res.send(updatedAnswer);
+    } catch (error) {
+      next(error);
+    }
+  },
+
   async deleteAnswer(req, res, next) {
     try {
       const deletedAnswer = await Answer.findByPk(req.params.id);

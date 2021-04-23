@@ -37,15 +37,13 @@ const ModalEdit = ({ question, show, onHide, answers, index, setModal }) => {
 
   const testId = question.testId;
 
-  const newAnswer = (answer)  => {
+  const newAnswer = (answer) => {
     return {
-    correct: false,
-    answer,
-    questionId: question.id
-    }
+      correct: false,
+      answer,
+      questionId: question.id,
+    };
   };
-
-  
 
   useEffect(() => {
     dispatch(actualQuestion(index));
@@ -92,13 +90,14 @@ const ModalEdit = ({ question, show, onHide, answers, index, setModal }) => {
   };
 
   const handleSubmit = () => {
-    !loading &&
-      editAnswers.length &&
+    if (!loading && editAnswers.length) {
       dispatch(editAnswer({ answers: editAnswers, skillId })).then(() => {
         setModal(false);
       });
+    } else {
+      setModal(false);
+    }
   };
-
 
   const addNewAnswer = (testId, newAnswer, skillId) => {
     dispatch(
@@ -115,8 +114,7 @@ const ModalEdit = ({ question, show, onHide, answers, index, setModal }) => {
         index,
         questionId: question.id,
       }),
-    )
-    
+    );
   };
 
   return (

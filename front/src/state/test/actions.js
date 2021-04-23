@@ -73,7 +73,6 @@ export const editQuestion = createAsyncThunk(
     axios
       .put(`http://localhost:3001/api/question/${questionID}`, newQuestion)
       .then((answer) => {
-        console.log('Se hizo!');
         answer.data;
       })
       .catch((err) => console.log(err));
@@ -96,7 +95,7 @@ export const modifyAnswerState = createAsyncThunk(
   'MODIFY_ANSWER_STATE',
   ({ answerId, skillId,index, questionId }, thunkAPI) => {
     axios
-      .put(`http://localhost:3001/api/answer/${answerId}`, {questionId})
+      .put(`http://localhost:3001/api/answer/${answerId}/updateCorrect`, {questionId})
       .then((data) =>{ 
           return data
       })
