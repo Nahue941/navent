@@ -26,15 +26,13 @@ const AdminRoute = () => {
         <Route
           path="/admin/skill/edit/:skillId"
           render={({ match }) => (
-            <EditTestView skillId={match.params.skillId}>
-              {match.params.skillId}
-            </EditTestView>
-          )}
+            <EditTestView skillId={match.params.skillId} />
+                    )}
         />
         <Route
-          path="/admin/skill/create/:skillId"
+          path="/admin/skill/create/:skillId/:skillName"
           render={({ match }) => (
-            <CreateTestForm skillId={match.params.skillId} />
+            <CreateTestForm skillName={match.params.skillName} skillId={match.params.skillId} />
           )}
         />
         <Route path="/admin/skill" render={() => <AdminSkills />} />

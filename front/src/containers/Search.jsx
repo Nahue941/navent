@@ -23,8 +23,8 @@ const Search = () => {
 
   useEffect(() => {
     setSearch(skillName.includes(input.toLowerCase()) ? input.toLowerCase() : null);
-  }, [skillName.includes(input.toLowerCase()) ? input.toLowerCase() : null]);
-
+  }, [skillName?.includes(input.toLowerCase()) ? input.toLowerCase() : null]);
+  
   useEffect(() => {
     dispatch(allSKillsSearch())
       .then((res) => setSkillName( res.payload.map ( (skill) => skill.name.toLowerCase()) ))

@@ -14,7 +14,7 @@ const Skill = ({ skill }) => {
           <FaPencilAlt />
         </Link>
       ) : (
-        <Link to={`/admin/skill/create/${skill.pId}`}>
+        <Link to={`/admin/skill/create/${skill.pId}/${skill.name}`}>
           <FaPlus />
         </Link>
       )}

@@ -92,7 +92,7 @@ const TestContainer = ({ testId }) => {
     if (nextQuestion < questions.length) {
       dispatch(setIndexQuestion(nextQuestion));
       dispatch(setDisabled(true));
-      dispatch(timeReset(1000));
+      dispatch(timeReset(test.timeToComplete / 10));
     } else {
       const res = await dispatch(
         results({

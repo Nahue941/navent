@@ -36,6 +36,7 @@ const skillController = {
           pId: req.params.id,
         },
       });
+      console.log("skill",skill)
       res.send(skill);
     } catch (error) {
       next(error);

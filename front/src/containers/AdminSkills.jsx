@@ -37,12 +37,7 @@ const AdminSkills = () => {
     dispatch(allSKillsSearch());
   }, []);
 
-  // useEffect(() => {
-  //   for (let i = 1; i <= 20; i++) {
-  //     pagination = [...pagination, i];
-  //   }
-  //   console.log(pagination);
-  // }, [])
+
 
   const handlePagination = (e,i) => {
     const limit = i*30

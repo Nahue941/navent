@@ -2,31 +2,32 @@ import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import style from '../styles/skills.module.scss'
-import { allSkills } from '../state/skills/actions'
+import { singleSkill, resetSingleSkill } from '../state/skills/actions'
 import Button from '../components/UI/Button'
 import {createTest } from '../state/test/actions'
  
 
-const CreateForm = ({ skillId }) => {
+const CreateForm = ({ skillId, skillName }) => {
 
   const history = useHistory()
   const dispatch = useDispatch()
   const [newQuestions, setNewQuestions] = useState({});
   const [newAnswers, setNewAnswers] = useState({});
-  const skills = useSelector((state) => state.skill.allSkills)
+  const skill = useSelector((state) => state.skill?.singleSkill)
   const [newTest, setNewTest] = useState({ 
     skillId,
-    name: skills[skillId-1].name
+    name: skillName
   });
   
   useEffect(() => {
-    dispatch(allSkills())
+    dispatch(singleSkill(skillId))
   }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createTest(newTest))
-    .then(() => history.push(`/admin/skill/edit/${skillId}`))
+    .then(() => dispatch(resetSingleSkill))
+    .then(() => history.push(`/admin/skill`))
   }
 
   const handleChange = (e) => {

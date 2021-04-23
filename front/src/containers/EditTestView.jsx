@@ -14,12 +14,11 @@ const EditTestView = ({ skillId }) => {
   const dispatch = useDispatch();
   const test = useSelector((state) => state.test.editTest);
 
-
   useEffect(() => {
     console.log(`skillid`,skillId)
     dispatch(getEditTest(skillId));
-  }, [dispatch]);
-
+  }, []);
+  
   //manejo del radio button para la respuesta correcta y las incorrectas, sin terminar, se puede borrar porque no funciona
   const handleChangeRadio = (e) => {
     let correct = [e.target.value.split(',')][0][0] == 'false' ? false : true;

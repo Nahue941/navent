@@ -1,5 +1,5 @@
 import { createReducer, createAsyncThunk } from '@reduxjs/toolkit';
-import { allSkills, singleSkill, allSKillsSearch } from './actions';
+import { allSkills, singleSkill, allSKillsSearch, resetSingleSkill } from './actions';
 
 const initialState = {
   allSkills: [], //agregado para panel admin
@@ -20,6 +20,9 @@ const skillsReducer = createReducer(initialState, {
     const payload = action.payload;
     state.allSKillsSearch = payload;
   },
+  [resetSingleSkill]: (state, action) => {
+    state.singleSkill = {}
+  }
 });
 
 export default skillsReducer;
