@@ -37,10 +37,12 @@ const ModalEdit = ({ question, show, onHide, answers, index, setModal }) => {
 
   const testId = question.testId;
 
-  const newAnswer = {
+  const newAnswer = (answer)  => {
+    return {
     correct: false,
-    answer: 'Prueba de respuesta JULI',
-    questionId: question.id,
+    answer,
+    questionId: question.id
+    }
   };
 
   
@@ -61,7 +63,7 @@ const ModalEdit = ({ question, show, onHide, answers, index, setModal }) => {
           defaultValue=""
           onKeyDown={(e) => {
             if (e.code === 'Enter' && e.target.value) {
-              addNewAnswer(testId, newAnswer, skillId);
+              addNewAnswer(testId, newAnswer(e.target.value), skillId);
               showInput(false);
             }
           }}
@@ -99,7 +101,6 @@ const ModalEdit = ({ question, show, onHide, answers, index, setModal }) => {
 
 
   const addNewAnswer = (testId, newAnswer, skillId) => {
-    console.log(testId, newAnswer);
     dispatch(
       addAdminAnswer({ testId, newAnswer, skillId, questionIndex: index }),
     );
