@@ -15,11 +15,11 @@ const CreateQuestion = ({ testId }) => {
   const [newAnswer, setNewAnswer] = useState([]);
   const [newRadio, setNewRadio] = useState(0);
   const [answersNum, setAnswersNum] = useState(
-    useSelector((state) => state.test.all.length),
+    useSelector((state) => state.test.singleTest.qtyAnswers),
   ); //largo original de preguntas segun el test
 
   const [limit, setLimit] = useState(
-    useSelector((state) => state.test.all.length),
+    useSelector((state) => state.test.singleTest.qtyAnswers),
   ); //cantidad de respuestas minima que puede tener un test
   useEffect(() => {
     dispatch(getEditTest(testId));
@@ -59,7 +59,7 @@ const CreateQuestion = ({ testId }) => {
     auxArray.map((x) => (x.correct = false)); //primero hago false a todas
     auxArray[newRadio].correct = true; //a la seleccionada la hago true
     setNewAnswer(newAnswer); //mi data actualizada, lista para mandar al back
-    console.log(newAnswer, 'save answer'); // me muestra la data
+
   };
 
   return (
@@ -122,8 +122,8 @@ const CreateQuestion = ({ testId }) => {
       </div>
       {newAnswer.length > 0 && newQuestion.length > 0 ? (
         <ButtonEdit
-          height="80px"
-          width="60px"
+          height="30px"
+          width="80px"
           type="submit"
           color="blue"
           value="Guardar"

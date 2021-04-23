@@ -33,11 +33,7 @@ const Search = () => {
     <>
       <form>
         <div className={styles.centerRow}>
-          <div>
-            <h1 className={styles.colorIcon}>
-              <MdSearch />
-            </h1>
-          </div>
+
           <div>
             <input
               className={inputStyle.input}
