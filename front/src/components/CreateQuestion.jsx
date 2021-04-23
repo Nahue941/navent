@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { createQuestion } from '../state/questions/actions';
-import Button from './UI/Button';
+import ButtonEdit from './UI/ButtonEdit';
 import { getEditTest, actualIndexQuestion } from '../state/test/actions';
 import { useSelector } from 'react-redux';
+import styles from '../styles/createQuestion.module.scss';
+import {IoMdAddCircleOutline} from 'react-icons/io';
 
 const CreateQuestion = ({ testId }) => {
   const history = useHistory();
@@ -61,7 +63,8 @@ const CreateQuestion = ({ testId }) => {
   };
 
   return (
-    <div>
+    <div  className={styles.centerItems}>
+      <div className={`${styles.container} ${styles.centerItems}`}> 
       <h3>Ingrese la pregunta o consigna:</h3>
       <form onSubmit={handleSubmit}>
         <input
@@ -97,18 +100,43 @@ const CreateQuestion = ({ testId }) => {
           ))}
         </div>
       </form>
-      <Button type="submit" color="blue" value="+" onClick={handleAddAnswers} />
-      <Button type="submit" color="blue" value="-" onClick={handleAddAnswers} />
+      <div className={styles.btn_align} >
+      <ButtonEdit
+        height="30px"
+        width="30px"
+        type="submit"
+        color="blue"
+        value="+"
+        onClick={handleAddAnswers}
+      />
+      <ButtonEdit
+        height="30px"
+        width="30px"
+        type="submit"
+        color="blue"
+        value="-"
+        onClick={handleAddAnswers}
+      />
+      </div>
       {newAnswer.length > 0 && newQuestion.length > 0 ? (
-        <Button
+        <ButtonEdit
+          height="80px"
+          width="60px"
           type="submit"
           color="blue"
           value="Guardar"
           onClick={saveAnswer}
         />
       ) : (
-        <Button type="submit" color="grey" value="Guardar" />
+        <ButtonEdit
+          className={styles.btn}
+          type="submit"
+          color="#C3C2C8"
+          value="Guardar"
+          height="30px" width="80px"
+        />
       )}
+    </div>
     </div>
   );
 };
